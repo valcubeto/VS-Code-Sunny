@@ -1,0 +1,22 @@
+{
+	"name": "jff",
+	"displayName": "jff",
+	"description": "",
+	"version": "0.0.1",
+	"engines": { "vscode": "^1.64.0" },
+	"categories": ["Programming Languages"],
+	"repository": "https://github.com/ValentineBucket/vscode-jff",
+	"contributes": {
+		"languages": [{
+			"id": "jff",
+			"aliases": ["JustForFun", "jff"],
+			"extensions": [".jff"],
+			"configuration": "./language-configuration.json"
+		}],
+		"grammars": [{
+			"language": "jff",
+			"scopeName": "source.jff",
+			"path": "./jff.tmLanguage.json"
+		}]
+	}
+}
