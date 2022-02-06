@@ -6,6 +6,23 @@
 	"repository": {
 		"all": {
 			"patterns": [
+
+
+
+				{
+					"begin": "\\(",
+					"beginCaptures": {
+						"0": { "name": "punctuation.definition.parameters.begin.jff" }
+					},
+					"patterns": [{ "include": "#all" }],
+					"end": "\\)",
+					"endCaptures": {
+						"0": { "name": "punctuation.definition.parameters.end.jff" }
+					}
+				},
+
+
+
 				{
 					"name": "string.quoted.double.jff",
 					"begin": "\"",
@@ -23,32 +40,48 @@
 					],
 					"end": "\\n|\""
 				},
-				{
-					"begin": "\\(",
-					"beginCaptures": {
-						"0": { "name": "punctuation.definition.parameters.begin.jff" }
-					},
-					"patterns": [{ "include": "#all" }],
-					"end": "\\)",
-					"endCaptures": {
-						"0": { "name": "punctuation.definition.parameters.end.jff" }
-					}
-				},
+
+
+
+
+
+
 				{
 					"name": "keyword.jff",
-				  "match": "(?<![#.\\w])(?:import|try|on|if|else|when|is|other|skip|return)(?!\\w)"
+				  "match": "(?<![#.\\w])(?:typeof|new|isinstanceof|import|try|on|if|else|when|is|other|skip|return)(?!\\w)"
 				},
+				{
+					"name": "keyword.operator.jff",
+				  "match": "[-+/*^]"
+				},
+				{
+					"name": "keyword.operator.assignment.jff",
+				  "match": "="
+				},
+				{
+					"name": "keyword.operator.accessor.jff punctuation.accessor.jff",
+				  "match": "[.#]"
+				},
+
+
+
 				{
 					"name": "storage.type.jff",
 				  "match": "(?<![.\\w])(?:varbl|const|fun|class)(?!\\w)"
 				},
-				{
-					"name": "entity.name.function.jff",
-					"match": "[A-Za-z_]\\w*(?=\\s*\\()"
-				},
+
+
+
 				{
 					"name": "support.class.builtin.jff",
 					"match": "(?<![.\\w])(?:Value|Boolean|Number|String|Object|Array|Function|RegExp|Date)(?!\\w)"
+				},
+
+
+
+				{
+					"name": "entity.name.function.jff",
+					"match": "[A-Za-z_]\\w*(?=\\s*(?:\\?\\.)?\\()"
 				}
 			]
 		}

@@ -6,4 +6,6 @@ fun getName() {
 
 print("Hello $(getName().toLower())");
 
-new Date()
+new? ate();
+
+print(1 + 1);
