@@ -1,0 +1,43 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "JustForFun",
+	"scopeName": "source.jff",
+	"patterns": [{ "include": "#all" }],
+	"repository": {
+		"all": {
+			"patterns": [
+				{
+					"name": "string.quoted.double.jff",
+					"begin": "\"",
+					"patterns": [
+						{
+							"name": "constant.character.escape.jff",
+							"match": "\\\\."
+						},
+						{
+							"name": "variable.jff",
+							"begin": "\\$\\(",
+							"patterns": [{ "include": "#all" }],
+							"end": "\\)"
+						}
+					],
+					"end": "\\n|\""
+				},
+				{
+					"begin": "\\(",
+					"beginCaptures": {
+						"0": { "name": "punctuation.definition.parameters.begin.jff" }
+					},
+					"end": "\\)",
+					"endCaptures": {
+						"0": { "name": "punctuation.definition.parameters.end.jff" }
+					}
+				},
+				{
+					"name": "keyword.jff",
+				  "match": "(?<![.\\w])(?:if|while|for|return)(?!\\w)"
+				}
+			]
+		}
+	}
+}
