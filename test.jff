@@ -21,3 +21,4 @@ class Array extends (class Object extends Value {}) {
     foreach value in x: print it;
   }
 }
+fu
