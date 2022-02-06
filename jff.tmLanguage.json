@@ -28,6 +28,7 @@
 					"beginCaptures": {
 						"0": { "name": "punctuation.definition.parameters.begin.jff" }
 					},
+					"patterns": [{ "include": "#all" }],
 					"end": "\\)",
 					"endCaptures": {
 						"0": { "name": "punctuation.definition.parameters.end.jff" }
@@ -35,7 +36,19 @@
 				},
 				{
 					"name": "keyword.jff",
-				  "match": "(?<![.\\w])(?:if|while|for|return)(?!\\w)"
+				  "match": "(?<![#.\\w])(?:import|try|on|if|else|when|is|other|skip|return)(?!\\w)"
+				},
+				{
+					"name": "storage.type.jff",
+				  "match": "(?<![.\\w])(?:varbl|const|fun|class)(?!\\w)"
+				},
+				{
+					"name": "entity.name.function.jff",
+					"match": "[A-Za-z_]\\w*(?=\\s*\\()"
+				},
+				{
+					"name": "support.class.builtin.jff",
+					"match": "(?<![.\\w])(?:Value|Boolean|Number|String|Object|Array|Function|RegExp|Date)(?!\\w)"
 				}
 			]
 		}
