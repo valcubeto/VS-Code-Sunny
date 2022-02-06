@@ -44,6 +44,16 @@
 
 
 
+				{
+					"name": "comment.line.jff",
+					"begin": "//",
+					"end": "\\n|$"
+				},
+				{
+					"name": "comment.block.jff",
+					"begin": "/\\*",
+					"end": "\\*/"
+				},
 
 
 

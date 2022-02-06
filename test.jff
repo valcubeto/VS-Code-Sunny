@@ -1,11 +1,1 @@
-const name = "Juan";
-
-fun getName() {
-  return name;
-}
-
-print("Hello $(getName().toLower())");
-
-new? ate();
-
-print(1 + 1);
+const &0b1001001001 = "$(0b100101001)";

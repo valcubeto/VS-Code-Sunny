@@ -1,2 +1,2 @@
 # VSC JFF
-idk
+Visual Studio Code extension.
