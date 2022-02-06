@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const name = "Juan";
 
 fun getName() {
@@ -9,3 +10,6 @@ print("Hello $(getName().toLower())");
 new? ate();
 
 print(1 + 1);
+=======
+print("Hello $(getName().toLower())");
+>>>>>>> 6758685942c906582e0e8d043c8ade2f50d8abe5
