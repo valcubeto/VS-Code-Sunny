@@ -59,7 +59,7 @@
 
 				{
 					"name": "keyword.jff",
-				  "match": "(?<![#.\\w])(?:and|AND|or|OR|isinstanceof|in|typeof|new|import|try|on|if|else|when|is|other|skip|return)(?!\\w)"
+				  "match": "(?<![#.\\w])(?:and|AND|or|OR|isinstanceof|in|typeof|new|import|try|on|if|else|when|is|other|skip|return|foreach|next|break)(?!\\w)"
 				},
 				{
 					"name": "keyword.operator.jff",

@@ -1,0 +1,7 @@
+{
+  "Function declaration": {
+    "prefix": "fun",
+    "body": "fun ${2:jom}($3) {$1}",
+    "description": "Puts a function declaration"
+  }
+}

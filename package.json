@@ -17,6 +17,10 @@
 			"language": "jff",
 			"scopeName": "source.jff",
 			"path": "./jff.tmLanguage.json"
+		}],
+		"snippets": [{
+			"language": "jff",
+			"path": "./jff.code-snippets"
 		}]
 	}
 }

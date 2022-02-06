@@ -13,5 +13,11 @@ class Boolean {
     if typeof val == "boolean": return val;
     if typeof val == "number" and val == 0: return false;
   }
-  oncreate(val) -> Object { String, Boolean } => { # Boolean, "VALUE": Boolean(val) }
+  oncreate(val) -> { String: Boolean } => { # Boolean, "VALUE": Boolean(val) }
+}
+
+class Array extends (class Object extends Value {}) {
+  oncreate(x) {
+    foreach value in x: print it;
+  }
 }
