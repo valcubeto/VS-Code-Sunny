@@ -32,6 +32,7 @@
 							"match": "\\\\."
 						},
 						{
+							"comment": "i didnt found a white color lol",
 							"name": "variable.jff",
 							"begin": "\\$\\(",
 							"patterns": [{ "include": "#all" }],
