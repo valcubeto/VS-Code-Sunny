@@ -11,7 +11,7 @@
 			"id": "jff",
 			"aliases": ["JustForFun", "jff"],
 			"extensions": [".jff"],
-			"configuration": "./language-configuration.json"
+			"configuration": "./jff-language-configuration.json"
 		}],
 		"grammars": [{
 			"language": "jff",
