@@ -8,6 +8,19 @@
 			"patterns": [
 
 
+				
+				{
+					"name": "comment.line.jff",
+					"begin": "//",
+					"end": "\\n"
+				},
+				{
+					"name": "comment.block.jff",
+					"begin": "/\\*",
+					"end": "\\*/"
+				},
+
+
 
 				{
 					"begin": "\\(",
@@ -20,6 +33,10 @@
 						"0": { "name": "punctuation.definition.parameters.end.jff" }
 					}
 				},
+				{
+					"name": "punctuation.terminator.statement.jff",
+					"match": ";"
+				},
 
 
 
@@ -31,17 +48,27 @@
 					},
 					"patterns": [
 						{
+							"name": "constant.character.format.jff",
+							"match": "%%"
+						},
+						{
 							"name": "constant.character.escape.jff",
 							"match": "\\\\."
 						},
 						{
-							"name": "meta.embedded.jff",
+						  "name": "meta.embedded.jff variable.other.jff",
 							"begin": "\\$\\(",
+							"beginCaptures": {
+								"0": { "name": "punctuation.definition.template-expression.begin.jff" }
+							},
 							"patterns": [{ "include": "#all" }],
-							"end": "\\)"
+							"end": "\\)",
+							"endCaptures": {
+								"0": { "name": "punctuation.definition.template-expression.end.jff" }
+							}
 						}
 					],
-					"end": "\\n|\"",
+					"end": "\"|\\n",
 					"endCaptures": {
 						"0": { "name": "meta.template.expression.jff" }
 					}
@@ -50,20 +77,29 @@
 
 
 				{
-					"name": "comment.line.jff",
-					"begin": "//",
-					"end": "\\n|$"
-				},
-				{
-					"name": "comment.block.jff",
-					"begin": "/\\*",
-					"end": "\\*/"
+					"name": "string.regexp.jff",
+					"begin": "/",
+					"beginCaptures": {
+						"0": { "name": "meta.template.expression.jff" }
+					},
+					"patterns": [
+						{
+							"name": "constant.character.format.jff",
+							"match": "%%"
+						},
+						{
+							"name": "constant.character.escape.jff",
+							"match": "\\\\."
+						}
+					],
+					"end": "/[DdGgIiMmSsUuYy]{0,6}|\\n",
+					"endCaptures": {
+						"0": { "name": "meta.template.expression.jff" }
+					}
 				},
 
 
-				
-				
-				
+
 				{
 					"name": "keyword.jff",
 				  "match": "(?<![#.\\w])(?:and|AND|or|OR|isinstanceof|in|typeof|import|try|on|if|else|when|is|other|skip|return|foreach|next|break)(?!\\w)"

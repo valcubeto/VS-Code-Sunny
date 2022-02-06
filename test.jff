@@ -1,6 +1,6 @@
 varbl
   num = 0123456789;
-  num = 12e+345.67;
+  num = 1234e+5678;
 const hex = 0x09abcdef;
 const bin = 0b00011101;
 const str = "Hello world!";
@@ -19,5 +19,19 @@ class Pet {
     this.add(name, age);
     count++;
   }
-  toString() => "Pet { name: $(this.name), age: $(this.age) }";
+  toString() => "%% { name: $(this.name), age: $(this.age) }" << this#class.name;
 }
+
+class Dog: Pet {
+  woof() {
+    print("$(this.name or "A dog"): Woof!");
+  }
+}
+
+class Cat: Pet {
+  meow() {
+    print("$(this.name or "A cat"): Meow!");
+  }
+}
+
+2 =(num)> num in 0 ~ 10 =(inRange)> if inRange: print("num in range!");
