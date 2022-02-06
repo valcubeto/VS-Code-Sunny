@@ -1,4 +1,9 @@
 {
+  "Import-from statment": {
+    "prefix": "importfrom",
+    "body": "import ${1:*} from ${2:\"my module.jff\"};",
+    "description": "Puts an import-from statment"
+  },
   "Function declaration": {
     "prefix": "fun",
     "body": ["fun ${2:jom}($3) {$1}"],

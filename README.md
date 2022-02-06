@@ -1,2 +1,2 @@
 # VSC JFF
-Visual Studio Code extension.
+Visual Studio Code extension for JustForFun language!

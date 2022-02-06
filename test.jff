@@ -1,24 +1,23 @@
-const BIN at &0xff = 0b100101001;
+varbl
+  num = 0123456789;
+  num = 12e+345.67;
+const hex = 0x09abcdef;
+const bin = 0b00011101;
+const str = "Hello world!";
+const boo = true;
+const obj = { num }; // { num: num }
+const arr = [ num, hex, bin ];
+const rex = /my +regular +expression/i;
 
-print(BIN AND 0b100101001);
-
-operator not(y) -> Boolean {
-  const bool = Boolean(y);
-  if bool == true: return false;
-  else: return true;
-};
-
-class Boolean {
-  oncall(val: Value) {
-    if typeof val == "boolean": return val;
-    if typeof val == "number" and val == 0: return false;
-  }
-  oncreate(val) -> { String: Boolean } => { # Boolean, "VALUE": Boolean(val) }
+fun yommy(a, b) {
+  return a + b;
 }
 
-class Array extends (class Object extends Value {}) {
-  oncreate(x) {
-    foreach value in x: print it;
+class Pet {
+  own priv count = 0;
+  oncreate({ name, age }) {
+    this.add(name, age);
+    count++;
   }
+  toString() => "Pet { name: $(this.name), age: $(this.age) }";
 }
-fu

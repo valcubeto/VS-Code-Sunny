@@ -26,20 +26,25 @@
 				{
 					"name": "string.quoted.double.jff",
 					"begin": "\"",
+					"beginCaptures": {
+						"0": { "name": "meta.template.expression.jff" }
+					},
 					"patterns": [
 						{
 							"name": "constant.character.escape.jff",
 							"match": "\\\\."
 						},
 						{
-							"comment": "i didnt found a white color lol",
-							"name": "variable.jff",
+							"name": "meta.embedded.jff",
 							"begin": "\\$\\(",
 							"patterns": [{ "include": "#all" }],
 							"end": "\\)"
 						}
 					],
-					"end": "\\n|\""
+					"end": "\\n|\"",
+					"endCaptures": {
+						"0": { "name": "meta.template.expression.jff" }
+					}
 				},
 
 
@@ -56,14 +61,20 @@
 				},
 
 
-
+				
+				
+				
 				{
 					"name": "keyword.jff",
-				  "match": "(?<![#.\\w])(?:and|AND|or|OR|isinstanceof|in|typeof|new|import|try|on|if|else|when|is|other|skip|return|foreach|next|break)(?!\\w)"
+				  "match": "(?<![#.\\w])(?:and|AND|or|OR|isinstanceof|in|typeof|import|try|on|if|else|when|is|other|skip|return|foreach|next|break)(?!\\w)"
 				},
 				{
 					"name": "keyword.operator.jff",
 				  "match": "[-+/*^]"
+				},				
+				{
+					"name": "keyword.operator.new",
+					"match": "(?<![#.\\w])new(?!\\w)"
 				},
 				{
 					"name": "keyword.operator.assignment.jff",
