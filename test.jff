@@ -1,1 +1,17 @@
-const &0b1001001001 = "$(0b100101001)";
+const BIN at &0xff = 0b100101001;
+
+print(BIN AND 0b100101001);
+
+operator not(y) -> Boolean {
+  const bool = Boolean(y);
+  if bool == true: return false;
+  else: return true;
+};
+
+class Boolean {
+  oncall(val: Value) {
+    if typeof val == "boolean": return val;
+    if typeof val == "number" and val == 0: return false;
+  }
+  oncreate(val) -> Object { String, Boolean } => { # Boolean, "VALUE": Boolean(val) }
+}

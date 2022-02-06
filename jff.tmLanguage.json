@@ -59,7 +59,7 @@
 
 				{
 					"name": "keyword.jff",
-				  "match": "(?<![#.\\w])(?:typeof|new|isinstanceof|import|try|on|if|else|when|is|other|skip|return)(?!\\w)"
+				  "match": "(?<![#.\\w])(?:and|AND|or|OR|isinstanceof|in|typeof|new|import|try|on|if|else|when|is|other|skip|return)(?!\\w)"
 				},
 				{
 					"name": "keyword.operator.jff",
@@ -71,7 +71,7 @@
 				},
 				{
 					"name": "keyword.operator.accessor.jff punctuation.accessor.jff",
-				  "match": "[.#]"
+				  "match": "(?<=\\w)[.#](?=[A-Za-z_])"
 				},
 
 
