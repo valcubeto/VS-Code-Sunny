@@ -1,0 +1,9 @@
+const name = "Juan";
+
+fun getName() {
+  return name;
+}
+
+print("Hello $(getName().toLower())");
+
+new Date()
