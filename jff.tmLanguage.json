@@ -88,6 +88,10 @@
 							"match": "%%"
 						},
 						{
+							"name": "constant.other.character-class.regexp",
+							"match": "\\\\[trnvWwDd]"
+						},
+						{
 							"name": "constant.character.escape.jff",
 							"match": "\\\\."
 						}
@@ -142,6 +146,9 @@
 					"match": "[A-Za-z_]\\w*(?=\\s*(?:\\?\\.)?\\()"
 				}
 			]
+
+
+
 		}
 	}
 }
