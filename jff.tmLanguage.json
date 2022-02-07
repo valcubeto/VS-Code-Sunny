@@ -8,7 +8,6 @@
 			"patterns": [
 
 
-				
 				{
 					"name": "comment.line.jff",
 					"begin": "//",
@@ -19,7 +18,6 @@
 					"begin": "/\\*",
 					"end": "\\*/"
 				},
-
 
 
 				{
@@ -78,10 +76,7 @@
 
 				{
 					"name": "string.regexp.jff",
-					"begin": "/",
-					"beginCaptures": {
-						"0": { "name": "meta.template.expression.jff" }
-					},
+					"begin": "(?<![0-9_\\]})]\\s*)/(?=.+/(?!/))",
 					"patterns": [
 						{
 							"name": "constant.character.format.jff",
@@ -89,17 +84,14 @@
 						},
 						{
 							"name": "constant.other.character-class.regexp",
-							"match": "\\\\[trnvWwDd]"
+							"match": "\\\\[trnvWwDdSs]"
 						},
 						{
 							"name": "constant.character.escape.jff",
 							"match": "\\\\."
 						}
 					],
-					"end": "/[DdGgIiMmSsUuYy]{0,6}|\\n",
-					"endCaptures": {
-						"0": { "name": "meta.template.expression.jff" }
-					}
+					"end": "/(?i:[dgimsuy]){0,7}"
 				},
 
 
@@ -110,7 +102,7 @@
 				},
 				{
 					"name": "keyword.operator.jff",
-				  "match": "[-+/*^]"
+				  "match": "[-+*/^]"
 				},				
 				{
 					"name": "keyword.operator.new",

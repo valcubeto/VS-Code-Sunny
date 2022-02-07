@@ -7,7 +7,7 @@ const str = "Hello world!";
 const boo = true;
 const obj = { num }; // { num: num }
 const arr = [ num, hex, bin ];
-const rex = /my +regular +expression/i;
+const rex = /my +regular +expression\n?/i;
 
 fun yommy(a, b) {
   return a + b;
@@ -35,3 +35,67 @@ class Cat: Pet {
 }
 
 2 =(num)> num in 0 ~ 10 =(inRange)> if inRange: print("num in range!");
+
+
+
+
+
+
+
+this                     // represents the current object: created object in classes, refer itself when creating an object or the program globally.
+null                     // just a null value without properties
+infiny                   // represents the infinite number
+
+12345                    // int literal
+12345.6789               // float literal
+123e+456                 // integer elevation expression
+0b10010                  // binary integer expression
+0x123ff                  // hexadecimal integer expression
+{}                       // object literal
+[]                       // array literal
+""                       // string literal
+"$(exp)"                 // template string expression
+"%%"                     // format string receiver
+/(?:)/                   // (empty) regexp literal
+
+// OPERATORS
+number + number          // sum
+number - number          // sub
+number * number          // mul
+number / number          // div
+number ^ number          // pow
+exp =(id or mempos)> exp // tube expression
+receiver << value
+or value >> receiver     // calls the receiver function with the passed value. Eq. receiver#receive(value)
+
+// PREFIXES
+- number                 // negates the number. if the number is negative turns to positive. also works with infiny
++ number                 // re-evaluates the number. if the number is an Number object, returns its value. if the number is a string, is evaluated as a number value. otherwise returns null
+++ number                // returns number + 1 and sets number to number + 1
+-- number                // returns number - 1 and sets number to number - 1
+
+// SUFFIXES
+number ++                // returns number and sets number to number + 1
+number --                // returns number and sets number to number - 1
+
+division / division
+/regex/
+// comment
+/* comment */
+
+2 / 2 // c
+
+/r/ / /r/ // c
+
+if /[0-9]+/.test(i) and int / 2 == 0: skip; // ??
+
+/r/ / /r/ // c
+/()/ / que /r/
+
+
+/r/ / /r/ // c
+
+10 / 2 // 5
+a / b // c
+
+/a/DGIMSUY
