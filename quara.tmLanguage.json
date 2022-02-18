@@ -1,18 +1,18 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "JustForFun",
-	"scopeName": "source.jff",
+	"name": "Quara",
+	"scopeName": "source.qua",
 	"patterns": [{ "include": "#all" }],
 	"repository": {
 		"all": {
 			"patterns": [
 				{
-					"name": "comment.line.jff",
+					"name": "comment.line.qua",
 					"begin": "//",
 					"end": "\\n"
 				},
 				{
-					"name": "comment.block.jff",
+					"name": "comment.block.qua",
 					"begin": "/\\*",
 					"end": "\\*/"
 				},
@@ -33,59 +33,59 @@
 				{
 					"begin": "\\(",
 					"beginCaptures": {
-						"0": { "name": "punctuation.definition.parameters.begin.jff" }
+						"0": { "name": "punctuation.definition.parameters.begin.qua" }
 					},
 					"patterns": [{ "include": "#all" }],
 					"end": "\\)",
 					"endCaptures": {
-						"0": { "name": "punctuation.definition.parameters.end.jff" }
+						"0": { "name": "punctuation.definition.parameters.end.qua" }
 					}
 				},
 				{
-					"name": "punctuation.terminator.statement.jff",
+					"name": "punctuation.terminator.statement.qua",
 					"match": ";"
 				},
 
 
 
 				{
-					"name": "string.quoted.double.jff",
+					"name": "string.quoted.double.qua",
 					"begin": "\"",
 					"beginCaptures": {
-						"0": { "name": "meta.template.expression.jff" }
+						"0": { "name": "meta.template.expression.qua" }
 					},
 					"patterns": [
 						{
-							"name": "constant.character.format.jff",
+							"name": "constant.character.format.qua",
 							"match": "%%"
 						},
 						{
-							"name": "constant.character.escape.jff",
+							"name": "constant.character.escape.qua",
 							"match": "\\\\."
 						},
 						{
-						  "name": "meta.embedded.jff variable.other.jff",
+						  "name": "meta.embedded.qua variable.other.qua",
 							"begin": "\\$\\(",
 							"beginCaptures": {
-								"0": { "name": "punctuation.definition.template-expression.begin.jff" }
+								"0": { "name": "punctuation.definition.template-expression.begin.qua" }
 							},
 							"patterns": [{ "include": "#all" }],
 							"end": "\\)",
 							"endCaptures": {
-								"0": { "name": "punctuation.definition.template-expression.end.jff" }
+								"0": { "name": "punctuation.definition.template-expression.end.qua" }
 							}
 						}
 					],
 					"end": "\"|\\n",
 					"endCaptures": {
-						"0": { "name": "meta.template.expression.jff" }
+						"0": { "name": "meta.template.expression.qua" }
 					}
 				},
 
 
 
 				{
-					"name": "string.regexp.jff regexp.jff",
+					"name": "string.regexp.qua regexp.qua",
 					"begin": "(?<=(?:^|(?:^|\\W)(?:if|while|and|or|typeof|try|return)|[=:;,\\[{(]|<<|>>)\\s*)/",
 					"patterns": [
 						{
@@ -93,7 +93,7 @@
 							"match": "\\\\[trnvWwDdSs]"
 						},
 						{
-							"name": "constant.character.escape.jff",
+							"name": "constant.character.escape.qua",
 							"match": "\\\\."
 						}
 					],
@@ -103,11 +103,11 @@
 
 
 				{
-					"name": "keyword.jff",
+					"name": "keyword.qua",
 				  "match": "(?<![.\\w])(?:and|AND|or|OR|in|typeof|import|from|with|try|on|if|else|when|is|otherwise|skip|return|foreach|while|next|break)(?!\\w)"
 				},
 				{
-					"name": "keyword.operator.jff",
+					"name": "keyword.operator.qua",
 				  "match": "[-+*/^<>]"
 				},				
 				{
@@ -115,25 +115,25 @@
 					"match": "(?<![.\\w])new(?!\\w)"
 				},
 				{
-					"name": "keyword.operator.assignment.jff",
+					"name": "keyword.operator.assignment.qua",
 				  "match": "="
 				},
 				{
-					"name": "keyword.operator.accessor.jff punctuation.accessor.jff",
+					"name": "keyword.operator.accessor.qua punctuation.accessor.qua",
 				  "match": "\\??\\."
 				},
 
 
 
 				{
-					"name": "storage.type.jff",
+					"name": "storage.type.qua",
 				  "match": "(?<![.\\w])(?:varbl|const|fun|class)(?!\\w)"
 				},
 
 
 
 				{
-					"name": "support.class.builtin.jff",
+					"name": "support.class.builtin.qua",
 					"match": "(?<![.\\w])(?:Value|Boolean|Number|String|Object|Array|Function|RegExp|Date)(?!\\w)"
 				},
 
@@ -147,11 +147,11 @@
 
 
 				{
-					"name": "entity.name.jff",
+					"name": "entity.name.qua",
 					"match": "(?<![.\\w])this(?!\\w)"
 				},
 				{
-					"name": "entity.name.function.jff",
+					"name": "entity.name.function.qua",
 					"match": "[A-Za-z_]\\w*(?=\\s*(?:\\?\\.)?\\()"
 				}
 			]
