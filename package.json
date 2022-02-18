@@ -1,26 +1,26 @@
 {
-	"name": "jff",
-	"displayName": "JustForFun",
-	"description": "JustForFun syntax highlighting and snippets",
+	"name": "quara",
+	"displayName": "Quara",
+	"description": "Quara syntax highlighting and snippets",
 	"version": "0.0.1",
 	"engines": { "vscode": "^1.64.0" },
 	"categories": ["Programming Languages"],
-	"repository": "https://github.com/ValentineBucket/vsc-jff",
+	"repository": "https://github.com/ValentineBucket/vsc-quara",
 	"contributes": {
 		"languages": [{
-			"id": "jff",
-			"aliases": ["JustForFun", "jff"],
-			"extensions": [".jff"],
-			"configuration": "./jff-language-configuration.json"
+			"id": "quara",
+			"aliases": ["Quara", "quara"],
+			"extensions": [".qua"],
+			"configuration": "./quara-language-configuration.json"
 		}],
 		"grammars": [{
-			"language": "jff",
-			"scopeName": "source.jff",
-			"path": "./jff.tmLanguage.json"
+			"language": "quara",
+			"scopeName": "source.qua",
+			"path": "./quara.tmLanguage.json"
 		}],
 		"snippets": [{
-			"language": "jff",
-			"path": "./jff.code-snippets"
+			"language": "quara",
+			"path": "./quara.code-snippets"
 		}]
 	}
 }

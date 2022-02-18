@@ -1,2 +1,2 @@
-# VSC JFF
-Visual Studio Code extension for JustForFun language!
+# VSC Quara
+Visual Studio Code extension for Quara!

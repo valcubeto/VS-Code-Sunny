@@ -21,7 +21,7 @@ class Pet {
     this.add(name, age);
     count++;
   }
-  toString() => "%% { name: $(this.name), age: $(this.age) }" << this::class.name;
+  toString() => "%% { name: $(this.name), age: $(this.age) }" << this.getInternal("class").name;
 }
 
 class Dog: Pet {
@@ -45,7 +45,7 @@ class Cat: Pet {
 this                     // represents the current object: created object in classes, refer itself when creating an object or the program globally.
 null                     // just a null value without properties
 infy                     // represents the infinite number
-nanu?                    // s2
+nanu                     // Not a number
 
 12345                    // int literal
 12345.6789               // float literal
@@ -56,7 +56,7 @@ nanu?                    // s2
 []                       // array literal
 ""                       // string literal
 "$(exp)"                 // template string expression
-"%%"                     // format string receiver
+"%%"                     // string receiver
 /(?:)/                   // (empty) regexp literal
 
 // OPERATORS
