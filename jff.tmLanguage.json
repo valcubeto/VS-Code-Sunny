@@ -8,6 +8,7 @@
 			"patterns": [
 
 
+
 				{
 					"name": "comment.line.jff",
 					"begin": "//",
@@ -18,6 +19,7 @@
 					"begin": "/\\*",
 					"end": "\\*/"
 				},
+
 
 
 				{
@@ -75,13 +77,9 @@
 
 
 				{
-					"name": "string.regexp.jff",
-					"begin": "(?<![0-9_\\]})]\\s*)/(?=.+/(?!/))",
+					"name": "string.regexp.jff regexp.jff",
+					"begin": "(?<=(?:^|(?:^|\\W)(?:if|while|and|or|typeof|try|return)|[:;,\\[{(]|<<|>>)\\s*)/",
 					"patterns": [
-						{
-							"name": "constant.character.format.jff",
-							"match": "%%"
-						},
 						{
 							"name": "constant.other.character-class.regexp",
 							"match": "\\\\[trnvWwDdSs]"
@@ -91,22 +89,22 @@
 							"match": "\\\\."
 						}
 					],
-					"end": "/(?i:[dgimsuy]){0,7}"
+					"end": "/(?i:[dgimsuy]){0,7}|\\n"
 				},
 
 
 
 				{
 					"name": "keyword.jff",
-				  "match": "(?<![#.\\w])(?:and|AND|or|OR|isinstanceof|in|typeof|import|try|on|if|else|when|is|other|skip|return|foreach|next|break)(?!\\w)"
+				  "match": "(?<![.\\w])(?:and|AND|or|OR|in|typeof|import|from|try|on|if|else|when|is|otherwise|skip|return|foreach|while|next|break)(?!\\w)"
 				},
 				{
 					"name": "keyword.operator.jff",
-				  "match": "[-+*/^]"
+				  "match": "[-+*/^<>]"
 				},				
 				{
 					"name": "keyword.operator.new",
-					"match": "(?<![#.\\w])new(?!\\w)"
+					"match": "(?<![.\\w])new(?!\\w)"
 				},
 				{
 					"name": "keyword.operator.assignment.jff",
@@ -114,7 +112,7 @@
 				},
 				{
 					"name": "keyword.operator.accessor.jff punctuation.accessor.jff",
-				  "match": "(?<=\\w)[.#](?=[A-Za-z_])"
+				  "match": "\\??\\."
 				},
 
 
@@ -138,9 +136,6 @@
 					"match": "[A-Za-z_]\\w*(?=\\s*(?:\\?\\.)?\\()"
 				}
 			]
-
-
-
 		}
 	}
 }

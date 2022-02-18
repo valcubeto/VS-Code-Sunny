@@ -1,13 +1,15 @@
 varbl
   num = 0123456789;
-  num = 1234e+5678;
-const hex = 0x09abcdef;
-const bin = 0b00011101;
+  num = 1234e+5678; // infy
+const hex = 0x09abcdef; // 162254319
+const bin = 0b00011101; // 29
 const str = "Hello world!";
 const boo = true;
 const obj = { num }; // { num: num }
 const arr = [ num, hex, bin ];
-const rex = /my +regular +expression\n?/i;
+const rex = /my\s+regular\s+expression\n?/i;
+
+Number.parse("123")
 
 fun yommy(a, b) {
   return a + b;
@@ -19,7 +21,7 @@ class Pet {
     this.add(name, age);
     count++;
   }
-  toString() => "%% { name: $(this.name), age: $(this.age) }" << this#class.name;
+  toString() => "%% { name: $(this.name), age: $(this.age) }" << this::class.name;
 }
 
 class Dog: Pet {
@@ -40,11 +42,10 @@ class Cat: Pet {
 
 
 
-
-
 this                     // represents the current object: created object in classes, refer itself when creating an object or the program globally.
 null                     // just a null value without properties
-infiny                   // represents the infinite number
+infy                     // represents the infinite number
+nanu?                    // s2
 
 12345                    // int literal
 12345.6789               // float literal
@@ -87,15 +88,30 @@ division / division
 
 /r/ / /r/ // c
 
-if /[0-9]+/.test(i) and int / 2 == 0: skip; // ??
+if /[0-9]+/.test(i) and a / 2 > 50: skip; // ??
 
 /r/ / /r/ // c
-/()/ / que /r/
+with test()
 
 
-/r/ / /r/ // c
+a/r//c
 
-10 / 2 // 5
+1 / 2 // 5
 a / b // c
 
-/a/DGIMSUY
+/a/DgImSuY.test
+
+class Extending << class Extended:
+  oncreate():
+    print("Hello from %%" << this::class.name);
+{ lock oncreate; }
+
+const extending = new Extending;
+
+try:
+  extending::class.oncreate = null;
+on error:
+  print("Locked property");
+
+if /hello/.test(message) and message.length / 2 < 5: // idk
+  print(/regex/);
