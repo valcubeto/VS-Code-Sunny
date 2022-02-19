@@ -1,117 +1,189 @@
-varbl
-  num = 0123456789;
-  num = 1234e+5678; // infy
-const hex = 0x09abcdef; // 162254319
-const bin = 0b00011101; // 29
-const str = "Hello world!";
-const boo = true;
-const obj = { num }; // { num: num }
-const arr = [ num, hex, bin ];
-const rex = /my\s+regular\s+expression\n?/i;
+skip // breaks the current block, eq. return null
 
-Number.parse("123")
+this
+null
 
-fun yommy(a, b) {
-  return a + b;
-}
+12345
+12345.6789
+123e+456
+123.456e+789
+0b10010
+0x123ff
+infy
+nanu
 
-class Pet {
-  own priv count = 0;
-  oncreate({ name, age }) {
-    this.add(name, age);
-    count++;
-  }
-  toString() => "%% { name: $(this.name), age: $(this.age) }" << this.getInternal("class").name;
-}
+{ id } // { id: id }
 
-class Dog: Pet {
-  woof() {
-    print("$(this.name or "A dog"): Woof!");
-  }
-}
+"$(exp)"
+"%%" // string receiver
 
-class Cat: Pet {
-  meow() {
-    print("$(this.name or "A cat"): Meow!");
-  }
-}
+/(?:)/
 
-2 =(num)> num in 0 ~ 10 =(inRange)> if inRange: print("num in range!");
-
-
-
-
-
-this                     // represents the current object: created object in classes, refer itself when creating an object or the program globally.
-null                     // just a null value without properties
-infy                     // represents the infinite number
-nanu                     // Not a number
-
-12345                    // int literal
-12345.6789               // float literal
-123e+456                 // integer elevation expression
-0b10010                  // binary integer expression
-0x123ff                  // hexadecimal integer expression
-{}                       // object literal
-[]                       // array literal
-""                       // string literal
-"$(exp)"                 // template string expression
-"%%"                     // string receiver
-/(?:)/                   // (empty) regexp literal
-
-// OPERATORS
-number + number          // sum
-number - number          // sub
-number * number          // mul
-number / number          // div
-number ^ number          // pow
-exp =(id or mempos)> exp // tube expression
+// operators
+number + number
+number - number
+number * number
+number / number
+number ^ number
+number % number
+number ~ number
+exp =(id)> exp // tube expression
 receiver << value
-or value >> receiver     // calls the receiver function with the passed value. Eq. receiver#receive(value)
+value >> receiver // calls the receiver function with the passed value. Eq. getInternal(receiver, "receive")(value)
+exp and exp // logical and
+exp AND exp // binary and
+exp or exp
+exp OR exp
+exp in iterable
+value from class // instanceof
+exp ?? exp
+exp . prop
+exp ?. prop
+function ?. ()
 
-// PREFIXES
-- number                 // negates the number. if the number is negative turns to positive. also works with infiny
-+ number                 // re-evaluates the number. if the number is an Number object, returns its value. if the number is a string, is evaluated as a number value. otherwise returns null
-++ number                // returns number + 1 and sets number to number + 1
--- number                // returns number - 1 and sets number to number - 1
+// prefixes
+- number
++ number
+++ number // returns number + 1 and sets number to number + 1
+-- number // returns number - 1 and sets number to number - 1
+& id
+& number // mempos
 
-// SUFFIXES
-number ++                // returns number and sets number to number + 1
-number --                // returns number and sets number to number - 1
+// suffixes
+number ++ // returns number and sets number to number + 1
+number -- // returns number and sets number to number - 1
+exp ["id"]
 
-division / division
-/regex/
-// comment
-/* comment */
+// keywords
+delete id
+delete mempos
 
-2 / 2 // c
+async function
+generator function
+async generator function
 
-/r/ / /r/ // c
+await asyncFunction()
 
-if /[0-9]+/.test(i) and a / 2 > 50: skip; // ??
+if exp: do
+else: do
 
-/r/ / /r/ // c
-with test()
+with exp: do
 
+when exp {
+  is exp: do
+  is a, b: do
+  otherwise: do
+}
 
-a/r//c
+foreach value in iterable {
+  next
+  break
+}
+foreach key, value of object: do
+while exp: do
 
-1 / 2 // 5
-a / b // c
+return exp
 
-/a/DgImSuY.test
+do: do // eq. () =>
 
-class Extending << class Extended:
-  oncreate():
-    print("Hello from %%" << this::class.name);
-{ lock oncreate; }
+import filename
+import "path/filename.extension"
+import property from filename
+import * from filename
+import filename as filetype // import config as json
+import a, b, c
 
-const extending = new Extending;
+try: do
+on id: do // catch
 
-try:
-  extending::class.oncreate = null;
-on error:
-  print("Locked property");
+class {
+  publ static id = value
+  publ id = value
+  priv id = value
 
-if /hello/.test(message) and message.length / 2 < 5: // idk
-  print(/regex/);
+  publ {
+    id1 = value
+    id2 = value
+  }
+
+  static {
+    publ {
+      // ...
+    }
+    priv {
+      // ...
+    }
+  }
+}
+
+// functions
+print("string")
+write("string")
+isset(object.prop)
+typeof(value)
+readln()
+exit(0)
+settimeout(number, callback)
+setinterval(number, callback)
+clear(interval | timeout)
+
+// classes
+Value
+
+Boolean()
+Number()
+String()
+
+new Object()
+new Array()
+new Function()
+new Promise()
+new RegExp()
+new Date()
+new Range() // number ~ number
+new File()
+
+// types
+varbl
+const
+fun
+class
+
+varbl a, b, c // unset
+varbl a, b, c = c, b, a // reverse
+varbl a = exp, b = exp
+varbl { prop, "invalid-syntax" as validSyntax } = object // varbl [prop, validSyntax] = [object.prop, object["invalid-syntax"]]
+varbl [ prop ] = array // varbl prop = array[0]
+varbl("invalid-syntax")
+
+// other
+import math /*{
+  random()
+  max()
+  min()
+}*/
+
+import intl /*{
+  numberFormat()       // ("es-es", 209329)    -> "209.329"
+  dateTimeFormat()     // (new Date)           -> "02/05/2026 03:56 a. m."
+  relativeTimeFormat() // ("es-es", 2, "days") -> "Pasado mañana"
+  listFormat()         // ["a", "b", "c"]      -> "a, b and c"
+  compare()            // ("es-es", "Á", "a")  -> 0
+  segment()            // split words
+  char {
+    isUpper()
+    isLower()
+    isDigit()
+    isHexDigit()
+    isSpace()
+    isPrintable()
+  }
+}*/
+
+async fun fetch(url) {
+  doAsyncStuff()
+}
+
+import json
+fetch("8.8.8.8")
+  .then(json.parse)

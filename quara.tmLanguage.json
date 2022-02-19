@@ -21,11 +21,11 @@
 
 				{
 					"name": "constant.numeric",
-					"match": "(?<![.\\w])(?:0[Bb][01]+|0[Xx][0-9A-Fa-f]+|0?[1-9][0-9]*(?:(?:[Ee][+-]|\\.)[0-9]+)?)(?!\\w)"
+					"match": "(?<![.\\w])(?:infy|nanu|(?i:0b[01]+|0x[0-9a-f]+|(?:0|0?[1-9][0-9]*)(?:e[+-][0-9]+|\\.[0-9]+|\\.[0-9]+e[+-][0-9]+)?))(?!\\w)"
 				},
 				{
 					"name": "constant.language",
-					"match": "(?<![.\\w])(?:true|false|infy|nanu|null)(?!\\w)"
+					"match": "(?<![.\\w])(?:true|false|null)(?!\\w)"
 				},
 
 
@@ -104,11 +104,11 @@
 
 				{
 					"name": "keyword.qua",
-				  "match": "(?<![.\\w])(?:and|AND|or|OR|in|typeof|import|from|with|try|on|if|else|when|is|otherwise|skip|return|foreach|while|next|break)(?!\\w)"
+				  "match": "(?<![.\\w])(?:delete|publ|priv|static|async|await|generator|do|and|AND|or|OR|in|of|import|from|as|with|try|on|if|else|when|is|otherwise|skip|return|foreach|while|next|break)(?!\\w)"
 				},
 				{
 					"name": "keyword.operator.qua",
-				  "match": "[-+*/^<>]"
+				  "match": "[-+*/^<>%&~]|\\?\\?|!="
 				},				
 				{
 					"name": "keyword.operator.new",
@@ -134,14 +134,18 @@
 
 				{
 					"name": "support.class.builtin.qua",
-					"match": "(?<![.\\w])(?:Value|Boolean|Number|String|Object|Array|Function|RegExp|Date)(?!\\w)"
+					"match": "(?<![.\\w])(?:Value|Boolean|Number|String|Object|Array|Function|Promise|RegExp|Date|File|Range)(?!\\w)"
 				},
 
 
 
 				{
 					"name": "support.function",
-					"match": "(?<![.\\w])(?:print|write|isset|readline|readfile)(?!\\w)"
+					"match": "(?<![.\\w])(?:print|write|isset|typeof|readln|exit|settimeout|setinterval|clear)(?!\\w)"
+				},
+				{
+					"name": "support.constant",
+					"match": "(?<![.\\w])(?:math|intl|json)(?!\\w)"
 				},
 
 
@@ -152,7 +156,7 @@
 				},
 				{
 					"name": "entity.name.function.qua",
-					"match": "[A-Za-z_]\\w*(?=\\s*(?:\\?\\.)?\\()"
+					"match": "[A-Za-z_]\\w*(?=\\s*(?:\\?\\.\\s*)?\\()"
 				}
 			]
 		}
