@@ -134,14 +134,14 @@
 
 				{
 					"name": "support.class.builtin.qua",
-					"match": "(?<![.\\w])(?:Value|Boolean|Number|String|Object|Array|Function|Promise|RegExp|Date|File|Range)(?!\\w)"
+					"match": "(?<![.\\w])(?:Value|Boolean|Number|String|Object|Array|Function|Promise|RegExp|Date|Range)(?!\\w)"
 				},
 
 
 
 				{
 					"name": "support.function",
-					"match": "(?<![.\\w])(?:print|write|isset|typeof|readln|exit|settimeout|setinterval|clear)(?!\\w)"
+					"match": "(?<![.\\w])(?:print|write|isset|typeof|readln|exit|settimeout|setinterval|clear|eval)(?!\\w)"
 				},
 				{
 					"name": "support.constant",
