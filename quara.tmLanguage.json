@@ -82,7 +82,7 @@
 
 				{
 					"name": "string.regexp.qua regexp.qua",
-					"begin": "(?<=(?:^|(?:^|\\W)(?:if|while|and|or|typeof|try|return)|[=:;,\\[{(]|<<|>>)\\s*)/",
+					"begin": "(?<=(?:^|(?:^|\\W)(?:if|while|and|or|typeof|try|return)|[=:;,\\[{(]|<<|>>)\\s*)/(?![)?*+])",
 					"patterns": [
 						{
 							"name": "constant.other.character-class.regexp",
@@ -99,11 +99,11 @@
 
 				{
 					"name": "keyword.qua",
-				  "match": "(?<![.\\w])(?:delete|publ|priv|static|async|await|generator|do|and|AND|or|OR|in|of|import|from|as|with|try|on|if|else|when|is|otherwise|skip|return|for|foreach|while|next|break)(?!\\w)"
+				  "match": "(?<![.\\w])(?:later|delete|publ|priv|static|async|await|generator|do|not|and|AND|or|OR|in|of|import|from|as|with|try|on|if|else|when|is|otherwise|skip|return|for|foreach|while|next|break)(?!\\w)"
 				},
 				{
 					"name": "keyword.operator.qua",
-				  "match": "[-+*/^<>%&~]|\\?\\?|!="
+				  "match": "[-+*/^<>%&~?]"
 				},				
 				{
 					"name": "keyword.operator.new",
@@ -133,7 +133,7 @@
 
 				{
 					"name": "support.function",
-					"match": "(?<![.\\w])(?:print|write|isset|typeof|readln|exit|settimeout|setinterval|clear|eval)(?!\\w)"
+					"match": "(?<![.\\w])(?:print|write|isset|typeof|readline|exit|eval)(?!\\w)"
 				},
 				{
 					"name": "support.constant",
@@ -147,7 +147,7 @@
 				},
 				{
 					"name": "entity.name.function.qua",
-					"match": "[A-Za-z_]\\w*(?=\\s*(?:\\?\\.\\s*)?\\()"
+					"match": "[A-Za-z_]\\w*(?=\\s*(?:\\?\\.\\s*)?[(!])"
 				}
 			]
 		}

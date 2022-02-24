@@ -15,5 +15,5 @@
       "class ${2:jom} {$1}"
     ],
     "description": "Puts a class declaration"
-  },
+  }
 }
