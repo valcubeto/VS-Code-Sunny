@@ -19,11 +19,11 @@
 
 
 				{
-					"name": "constant.numeric",
+					"name": "constant.numeric.qua",
 					"match": "(?<![.\\w])(?:infy|nanu|(?i:0b[01]+|0x[0-9a-f]+|(?:0|0?[1-9][0-9]*)(?:e[+-][0-9]+|\\.[0-9]+|\\.[0-9]+e[+-][0-9]+)?))(?!\\w)"
 				},
 				{
-					"name": "constant.language",
+					"name": "constant.language.qua",
 					"match": "(?<![.\\w])(?:true|false|null)(?!\\w)"
 				},
 
@@ -99,14 +99,14 @@
 
 				{
 					"name": "keyword.qua",
-				  "match": "(?<![.\\w])(?:later|delete|publ|priv|static|async|await|generator|do|not|and|AND|or|OR|in|of|import|from|as|with|try|on|if|else|when|is|otherwise|skip|return|for|foreach|while|next|break)(?!\\w)"
+				  "match": "(?<![.\\w])(?:global|later|delete|publ|priv|static|async|await|generator|do|not|and|AND|or|OR|in|of|import|from|as|with|try|on|if|else|when|is|otherwise|skip|return|for|foreach|while|next|break)(?!\\w)"
 				},
 				{
 					"name": "keyword.operator.qua",
 				  "match": "[-+*/^<>%&~?]"
 				},				
 				{
-					"name": "keyword.operator.new",
+					"name": "keyword.operator.new.qua",
 					"match": "(?<![.\\w])new(?!\\w)"
 				},
 				{
@@ -132,11 +132,11 @@
 
 
 				{
-					"name": "support.function",
+					"name": "support.function.qua",
 					"match": "(?<![.\\w])(?:print|write|isset|typeof|readline|exit|eval)(?!\\w)"
 				},
 				{
-					"name": "support.constant",
+					"name": "support.constant.qua",
 					"match": "(?<![.\\w])(?:math|intl|json)(?!\\w)"
 				},
 
@@ -147,7 +147,7 @@
 				},
 				{
 					"name": "entity.name.function.qua",
-					"match": "[A-Za-z_]\\w*(?=\\s*(?:\\?\\.\\s*)?[(!])"
+					"match": "[A-Za-z_]\\w*(?=\\s*(?:\\?\\.\\s*)?\\(|!)"
 				}
 			]
 		}
