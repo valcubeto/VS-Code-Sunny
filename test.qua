@@ -26,20 +26,20 @@ number * number
 number / number
 number ^ number
 number % number
-number ~ number
+number ~ number -> Range
 exp =(id)> exp // tube expression
 receiver << value
-value >> receiver // calls the receiver function with the passed value. Eq. getInternal(receiver, "receive")(value)
+value >> receiver
 exp and exp // logical and
 exp AND exp // binary and
 exp or exp
 exp OR exp
-exp in iterable
+exp in iterable -> Boolean
 value from class // instanceof
 exp ?? exp
 exp . prop
-exp ?. prop
-function ?. ()
+exp ?. prop -> Value?
+function ?. () -> Value?
 
 // prefixes
 - number
@@ -56,13 +56,13 @@ exp ["id"]
 
 // keywords
 delete id
-delete mempos
+delete &mempos
 
-async function
-generator function
-async generator function
+async function(): do
+generator function(): do
+async generator function(): do
 
-await asyncFunction()
+await asyncFunction!
 
 if exp: do
 else: do
@@ -121,7 +121,7 @@ print("string")
 write("string")
 isset(object.prop)
 typeof(value)
-read()
+read!
 exit(0)
 
 // classes
@@ -138,13 +138,13 @@ new Promise()
 new RegExp()
 new Date()
 new Range() // number ~ number
-new File()
 
 // types
-varbl
-const
-fun
-class
+varbl name = value
+const name = value
+const name later
+fun name(params): do
+class Name: do
 
 varbl a, b, c // unset
 varbl a, b, c = c, b, a // reverse
@@ -164,9 +164,9 @@ import intl /*{
   numberFormat()       // ("es-es", 209329)    -> "209.329"
   dateTimeFormat()     // (new Date)           -> "02/05/2026 03:56 a. m."
   relativeTimeFormat() // ("es-es", 2, "days") -> "Pasado mañana"
-  listFormat()         // ["a", "b", "c"]      -> "a, b and c"
+  listFormat()         // ["a", "b", "c"]      -> "a, b, and c"
   compare()            // ("es-es", "Á", "a")  -> 0
-  segment()            // split words
+  segment()            // split words ("Hello world" => ["Hello", "world"])
   char {
     isUpper()
     isLower()
@@ -177,10 +177,10 @@ import intl /*{
   }
 }*/
 
-async fun fetch(url) {
+async fun my_fetch(url) {
   doAsyncStuff()
 }
 
-import json
+import fetch, json
 fetch("8.8.8.8")
-  .then(json.parse)
+  .then(json.parse res)

@@ -137,7 +137,7 @@
 				},
 				{
 					"name": "support.constant.qua",
-					"match": "(?<![.\\w])(?:math|intl|json)(?!\\w)"
+					"match": "(?<![.\\w])(?:fetch|math|intl|json)(?!\\w)"
 				},
 
 
