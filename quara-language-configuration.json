@@ -21,5 +21,12 @@
     ["\"", "\""],
     [":", ";"]
   ],
-  "autoCloseBefore": ";:.,=}])>` \n\t"
+  "onEnterRules": [
+    {
+      "beforeText": "(?:(?:fun|class|with|if|when|otherwise|for|foreach|while)\\s*[^\\s]+|(?:else|try)\\s*):\\s*$",
+      "action": {
+        "indent": "indent"
+      }
+    }
+  ]
 }

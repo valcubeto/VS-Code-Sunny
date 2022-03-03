@@ -1,19 +1,22 @@
 {
   "Import-from statment": {
     "prefix": "importfrom",
-    "body": "import ${1:*} from ${2:\"my module.jff\"};",
+    "body": "import ${1:*} from ${2:config} as json",
     "description": "Puts an import-from statment"
+  },
+  "Main function": {
+    "prefix": "main",
+    "body": "fun main${2:!} {$1}",
+    "description": "Puts the main function"
   },
   "Function declaration": {
     "prefix": "fun",
-    "body": ["fun ${2:jom}($3) {$1}"],
-    "description": "Puts a function declaration"
+    "body": "fun ${2:yomyom}($3) {$1}",
+    "description": "Puts a function"
   },
   "Class declaration": {
     "prefix": "class",
-    "body": [
-      "class ${2:jom} {$1}"
-    ],
-    "description": "Puts a class declaration"
+    "body": "class ${2:Yom} {$1}",
+    "description": "Puts a class"
   }
 }
