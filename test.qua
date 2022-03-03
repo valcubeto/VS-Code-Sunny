@@ -70,14 +70,14 @@ else: do
 with exp: do
 
 when exp {
-  is exp: do
-  is a, b: do
-  otherwise: do
+	is exp: do
+	is a, b: do
+	otherwise: do
 }
 
 foreach value in iterable {
-  next
-  break
+	next
+	break
 }
 foreach key, value of object: do
 while exp: do
@@ -97,23 +97,23 @@ try: do
 on errorname: do // catch
 
 class ClassName? {
-  publ static id = value
-  publ id = value
-  priv id = value
+	publ static id = value
+	publ id = value
+	priv id = value
 
-  publ {
-    id1 = value
-    id2 = value
-  }
+	publ {
+		id1 = value
+		id2 = value
+	}
 
-  static {
-    publ {
-      // ...
-    }
-    priv {
-      // ...
-    }
-  }
+	static {
+		publ {
+			// ...
+		}
+		priv {
+			// ...
+		}
+	}
 }
 
 // functions
@@ -155,32 +155,32 @@ varbl("invalid-syntax")
 
 // other
 import math /*{
-  random()
-  max()
-  min()
+	random()
+	max()
+	min()
 }*/
 
 import intl /*{
-  numberFormat()       // ("es-es", 209329)    -> "209.329"
-  dateTimeFormat()     // (new Date)           -> "02/05/2026 03:56 a. m."
-  relativeTimeFormat() // ("es-es", 2, "days") -> "Pasado mañana"
-  listFormat()         // ["a", "b", "c"]      -> "a, b, and c"
-  compare()            // ("es-es", "Á", "a")  -> 0
-  segment()            // split words ("Hello world" => ["Hello", "world"])
-  char {
-    isUpper()
-    isLower()
-    isDigit()
-    isHexDigit()
-    isSpace()
-    isPrintable()
-  }
+	numberFormat()       // ("es-es", 209329)    -> "209.329"
+	dateTimeFormat()     // (new Date)           -> "02/05/2026 03:56 a. m."
+	relativeTimeFormat() // ("es-es", 2, "days") -> "Pasado mañana"
+	listFormat()         // ["a", "b", "c"]      -> "a, b, and c"
+	compare()            // ("es-es", "Á", "a")  -> 0
+	segment()            // split words ("Hello world" => ["Hello", "world"])
+	char {
+		isUpper()
+		isLower()
+		isDigit()
+		isHexDigit()
+		isSpace()
+		isPrintable()
+	}
 }*/
 
 async fun my_fetch(url) {
-  doAsyncStuff()
+	doAsyncStuff()
 }
 
 import fetch, json
 fetch("8.8.8.8")
-  .then(json.parse res)
+	.then(json.parse res)
