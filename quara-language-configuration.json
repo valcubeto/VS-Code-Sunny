@@ -1,32 +1,32 @@
 {
-  "comments": {
-    "lineComment": "//",
-    "blockComment": ["/*", "*/"]
-  },
-  "brackets": [
-    ["{", "}"],
-    ["[", "]"],
-    ["(", ")"]
-  ],
-  "autoClosingPairs": [
-    ["{", "}"],
-    ["[", "]"],
-    ["(", ")"],
-    ["\"", "\""]
-  ],
-  "surroundingPairs": [
-    ["{", "}"],
-    ["[", "]"],
-    ["(", ")"],
-    ["\"", "\""],
-    [":", ";"]
-  ],
-  "onEnterRules": [
-    {
-      "beforeText": "(?:(?:fun|class|with|if|when|otherwise|for|foreach|while)\\s*[^\\s]+|(?:else|try)\\s*):\\s*$",
-      "action": {
-        "indent": "indent"
-      }
-    }
-  ]
+	"comments": {
+		"lineComment": "//",
+		"blockComment": ["/*", "*/"]
+	},
+	"brackets": [
+		["{", "}"],
+		["[", "]"],
+		["(", ")"]
+	],
+	"autoClosingPairs": [
+		["{", "}"],
+		["[", "]"],
+		["(", ")"],
+		["\"", "\""]
+	],
+	"surroundingPairs": [
+		["{", "}"],
+		["[", "]"],
+		["(", ")"],
+		["\"", "\""],
+		[":", ";"]
+	],
+	"onEnterRules": [
+		{
+			"beforeText": "(?:(?:fun|class|with|if|when|otherwise|for|foreach|while)\\s*[^\\s]+|(?:else|try)\\s*):\\s*$",
+			"action": {
+				"indent": "indent"
+			}
+		}
+	]
 }

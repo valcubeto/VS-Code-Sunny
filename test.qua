@@ -86,17 +86,17 @@ return exp
 
 do: do // eq. () =>
 
-import filename
-import "path/filename.extension"
-import property from filename
+import file
+import "path/to/file.extension"
+import property from file
 import * from filename
-import filename as filetype // import config as json
+import file as type // import config as json
 import a, b, c
 
 try: do
-on id: do // catch
+on errorname: do // catch
 
-class {
+class ClassName? {
   publ static id = value
   publ id = value
   priv id = value
@@ -121,11 +121,8 @@ print("string")
 write("string")
 isset(object.prop)
 typeof(value)
-readln()
+read()
 exit(0)
-settimeout(number, callback)
-setinterval(number, callback)
-clear(interval | timeout)
 
 // classes
 Value
