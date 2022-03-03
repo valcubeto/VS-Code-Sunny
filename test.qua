@@ -1,4 +1,4 @@
-skip // breaks the current block, eq. return null
+skip // breaks the current block
 
 this
 null
@@ -41,13 +41,13 @@ exp . prop
 exp ?. prop -> Value?
 function ?. () -> Value?
 
+boolean ? exp // inline if
+
 // prefixes
 - number
 + number
 ++ number // returns number + 1 and sets number to number + 1
 -- number // returns number - 1 and sets number to number - 1
-& id
-& number // mempos
 
 // suffixes
 number ++ // returns number and sets number to number + 1
@@ -56,11 +56,10 @@ exp ["id"]
 
 // keywords
 delete id
-delete &mempos
 
-async function(): do
-generator function(): do
-async generator function(): do
+async fun function(): do
+generator fun function(): do
+async generator fun function(): do
 
 await asyncFunction!
 
@@ -141,6 +140,7 @@ new Range() // number ~ number
 
 // types
 varbl name = value
+varbl name: Type = value
 const name = value
 const name later
 fun name(params): do
@@ -152,6 +152,19 @@ varbl a = exp, b = exp
 varbl { prop, "invalid-syntax" as validSyntax } = object // varbl [prop, validSyntax] = [object.prop, object["invalid-syntax"]]
 varbl [ prop ] = array // varbl prop = array[0]
 varbl("invalid-syntax")
+
+u12
+u32
+u64
+
+bit
+i16
+i32
+i64
+big
+
+f32
+f64
 
 // other
 import math /*{
@@ -177,7 +190,7 @@ import intl /*{
 	}
 }*/
 
-async fun my_fetch(url) {
+async fun fetch(url) {
 	doAsyncStuff()
 }
 
