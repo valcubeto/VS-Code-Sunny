@@ -11,12 +11,39 @@
 	},
 	"Function declaration": {
 		"prefix": "fun",
-		"body": "fun ${2:functionName}($3) {$1}",
+		"body": "fun ${2:doCoolStuff}($3) {$1}",
 		"description": "Puts a function"
 	},
 	"Class declaration": {
 		"prefix": "class",
-		"body": "class ${2:ClassName} {$1}",
+		"body": [
+			"class ${2:ClassName} {",
+			"\toncreate($3) {$1}",
+			"}"
+		],
 		"description": "Puts a class"
-	}
+	},
+	"For loop": {
+		"prefix": "for",
+		"body": "for ${2:i = 0}, ${3:i <= array.length}, ${4:i++} {$1}",
+		"description": "Puts a for loop"
+	},
+	"Foreach-in loop": {
+		"prefix": "foreachin",
+		"body": "foreach ${2:value} in ${3:array} {$1}",
+		"description": "Puts a foreach-in loop"
+	},
+	"Foreach-of loop": {
+		"prefix": "foreachof",
+		"body": "foreach ${2:key} and ${3:value} of ${4:object} {$1}",
+		"description": "Puts a foreach-of loop"
+	},
+	"Getter-setter": {
+		"prefix": "gettersetter",
+		"body": [
+			"getter ${3:coolName} {$1}",
+			"setter ${3:coolName} {$2}"
+		],
+		"description": "Puts a getter and a setter"
+	},
 }
