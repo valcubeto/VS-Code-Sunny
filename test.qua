@@ -5,16 +5,16 @@ null
 
 12345
 12345.6789
-123e+456
-123.456e+789
+123e456
+123.456e789
 0b10010
 0x123ff
 infy
 nanu
 
-{ identifier } // { identifierName: identifierValue }
+({ name }) // { name: value }
 
-"$(exp)"
+"$(expression)"
 "%%" // string receiver
 
 /(?:)/
@@ -27,21 +27,21 @@ number / number
 number ^ number
 number % number
 number ~ number -> Range
-exp =(identifier > exp // tube expression
+expression =(name)> expression // tube expression
 receiver << value
 value >> receiver
-exp and exp // logical and
-exp AND exp // binary and
-exp or exp
-exp OR exp
-exp in iterable -> Boolean
+expression and expression // logical and
+expression AND expression // binary and
+expression or expression
+expression OR expression
+expression in iterable -> Boolean
 value from class // instanceof
-exp ?? exp
-exp . prop
-exp ?. prop
+expression ?? expression
+expression . property
+expression ?. property
 function ?. ()
 
-boolean ? exp // inline if
+expression ? expression | expression
 
 // prefixes
 - number
@@ -52,10 +52,10 @@ boolean ? exp // inline if
 // suffixes
 number ++ // returns number and sets number to number + 1
 number -- // returns number and sets number to number - 1
-exp [identifier]
+expression [expression]
 
 // keywords
-delete id
+delete name
 
 async fun function(): do
 generator fun function(): do
@@ -63,13 +63,14 @@ async generator fun function(): do
 
 await asyncFunction!
 
-if exp: do
+if expression: do
 else: do
 
-with exp: do
+with expression: do
 
-when exp {
-	is exp: do
+when expression {
+	... == "some": do
+	is expression: do
 	is a, b: do
 	otherwise: do
 }
@@ -79,30 +80,30 @@ foreach value in iterable {
 	break
 }
 foreach key, value of object: do
-while exp: do
+while expression: do
+for i = 0, i <= 10, i++: do
 
-return exp
+return expression
 
 do: do // eq. () =>
 
 import file
 import "path/to/file.extension"
 import property from file
-import * from filename
-import file as type // import config as json
+import * from file
 import a, b, c
 
 try: do
-on errorname: do // catch
+on name: do // catch
 
 class ClassName? {
-	publ static identifier = value
-	publ identifier = value
-	priv identifier = value
+	publ static name = value
+	publ name = value
+	priv name = value
 
 	publ {
-		identifier  = value
-		identifier  = value
+		name  = value
+		name  = value
 	}
 
 	static {
@@ -118,7 +119,7 @@ class ClassName? {
 // functions
 print("string")
 write("string")
-isset(object.prop)
+isset(object.property)
 typeof(value)
 read!
 exit(0)
@@ -148,10 +149,10 @@ class Name: do
 
 varbl a, b, c // unset
 varbl a, b, c = c, b, a // reverse
-varbl a = exp, b = exp
-varbl { prop, "invalidentifier syntax" as validentifier yntax } = object // varbl [prop, validentifier yntax] = [object.prop, object["invalidentifier syntax"]]
-varbl [ prop ] = array // varbl prop = array[0]
-varbl("invalidentifier syntax")
+varbl a = expression, b = expression
+varbl { property, "invalid syntax" as validSyntax } = object // varbl [property, validSyntax] = [object.property, object["invalid syntax"]]
+varbl [ property ] = array // varbl property = array[0]
+varbl("invalid syntax")
 
 u12
 u32
