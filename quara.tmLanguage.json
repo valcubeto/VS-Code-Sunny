@@ -99,11 +99,11 @@
 
 				{
 					"name": "keyword.qua",
-					"match": "(?<![.\\w])(?:getter|setter|global|later|delete|publ|priv|static|async|await|generator|do|not|and|AND|or|OR|in|of|import|from|as|with|try|on|if|else|when|is|otherwise|skip|return|for|foreach|while|next|break)(?!\\w)"
+					"match": "(?<![.\\w])(?:has|getter|setter|global|later|delete|publ|priv|static|async|await|generator|do|not|and|AND|or|OR|in|of|import|from|as|with|try|on|if|else|when|is|otherwise|skip|return|for|foreach|while|next|break)(?!\\w)"
 				},
 				{
 					"name": "keyword.operator.qua",
-					"match": "[-+*/^<>%&~?]|!="
+					"match": "[-+*/^%~?|<>]|!="
 				},				
 				{
 					"name": "keyword.operator.new.qua",

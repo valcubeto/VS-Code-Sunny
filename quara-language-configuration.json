@@ -23,7 +23,7 @@
 	],
 	"onEnterRules": [
 		{
-			"beforeText": "(?:(?:fun|class|with|if|when|otherwise|for|foreach|while)\\s*[^\\s]+|(?:else|try)\\s*):\\s*$",
+			"beforeText": ".+:\\s*$",
 			"action": {
 				"indent": "indent"
 			}

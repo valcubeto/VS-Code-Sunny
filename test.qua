@@ -12,7 +12,7 @@ null
 infy
 nanu
 
-{ id } // { id: id }
+{ identifier } // { identifierName: identifierValue }
 
 "$(exp)"
 "%%" // string receiver
@@ -27,7 +27,7 @@ number / number
 number ^ number
 number % number
 number ~ number -> Range
-exp =(id)> exp // tube expression
+exp =(identifier > exp // tube expression
 receiver << value
 value >> receiver
 exp and exp // logical and
@@ -38,8 +38,8 @@ exp in iterable -> Boolean
 value from class // instanceof
 exp ?? exp
 exp . prop
-exp ?. prop -> Value?
-function ?. () -> Value?
+exp ?. prop
+function ?. ()
 
 boolean ? exp // inline if
 
@@ -52,7 +52,7 @@ boolean ? exp // inline if
 // suffixes
 number ++ // returns number and sets number to number + 1
 number -- // returns number and sets number to number - 1
-exp ["id"]
+exp [identifier]
 
 // keywords
 delete id
@@ -96,13 +96,13 @@ try: do
 on errorname: do // catch
 
 class ClassName? {
-	publ static id = value
-	publ id = value
-	priv id = value
+	publ static identifier = value
+	publ identifier = value
+	priv identifier = value
 
 	publ {
-		id1 = value
-		id2 = value
+		identifier  = value
+		identifier  = value
 	}
 
 	static {
@@ -149,9 +149,9 @@ class Name: do
 varbl a, b, c // unset
 varbl a, b, c = c, b, a // reverse
 varbl a = exp, b = exp
-varbl { prop, "invalid-syntax" as validSyntax } = object // varbl [prop, validSyntax] = [object.prop, object["invalid-syntax"]]
+varbl { prop, "invalidentifier syntax" as validentifier yntax } = object // varbl [prop, validentifier yntax] = [object.prop, object["invalidentifier syntax"]]
 varbl [ prop ] = array // varbl prop = array[0]
-varbl("invalid-syntax")
+varbl("invalidentifier syntax")
 
 u12
 u32
@@ -194,6 +194,11 @@ async fun fetch(url) {
 	doAsyncStuff()
 }
 
-import fetch, json
-fetch("8.8.8.8")
-	.then(json.parse res)
+do! {
+	import fetch
+	import parse from json
+	fetch("8.8.8.8").then(res => (print) parse(res))
+}
+
+fun main!:
+	print("Hello world!")
