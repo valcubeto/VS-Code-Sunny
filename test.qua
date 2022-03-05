@@ -154,7 +154,7 @@ varbl { property, "invalid syntax" as validSyntax } = object // varbl [property,
 varbl [ property ] = array // varbl property = array[0]
 varbl("invalid syntax")
 
-u12
+u16
 u32
 u64
 

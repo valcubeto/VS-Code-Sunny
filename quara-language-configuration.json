@@ -18,15 +18,10 @@
 		["{", "}"],
 		["[", "]"],
 		["(", ")"],
-		["\"", "\""],
-		[":", ";"]
+		["\"", "\""]
 	],
-	"onEnterRules": [
-		{
-			"beforeText": ".+:\\s*$",
-			"action": {
-				"indent": "indent"
-			}
-		}
-	]
+	"onEnterRules": [{
+		"beforeText": ".+:\\s*$",
+		"action": { "indent": "indent" }
+	}]
 }
