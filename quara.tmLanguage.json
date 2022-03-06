@@ -133,7 +133,7 @@
 
 				{
 					"name": "support.function.qua",
-					"match": "(?<![.\\w])(?:print|write|isset|typeof|read|exit|eval|instanceof)(?!\\w)"
+					"match": "(?<![.\\w])(?:print|write|isset|typeof|read|exit|eval|instanceof|prototypeof)(?!\\w)"
 				},
 
 
