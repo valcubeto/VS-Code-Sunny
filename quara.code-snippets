@@ -28,7 +28,7 @@
 		"prefix": "class",
 		"body": [
 			"class ${2:ClassName} {",
-			"\tfun oncreate($3) {$1}",
+			"\tpubl fun creator($3) {$1}",
 			"}"
 		],
 		"description": "Puts a class"
@@ -48,12 +48,17 @@
 		"body": "foreach ${2:key} and ${3:value} of ${4:object} {$1}",
 		"description": "Puts a foreach-of loop"
 	},
+	"while loop": {
+		"prefix": "while",
+		"body": "while ${2:i <= 10} {$1}",
+		"description": "Puts a while loop"
+	},
 	"getter-setter": {
 		"prefix": "gettersetter",
 		"body": [
-			"getter ${3:coolName} {$1}",
-			"setter ${3:coolName} {$2}"
+			"getter ${1:coolName} {$2}",
+			"setter ${1:coolName} {$3}"
 		],
 		"description": "Puts a getter and a setter"
-	},
+	}
 }
