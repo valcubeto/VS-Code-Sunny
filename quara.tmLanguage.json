@@ -4,17 +4,6 @@
 	"scopeName": "source.qua",
 	"patterns": [{ "include": "#all" }],
 	"repository": {
-		"arguments": {
-			"patterns": [
-				{
-				  "name": "variable.parameter",
-				  "match": "[A-Za-z_]\\w*"
-		  	},
-				{
-					"include": "#comments"
-				}
-		  ]
-		},
 		"comments": {
 			"patterns": [
 				{
@@ -32,19 +21,6 @@
 		"all": {
 			"patterns": [
 				{
-					"include": "#comments"
-				},
-				{
-					"name": "constant.numeric.qua",
-					"match": "(?<![.\\w])(?:infy|nanu|(?i:0b[01]+|0x[0-9a-f]+|(?:0|0?[1-9][0-9]*)(?:e[+-]?[0-9]+|\\.[0-9]+|\\.[0-9]+e[+-]?[0-9]+)?))(?!\\w)"
-				},
-				{
-					"name": "constant.language.qua",
-					"match": "(?<![.\\w])(?:true|false|null)(?!\\w)"
-				},
-
-
-				{
 					"begin": "\\(",
 					"beginCaptures": {
 						"0": { "name": "punctuation.definition.parameters.begin.qua" }
@@ -55,6 +31,19 @@
 						"0": { "name": "punctuation.definition.parameters.end.qua" }
 					}
 				},
+
+				{
+					"include": "#comments"
+				},
+				{
+					"name": "constant.numeric.qua",
+					"match": "(?<![.\\w])(?:infy|nanu|(?i:0b[01]+|0x[0-9a-f]+|(?:0|0?[1-9][0-9]*)(?:(?:\\.[0-9]+)?(?:e[+-]?[0-9]+)?)))(?!\\w)"
+				},
+				{
+					"name": "constant.language.qua",
+					"match": "(?<![.\\w])(?:true|false|null)(?!\\w)"
+				},
+
 				{
 					"name": "punctuation.terminator.statement.qua",
 					"match": ";"
@@ -130,7 +119,7 @@
 					"beginCaptures": {
 						"0": { "name": "keyword.operator.qua" }
 					},
-					"patterns": [{ "include": "#arguments" }],
+					"patterns": [{ "include": "#all" }],
 					"end": "\\)>",
 					"endCaptures": {
 						"0": { "name": "keyword.operator.qua" }

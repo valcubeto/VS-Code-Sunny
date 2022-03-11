@@ -11,7 +11,7 @@
 			"id": "quara",
 			"aliases": ["Quara", "quara"],
 			"extensions": [".qua"],
-			"configuration": "./quara-language-configuration.json"
+			"configuration": "./quara-lang-config.json"
 		}],
 		"grammars": [{
 			"language": "quara",

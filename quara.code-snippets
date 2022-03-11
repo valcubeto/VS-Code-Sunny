@@ -1,64 +1,65 @@
 {
-	"import ...from statment": {
+	"import ... from ...": {
 		"prefix": "importfrom",
 		"body": "import ${1:*} from ${2:file}",
-		"description": "Puts an import-from statment"
+		"description": "ALlows you import variables from other files (or the entire file if needed)"
 	},
-	"function declaration": {
+	"fun ...(...) { ... }": {
 		"prefix": "fun",
 		"body": "fun ${2:doCoolStuff}($3) {$1}",
-		"description": "Puts a function"
+		"description": "Allows you to declare a block of code that you can use multiple times"
 	},
-	"main function": {
+	"fun main! { ... }": {
 		"prefix": "main",
 		"body": "fun main${2:!} {$1}",
-		"description": "Puts the main function"
+		"description": "Entry point of your program"
 	},
-	"randomItem function": {
-		"prefix": "randomitem",
-		"body": [
-			"fun ${1:randomItem}${2:(array)} {",
-			"\timport floor, random from math",
-			"\treturn ${3:array}[floor(random! * ${3:array}.length)]",
-			"}"
-		],
-		"description": "Puts a randomItem function"
-	},
-	"class declaration": {
+	"class ... { ... }": {
 		"prefix": "class",
 		"body": [
-			"class ${2:ClassName} {",
+			"class ${2:CoolObject} {",
 			"\tpubl fun creator($3) {$1}",
-			"}"
+			"}",
+			"new ${2:CoolObject}($4)"
 		],
-		"description": "Puts a class"
+		"description": "Declares a class that allows you create objects easily"
 	},
-	"for loop": {
+	"for ..., ..., ... { ... }": {
 		"prefix": "for",
-		"body": "for ${2:i = 0}, ${3:i <= array.length}, ${4:i++} {$1}",
-		"description": "Puts a for loop"
+		"body": "for ${2:i} = ${3:0}, ${2:i} <= ${4:array.length}, ${2:i}++ {$1}",
+		"description": "Classic for loop. A cool version of a while loop? Yes"
 	},
-	"foreach ...in loop": {
+	"foreach ... in ... { ... }": {
 		"prefix": "foreachin",
 		"body": "foreach ${2:value} in ${3:array} {$1}",
-		"description": "Puts a foreach-in loop"
+		"description": "Allows you to loop through the elements of an iterable easily (and it's a bit faster than a while loop)"
 	},
-	"foreach ...of loop": {
+	"foreach ... and ... of ... { ... }": {
 		"prefix": "foreachof",
 		"body": "foreach ${2:key} and ${3:value} of ${4:object} {$1}",
-		"description": "Puts a foreach-of loop"
+		"description": "Allows you to iterate through the keys (and values if needed) of any object easily (and it's a bit faster than a while loop)"
 	},
-	"while loop": {
+	"while ... { ... }": {
 		"prefix": "while",
-		"body": "while ${2:i <= 10} {$1}",
-		"description": "Puts a while loop"
+		"body": "while ${2:condition} {$1}",
+		"description": "Execute the code block as long as the condition can be converted to true"
 	},
-	"getter-setter": {
+	"try { ... } on ... { ... }": {
+		"prefix": "tryon",
+		"body": "try {$1} on ${2:error} {$3}",
+		"description": "Allows you to handle possible errors without stopping the execution of your program"
+	},
+	"getter ... { ... } setter ... { ... }": {
 		"prefix": "gettersetter",
 		"body": [
 			"getter ${1:coolName} {$2}",
 			"setter ${1:coolName} {$3}"
 		],
-		"description": "Puts a getter and a setter"
-	}
+		"description": "Every variable or constant has a getter and a setter. For example, a constant has a setter that returns a TypeError (but its getter is the default)"
+	},
+	"... = (...)? ... | ...": {
+    "prefix": "ternary",
+    "body": "const ${1:result} = (${2:condition})? ${3:a} | ${4:b}",
+    "description": "Ternary conditional assignment"
+  },
 }
