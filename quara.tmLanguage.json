@@ -108,14 +108,10 @@
 
 				{
 					"name": "keyword.qua",
-					"match": "(?<![.\\w])(?:getter|setter|global|later|delete|publ|priv|static|async|await|generator|do|not|and|AND|or|OR|in|of|import|from|try|on|if|else|elseif|when|is|skip|return|throw|for|foreach|while|next|break)(?!\\w)"
+					"match": "(?<![.\\w])(?:getter|setter|global|later|delete|publ|priv|static|async|await|generator|do|not|and|AND|or|OR|in|of|using|from|try|on|if|else|switch|case|skip|return|throw|for|foreach|while|next|break|loop)(?!\\w)"
 				},
 				{
-					"name": "keyword.operator.qua",
-					"match": "[-+*/^%~?|<>]|!="
-				},				
-				{
-					"begin": "=\\(",
+					"begin": "-\\(",
 					"beginCaptures": {
 						"0": { "name": "keyword.operator.qua" }
 					},
@@ -124,6 +120,10 @@
 					"endCaptures": {
 						"0": { "name": "keyword.operator.qua" }
 					}
+				},				
+				{
+					"name": "keyword.operator.qua",
+					"match": "[-+*/^%~?|<>]|!="
 				},				
 				{
 					"name": "keyword.operator.new.qua",

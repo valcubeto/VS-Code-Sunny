@@ -6,6 +6,8 @@
 	"engines": { "vscode": "^1.64.0" },
 	"categories": ["Programming Languages"],
 	"repository": "https://github.com/ValentineBucket/vsc-quara",
+	"activationEvents": ["onLanguage:quara"],
+	"main": "./extension.js",
 	"contributes": {
 		"languages": [{
 			"id": "quara",
