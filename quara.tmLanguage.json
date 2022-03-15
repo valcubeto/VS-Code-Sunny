@@ -147,7 +147,7 @@
 
 				{
 					"name": "support.class.builtin.qua",
-					"match": "(?<![.\\w])(?:Value|Boolean|Number|String|Object|Array|Function|Promise|RegExp|Date|Range)(?!\\w)"
+					"match": "(?<![.\\w])(?:Any|Boolean|Number|String|Object|Array|Function|Promise|RegExp|Date|Range)(?!\\w)"
 				},
 
 

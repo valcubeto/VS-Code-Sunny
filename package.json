@@ -9,6 +9,12 @@
 	"activationEvents": ["onLanguage:quara"],
 	"main": "./extension.js",
 	"contributes": {
+		"capabilities": {
+			"completionProvider": {
+				"resolveProvider": "true",
+				"triggerCharacters": ["."]
+			}
+		},
 		"languages": [{
 			"id": "quara",
 			"aliases": ["Quara", "quara"],

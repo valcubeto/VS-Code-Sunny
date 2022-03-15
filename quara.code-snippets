@@ -1,84 +1,79 @@
 {
 	"if ... { ... }": {
 		"prefix": "if",
-		"body": "if ${1:condition} {$2}",
+		"body": "if ${1:condition} {$0}",
 		"description": ""
 	},
-	"if ... { ... } else { ... }": {
-		"prefix": "ifelse",
-		"body": "if ${1:condition} {$2} else {$3}",
+	"else { ... }": {
+		"prefix": "else",
+		"body": "else {$0}",
 		"description": ""
 	},
-	"if ... { ... } else if ... { ... }": {
-		"prefix": "ifelseif",
-		"body": "if ${1:condition} {$2} else if ${3:otherCondition} {$4}",
-		"description": ""
-	},
-	"if ... { ... } else if ... { ... } else { ... }": {
-		"prefix": "ifelseifelse",
-		"body": "if ${1:condition} {$2} else if ${3:otherCondition} {$4} else {$5}",
+	"else if ... { ... }": {
+		"prefix": "elseif",
+		"body": "else if ${1:condition} {$0}",
 		"description": ""
 	},
 	"using ... from ...": {
 		"prefix": "usingfrom",
-		"body": "using ${1:*} from ${2:file}",
+		"body": "using ${1:*} from ${0:file}",
 		"description": "Allows you use variables from other files (or the entire file if needed)"
 	},
 	"fun ...(...) { ... }": {
 		"prefix": "fun",
-		"body": "fun ${1:doCoolStuff}($2) {$3}",
+		"body": "fun ${1:doCoolStuff}($2) {$0}",
 		"description": "Allows you to declare a block of code that you can use multiple times"
 	},
 	"fun main! { ... }": {
 		"prefix": "main",
-		"body": "fun main${1:!} {$2}",
+		"body": "fun main${1:!} {$0}",
 		"description": "Entry point of your program"
 	},
 	"class ... { ... } // new ...()": {
 		"prefix": "class",
 		"body": [
 			"class ${1:CoolObject} {",
-			"\tpubl fun creator($3) {$2}",
+			"\tpubl fun creator($2) {$0}",
 			"}",
-			"// new ${1:CoolObject}($4)"
+			"// new ${1:CoolObject}($3)"
 		],
 		"description": "Declares a class that allows you create objects easily"
 	},
 	"for ..., ..., ... { ... }": {
 		"prefix": "for",
-		"body": "for ${2:i} = ${3:0}, ${2:i} <= ${4:${5:array}.length}, ${2:i}++ {$1}",
+		"body": "for ${2:i} = ${3:0}, ${2:i} <= ${5:${4:array}.length}, ${2:i}${6:++} {$0}",
 		"description": "Classic for loop. A cool version of a while loop? Yes"
 	},
 	"foreach ... in ... { ... }": {
 		"prefix": "foreachin",
-		"body": "foreach ${1:value} in ${2:(iterable)} {$3}",
+		"body": "foreach ${1:value} in ${2:(iterable)} {$0}",
 		"description": "Allows you to loop through the elements of an iterable easily (and it's a bit faster than a while loop)"
 	},
 	"foreach ... and ... of ... { ... }": {
 		"prefix": "foreachof",
-		"body": "foreach ${1:key} of ${2:(object)} {$3}",
+		"body": "foreach ${1:key} of ${2:(object)} {$0}",
 		"description": "Allows you to iterate through the keys of any object easily (and it's a bit faster than a while loop)"
 	},
 	"while ... { ... }": {
 		"prefix": "while",
-		"body": "while ${1:condition} {$2}",
+		"body": "while ${1:condition} {$0}",
 		"description": "Execute the code block as long as the condition can be converted to true"
 	},
 	"loop { ... }": {
 		"prefix": "loop",
-		"body": "loop {$1}",
+		"body": "loop {$0}",
 		"description": "Equivalent to 'while true { ... }'"
 	},
 	"try { ... } on ... { ... }": {
 		"prefix": "tryon",
-		"body": "try {$1} on ${2:error} {$3}",
+		"body": "try {$1} on ${2:error} {$0}",
 		"description": "Allows you to handle possible errors without stopping the execution of your program"
 	},
 	"getter ... { ... } setter ... { ... }": {
 		"prefix": "gettersetter",
 		"body": [
-			"getter ${1:elpepe} {$2}",
-			"setter ${1:elpepe} {$3}"
+			"getter ${1:name} {$2}",
+			"setter ${1:name} {$3}"
 		],
 		"description": "Every variable or constant has a getter and a setter. For example, a constant has a setter that returns a TypeError (but its getter is the default)"
 	},
@@ -86,5 +81,14 @@
     "prefix": "constternary",
     "body": "const ${1:result} = (${2:condition})? ${3:a} | ${4:b}",
     "description": "Ternary conditional assignment"
-  }
+  },
+	"switch ... { case ... { ... } else { ... } }": {
+    "prefix": "switchcase",
+    "body": [
+			"switch ${1:value} {",
+			"\t${4:case ${3:\"$2\"}} {$0}",
+			"}"
+		],
+    "description": "Switch statment"
+  },
 }
