@@ -10,12 +10,12 @@
 		"description": ""
 	},
 	"else if ... { ... }": {
-		"prefix": "elseif",
+		"prefix": "else if",
 		"body": "else if ${1:condition} {$0}",
 		"description": ""
 	},
 	"using ... from ...": {
-		"prefix": "usingfrom",
+		"prefix": "using from",
 		"body": "using ${1:*} from ${0:file}",
 		"description": "Allows you use variables from other files (or the entire file if needed)"
 	},
@@ -25,17 +25,17 @@
 		"description": "Allows you to declare a block of code that you can use multiple times"
 	},
 	"fun main! { ... }": {
-		"prefix": "main",
+		"prefix": "fun main",
 		"body": "fun main${1:!} {$0}",
 		"description": "Entry point of your program"
 	},
-	"class ... { ... } // new ...()": {
+	"class ... { // new ...(); publ fun creator(...) { ... } }": {
 		"prefix": "class",
 		"body": [
 			"class ${1:CoolObject} {",
-			"\tpubl fun creator($2) {$0}",
+			"\t// new ${1:CoolObject}($2)",
+			"\tpubl fun creator($3) {$0}",
 			"}",
-			"// new ${1:CoolObject}($3)"
 		],
 		"description": "Declares a class that allows you create objects easily"
 	},
@@ -45,12 +45,12 @@
 		"description": "Classic for loop. A cool version of a while loop? Yes"
 	},
 	"foreach ... in ... { ... }": {
-		"prefix": "foreachin",
+		"prefix": "foreach in",
 		"body": "foreach ${1:value} in ${2:(iterable)} {$0}",
 		"description": "Allows you to loop through the elements of an iterable easily (and it's a bit faster than a while loop)"
 	},
 	"foreach ... and ... of ... { ... }": {
-		"prefix": "foreachof",
+		"prefix": "foreach of",
 		"body": "foreach ${1:key} of ${2:(object)} {$0}",
 		"description": "Allows you to iterate through the keys of any object easily (and it's a bit faster than a while loop)"
 	},
@@ -64,13 +64,13 @@
 		"body": "loop {$0}",
 		"description": "Equivalent to 'while true { ... }'"
 	},
-	"try { ... } on ... { ... }": {
-		"prefix": "tryon",
-		"body": "try {$1} on ${2:error} {$0}",
+	"try { ... } catch ... { ... }": {
+		"prefix": "try catch",
+		"body": "try {$1} catch ${2:error} {$0}",
 		"description": "Allows you to handle possible errors without stopping the execution of your program"
 	},
 	"getter ... { ... } setter ... { ... }": {
-		"prefix": "gettersetter",
+		"prefix": "getter setter",
 		"body": [
 			"getter ${1:name} {$2}",
 			"setter ${1:name} {$3}"
@@ -78,12 +78,12 @@
 		"description": "Every variable or constant has a getter and a setter. For example, a constant has a setter that returns a TypeError (but its getter is the default)"
 	},
 	"const ... = (...)? ... | ...": {
-    "prefix": "constternary",
-    "body": "const ${1:result} = (${2:condition})? ${3:a} | ${4:b}",
+    "prefix": "const ternary",
+    "body": "const ${1:result} = ${3:(${2:condition})}? ${4:a} | ${5:b}",
     "description": "Ternary conditional assignment"
   },
-	"switch ... { case ... { ... } else { ... } }": {
-    "prefix": "switchcase",
+	"switch ... { case ... { ... } }": {
+    "prefix": "switch",
     "body": [
 			"switch ${1:value} {",
 			"\t${4:case ${3:\"$2\"}} {$0}",

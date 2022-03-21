@@ -108,19 +108,8 @@
 
 				{
 					"name": "keyword.qua",
-					"match": "(?<![.\\w])(?:getter|setter|global|later|delete|publ|priv|static|async|await|generator|do|not|and|AND|or|OR|in|of|using|from|try|on|if|else|switch|case|skip|return|throw|for|foreach|while|next|break|loop)(?!\\w)"
-				},
-				{
-					"begin": "-\\(",
-					"beginCaptures": {
-						"0": { "name": "keyword.operator.qua" }
-					},
-					"patterns": [{ "include": "#all" }],
-					"end": "\\)>",
-					"endCaptures": {
-						"0": { "name": "keyword.operator.qua" }
-					}
-				},				
+					"match": "(?<![.\\w])(?:instanceof|isset|typeof|extends|getter|setter|global|later|delete|publ|priv|static|async|await|do|not|and|AND|or|OR|in|of|using|from|try|catch|if|else|switch|case|skip|return|throw|for|foreach|while|next|break|loop)(?!\\w)"
+				},			
 				{
 					"name": "keyword.operator.qua",
 					"match": "[-+*/^%~?|<>]|!="
@@ -147,13 +136,13 @@
 
 				{
 					"name": "support.class.builtin.qua",
-					"match": "(?<![.\\w])(?:Any|Boolean|Number|String|Object|Array|Function|Promise|RegExp|Date|Range)(?!\\w)"
+					"match": "(?<![.\\w])(?:Any|Boolean|Number|String|Object|Array|Function|Promise|RegExp|Range)(?!\\w)"
 				},
 
 
 				{
 					"name": "support.function.qua",
-					"match": "(?<![.\\w])(?:print|write|isset|typeof|read|exit|eval|instanceof|prototypeof)(?!\\w)"
+					"match": "(?<![.\\w])(?:print|write|read|exit|eval|prototypeof)(?!\\w)"
 				},
 
 
