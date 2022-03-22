@@ -2,7 +2,7 @@
 	{
 		"label": "print",
 		"kind": 2,
-		"documentation": "<code>fun print(...values, separator = \" \", end = \"\\n\") -> null\n</code>",
-		"detail": "Prints the values"
+		"documentation": "fun print(\n\t...values: Any,\n\tseparator: String? = \" \",\n\tend: String? = \"\\n\"\n) -> null",
+		"detail": "Prints the values to stdout"
 	}
 ]
