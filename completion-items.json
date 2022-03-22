@@ -1,0 +1,8 @@
+[
+	{
+		"label": "print",
+		"kind": 2,
+		"documentation": "<code>fun print(...values, separator = \" \", end = \"\\n\") -> null\n</code>",
+		"detail": "Prints the values"
+	}
+]

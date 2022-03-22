@@ -49,7 +49,7 @@
 		"body": "foreach ${1:value} in ${2:(iterable)} {$0}",
 		"description": "Allows you to loop through the elements of an iterable easily (and it's a bit faster than a while loop)"
 	},
-	"foreach ... and ... of ... { ... }": {
+	"foreach ... of ... { ... }": {
 		"prefix": "foreach of",
 		"body": "foreach ${1:key} of ${2:(object)} {$0}",
 		"description": "Allows you to iterate through the keys of any object easily (and it's a bit faster than a while loop)"
@@ -90,5 +90,9 @@
 			"}"
 		],
     "description": "Switch statment"
+  },
+	"$test": {
+    "prefix": "$test",
+    "body": "Good ${1|morning,afternoon,evening|}. It's ${1}, right?"
   },
 }
