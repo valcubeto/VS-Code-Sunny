@@ -4,20 +4,6 @@
 	"scopeName": "source.qua",
 	"patterns": [{ "include": "#all" }],
 	"repository": {
-		"comments": {
-			"patterns": [
-				{
-					"name": "comment.line.qua",
-					"begin": "//",
-					"end": "\\n"
-				},
-				{
-					"name": "comment.block.qua",
-					"begin": "/\\*",
-					"end": "\\*/"
-				}
-			]
-		},
 		"all": {
 			"patterns": [
 				{
@@ -32,12 +18,26 @@
 					}
 				},
 
+
 				{
-					"include": "#comments"
+					"patterns": [
+						{
+							"name": "comment.line.qua",
+							"begin": "//",
+							"end": "\\n"
+						},
+						{
+							"name": "comment.block.qua",
+							"begin": "/\\*",
+							"end": "\\*/"
+						}
+					]
 				},
+
+
 				{
 					"name": "constant.numeric.qua",
-					"match": "(?<![.\\w])(?:infy|nanu|(?i:0b[01]+|0x[0-9a-f]+|(?:0|0?[1-9][0-9]*)(?:(?:\\.[0-9]+)?(?:e[+-]?[0-9]+)?)))(?!\\w)"
+					"match": "(?<![.\\w])(?:infy|nanum|(?i:0b[01]+|0x[0-9a-f]+|(?:0|0?[1-9][0-9]*)(?:(?:\\.[0-9]+)?(?:e[+-]?[0-9]+)?)))(?!\\w)"
 				},
 				{
 					"name": "constant.language.qua",
@@ -108,7 +108,7 @@
 
 				{
 					"name": "keyword.qua",
-					"match": "(?<![.\\w])(?:extends|getter|setter|global|later|delete|publ|priv|static|async|await|do|not|and|AND|or|OR|in|of|using|from|try|catch|if|else|switch|case|skip|return|throw|for|foreach|while|next|break|loop)(?!\\w)"
+					"match": "(?<![.\\w])(?:as|extends|getter|setter|global|later|delete|publ|priv|static|async|await|do|not|and|AND|or|OR|in|of|using|from|try|catch|if|else|switch|case|skip|return|throw|for|foreach|while|next|break|loop)(?!\\w)"
 				},			
 				{
 					"name": "keyword.operator.qua",
