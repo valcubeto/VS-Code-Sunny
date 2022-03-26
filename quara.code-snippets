@@ -86,14 +86,14 @@
     "prefix": "switch",
     "body": [
 			"switch ${1:value} {",
-			"\t${4:case ${3:\"$2\"}} {$0}",
+			"\t${4:case ${3:'$2'}} {$0}",
 			"}"
 		],
     "description": "Switch statment"
   },
 	"... -<...>- ...": {
     "prefix": "read! pipe",
-    "body": "${1:read!} -<${2:line}>- ${0:print(${3:\"Line: $(line)\"})}",
+    "body": "${1:read!} -<${2:line}>- ${0:print(${3:'Line: $(line)'})}",
     "description": "Pipe expression"
   },
 	"Test": {

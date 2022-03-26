@@ -3,58 +3,55 @@
 		"label": "print",
 		"kind": "Function",
 		"detail": "Prints the values to stdout",
-		"documentation": "print(\"Hello world!\")"
+		"documentation": "fun print(...values, separator = ' ', end = '\\n') -> null"
 	},
 	{
 		"label": "write",
 		"kind": "Function",
 		"detail": "Prints the values to stdout",
-		"documentation": [
-			"write(\"Insert your name: \")",
-			"read! -<name>- print(\"Hello, $(name)\")"
-		]
+		"documentation": "fun write(...values, separator = '', end = '') -> null"
 	},
 	{
 		"label": "read",
 		"kind": "Function",
 		"detail": "",
-		"documentation": "read! -<input>- print(\"Input: $(input)\")"
+		"documentation": "fun read! -> String"
 	},
   {
 		"label": "exit",
 		"kind": "Function",
 		"detail": "",
-		"documentation": "exit(0)"
+		"documentation": "fun exit(code: 0 | 1 = 0) -> null"
 	},
   {
 		"label": "eval",
 		"kind": "Function",
 		"detail": "",
-		"documentation": "eval(\"print(\\\"Hello world!\\\")\")"
+		"documentation": "fun eval(code: String) -> Any"
 	},
   {
 		"label": "isset",
 		"kind": "Function",
 		"detail": "",
-		"documentation": "isset(print.length)"
+		"documentation": "fun isset(value: Any) -> Boolean"
 	},
   {
 		"label": "typeof",
 		"kind": "Function",
 		"detail": "",
-		"documentation": "typeof(nanum) // \"number\""
+		"documentation": "fun typeof(value: Any) -> String"
 	},
 	{
 		"label": "infy",
 		"kind": "Constant",
 		"detail": "Representation of infinity",
-		"documentation": "const infy = Number.INFINITY"
+		"documentation": "infy"
 	},
 	{
 		"label": "nanum",
 		"kind": "Constant",
 		"detail": "Represents something that is not a number",
-		"documentation": "const nanum = Number.NOT_A_NUMBER"
+		"documentation": "nanum"
 	},
 	{
 		"label": "null",
@@ -84,36 +81,25 @@
 		"label": "extends",
 		"kind": "Keyword",
 		"detail": "Inherits all properties from another class",
-		"documentation": "class MyClass extends AnotherClass {}"
+		"documentation": "class Array extends Object {}"
 	},
 	{
 		"label": "getter",
 		"kind": "Keyword",
 		"detail": "Declares a function that is executed when you try to read the value of a variable",
-		"documentation": [
-			"// Example:",
-			"varbl timesGetted = 0",
-			"",
-			"getter for message {",
-			"\ttimesGetted++",
-			"\treturn \"Hello world!\"",
-			"}",
-			"",
-			"print(message) // \"Hello world\"",
-			"print(timesGetted) // 1"
-		]
+		"documentation": "getter for printHelloWorld: print('Hello world!')"
 	},
 	{
 		"label": "setter",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "setter varName {}"
+		"documentation": "setter for constant: throw new TypeError(\"Assignment to constant: '$(this.name)'\")"
 	},
 	{
 		"label": "global",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "global varbl globalVar = \"Hello!\""
+		"documentation": "global varbl greeting = 'Hello!'"
 	},
 	{
 		"label": "later",
@@ -125,13 +111,13 @@
 		"label": "delete",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "delete myVar"
+		"documentation": "delete unusedConstant"
 	},
 	{
 		"label": "publ",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "publ fun create! {}"
+		"documentation": "publ fun create!: #count++"
 	},
 	{
 		"label": "priv",
@@ -152,140 +138,149 @@
 		"label": "async",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "async fun fetch! { /* internal code */ }"
+		"documentation": "async fun doAsyncStuff!"
 	},
 	{
 		"label": "await",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "await fetch(\"8.8.8.8\")"
+		"documentation": "await doAsyncStuff!"
 	},
 	{
 		"label": "do",
 		"kind": "Keyword",
-		"detail": "Shorthand for '```() => {}```'",
-		"documentation": "do {}"
+		"detail": "Shorthand for '```() => { ... } ()```'",
+		"documentation": "do: print('Hello world!')"
 	},
 	{
 		"label": "not",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "if not logged: login!"
+		"documentation": "not (value: Any) => Boolean(value)? false | true"
 	},
 	{
 		"label": "and",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": [
-			"if age >= 18 and age <= 80:",
-			"\tprint(\"Allowed!\")"
-		]
+		"documentation": "true and false"
 	},
 	{
 		"label": "AND",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "value AND value"
+		"documentation": "0b10010010 AND 0b10001001"
 	},
 	{
 		"label": "or",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "if name == \"Jhon\" or "
+		"documentation": "true or false"
 	},
 	{
 		"label": "OR",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "value OR value"
+		"documentation": "0b10011000 OR 0b00100100"
 	},
 	{
 		"label": "in",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": [
-			"if name in blacklist:",
-			"\tthrow \"You aren't allowed!\""
-		]
+		"documentation": "36 in 0 ~ 100"
 	},
 	{
 		"label": "of",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": [
-			"foreach dish of resto:",
-			"\tprint(\"$(dish): $(resto[dish]) $\")"
-		]
+		"documentation": "foreach key of this: print(key)"
 	},
 	{
 		"label": "using",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": [
-			"// Example:",
-			"using math"
-		]
+		"documentation": "using math"
 	},
 	{
 		"label": "from",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": [
-			"// Example:",
-			"using sqrtOf from math"
-		]
+		"documentation": "using sqrtOf from math"
 	},
 	{
 		"label": "try",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "try {}"
+		"documentation": "try: a = 5"
 	},
 	{
-		"label": "catch",
+		"label": "when",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "try {} catch error {}"
+		"documentation": [
+			"try: a = 5",
+			"when error: print(error)"
+		]
 	},
 	{
 		"label": "if",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "if condition {}"
+		"documentation": "if 1 + 1 == 2: print('Yes')"
 	},
 	{
 		"label": "else",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "if condition {} else {}"
+		"documentation": [
+			"if 1 + 1 == 2: print('Yes')",
+			"else: print('No')"
+		]
 	},
 	{
 		"label": "switch",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "switch value {}"
+		"documentation": [
+			"using random from math",
+			"",
+			"switch random(0 ~ 100) {",
+			"\t... in 0 ~ 49: print('Between 0 and 49')",
+			"\tcase 50: print(\"It's 50\")",
+			"\telse: print('Between 51 and 100')",
+			"}"
+		]
 	},
 	{
 		"label": "case",
 		"kind": "Keyword",
 		"detail": "",
 		"documentation": [
-			"switch value {",
-			"\tcase valueToCompare {}",
+			"using random from math",
+			"",
+			"switch random(0 ~ 100) {",
+			"\tcase 50: print(\"It's 50\")",
 			"}"
 		]
 	},
 	{
 		"label": "skip",
 		"kind": "Keyword",
-		"detail": "",
-		"documentation": "skip"
+		"detail": "void",
+		"documentation": [
+			"on('message', message => {",
+			"\tif message.author.id == bot.id: skip",
+			"\t// ...",
+			"})"
+		]
 	},
 	{
 		"label": "return",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "return 0"
+		"documentation": [
+			"fun decorate(text):",
+			"\treturn '✨ $(text) ✨'"
+		]
 	},
 	{
 		"label": "throw",
@@ -297,125 +292,132 @@
 		"label": "for",
 		"kind": "Keyword",
 		"detail": "A classic for-loop",
-		"documentation": "for i = 0, i <= 10, i++ {}"
+		"documentation": [
+			"for i = 0, i <= 10, i++:",
+			"\tprint('i = $(i)')"
+		]
 	},
 	{
 		"label": "foreach",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": [
-			"// Example:",
-			"foreach value in myArray {}"
-		]
+		"documentation": "foreach number in 0 ~ 10: print('Number: $(number)')"
 	},
 	{
 		"label": "while",
 		"kind": "Keyword",
 		"detail": "Executes the code inside the braces until the condition is false",
-		"documentation": "while condition {}"
+		"documentation": [
+			"varbl i = 0",
+			"while i <= 10: print(i++)"
+		]
 	},
 	{
 		"label": "next",
 		"kind": "Keyword",
 		"detail": "Goes to the next step in the current loop",
-		"documentation": "next"
+		"documentation": [
+			"varbl i = 0",
+			"while i <= 10 {",
+			"\tif i % 2 == 0: next",
+			"\tprint(i++)",
+			"}"
+		]
 	},
 	{
 		"label": "break",
 		"kind": "Keyword",
 		"detail": "Breaks the current loop",
-		"documentation": "break"
+		"documentation": [
+			"loop {",
+			"\tif requestToExit: break",
+			"}"
+		]
 	},
 	{
 		"label": "loop",
 		"kind": "Keyword",
-		"detail": "Infinity loop. Same as '```while true {}```'",
-		"documentation": "loop {}"
+		"detail": "Same as '```while true { ... }```'",
+		"documentation": "loop: render!"
 	},
 	{
 		"label": "new",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "new Array()"
+		"documentation": "new Array(1, 2, 3)"
 	},
 	{
 		"label": "as",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "[1, 2, 3] -<{ 0 as first }>- print(first) // 1"
+		"documentation": "using sqrtOf as squareRootOf from math"
 	},
 	{
 		"label": "Any",
-		"kind": "Constructor",
-		"detail": "",
-		"documentation": "varbl value: Any = eval(code)"
+		"kind": "Struct",
+		"detail": "type Any",
+		"documentation": "varbl data: Any = read! -<code>- eval(code)"
 	},
   {
 		"label": "Boolean",
 		"kind": "Constructor",
 		"detail": "",
-		"documentation": ""
+		"documentation": "Boolean(0) => false"
 	},
   {
 		"label": "Number",
 		"kind": "Constructor",
 		"detail": "",
-		"documentation": ""
+		"documentation": "Number('123') => 123"
 	},
   {
 		"label": "String",
 		"kind": "Constructor",
 		"detail": "",
-		"documentation": ""
+		"documentation": "String(123) => '123'"
 	},
   {
 		"label": "Object",
 		"kind": "Constructor",
 		"detail": "",
-		"documentation": ""
+		"documentation": "Object('name', 'Jhon') => { name: 'Jhon', # }"
 	},
   {
 		"label": "Array",
 		"kind": "Constructor",
 		"detail": "",
-		"documentation": ""
+		"documentation": "Array(1, 2, 3) => [1, 2, 3]"
 	},
   {
 		"label": "Function",
 		"kind": "Constructor",
 		"detail": "",
-		"documentation": ""
+		"documentation": [
+			"Function([], 'print(\\'Hello world!\\')')",
+			"\t// fun() { print('Hello world!') }"
+		]
 	},
   {
 		"label": "Promise",
 		"kind": "Constructor",
 		"detail": "",
 		"documentation": [
-			"new Promise((resolve, reject) => {",
-			"\tconst input = read!",
-			"\tif input == \"hello\":",
-			"\t\tresolve(\"Hello!\")",
-			"\telse:",
-			"\t\treject(\"You have not greeted!\")",
-			"})"
+			"Promise((resolve: Function, reject: Function) => {}) -> {",
+			"\tvalue: Any = null,",
+			"\tstatus: 'pending' | 'resolved' | 'rejected' = 'pending'",
+			"}"
 		]
 	},
   {
 		"label": "RegExp",
 		"kind": "Constructor",
 		"detail": "",
-		"documentation": [
-			"new RegExp(\"hello\", \"i\")",
-			"/hello/i"
-		]
+		"documentation": "RegExp('hello', 'i') => /hello/i"
 	},
   {
 		"label": "Range",
 		"kind": "Constructor",
 		"detail": "",
-		"documentation": [
-			"new Range(0, 10)",
-			"0 ~ 10"
-		]
+		"documentation": "Range(0, 10) => { min: 0, max: 10, # }"
 	}
 ]
