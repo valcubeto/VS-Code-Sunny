@@ -386,7 +386,19 @@
 		"label": "Array",
 		"kind": "Constructor",
 		"detail": "",
-		"documentation": "Array(1, 2, 3) => [1, 2, 3]"
+		"documentation": "Array(1, 2, 3) == [1, 2, 3]"
+	},
+  {
+		"label": "Tuple",
+		"kind": "Constructor",
+		"detail": "",
+		"documentation": "Tuple([1, 2, 3])"
+	},
+  {
+		"label": "Enum",
+		"kind": "Constructor",
+		"detail": "",
+		"documentation": "Enum([1, 2, 3])"
 	},
   {
 		"label": "Function",
