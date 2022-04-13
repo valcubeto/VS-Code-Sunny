@@ -15,13 +15,16 @@
 		"label": "read",
 		"kind": "Function",
 		"detail": "",
-		"documentation": "fun read! -> String"
+		"documentation": [
+			"fun read(what: matches /\\b(line|word|char)\\b/i = 'line') -> String",
+			"fun read(what: matches /\\b(key)\\b/i) -> Number"
+		]
 	},
   {
 		"label": "exit",
 		"kind": "Function",
 		"detail": "",
-		"documentation": "fun exit(code: 0 | 1 = 0) -> null"
+		"documentation": "fun exit(code: Number#u64 = 0) -> null"
 	},
   {
 		"label": "eval",
@@ -81,246 +84,227 @@
 		"label": "extends",
 		"kind": "Keyword",
 		"detail": "Inherits all properties from another class",
-		"documentation": "class Array extends Object {}"
+		"documentation": "class ... extends ... {}"
 	},
 	{
 		"label": "getter",
 		"kind": "Keyword",
 		"detail": "Declares a function that is executed when you try to read the value of a variable",
-		"documentation": "getter for printHelloWorld: print('Hello world!')"
+		"documentation": "getter for ... {}"
 	},
 	{
 		"label": "setter",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "setter for constant: throw new TypeError(\"Assignment to constant: '$(this.name)'\")"
+		"documentation": "setter for ... {}"
 	},
 	{
 		"label": "global",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "global varbl greeting = 'Hello!'"
+		"documentation": "global varbl ..."
 	},
 	{
 		"label": "later",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "const result later"
+		"documentation": "const ... later"
 	},
 	{
 		"label": "delete",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "delete unusedConstant"
+		"documentation": "delete ..."
 	},
 	{
 		"label": "publ",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "publ fun create!: #count++"
+		"documentation": "publ ..."
 	},
 	{
 		"label": "priv",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "priv varbl count = 0"
+		"documentation": "priv ..."
+	},
+	{
+		"label": "prot",
+		"kind": "Keyword",
+		"detail": "",
+		"documentation": "prot ..."
 	},
 	{
 		"label": "static",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": [
-			"publ static fun getCount!:",
-			"\treturn this.count"
-		]
+		"documentation": "static ..."
 	},
 	{
 		"label": "async",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "async fun doAsyncStuff!"
+		"documentation": "async fun ...() {}"
 	},
 	{
 		"label": "await",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "await doAsyncStuff!"
+		"documentation": "await ...()"
 	},
 	{
 		"label": "do",
 		"kind": "Keyword",
 		"detail": "Shorthand for '```() => { ... } ()```'",
-		"documentation": "do: print('Hello world!')"
+		"documentation": "do { ... }"
 	},
 	{
 		"label": "not",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "not (value: Any) => Boolean(value)? false | true"
+		"documentation": "not ..."
 	},
 	{
 		"label": "and",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "true and false"
+		"documentation": "... and ..."
 	},
 	{
 		"label": "AND",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "0b10010010 AND 0b10001001"
+		"documentation": "... AND ..."
 	},
 	{
 		"label": "or",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "true or false"
+		"documentation": "... or ..."
 	},
 	{
 		"label": "OR",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "0b10011000 OR 0b00100100"
+		"documentation": "... OR ..."
 	},
 	{
 		"label": "in",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "36 in 0 ~ 100"
+		"documentation": "... in [...]"
 	},
 	{
 		"label": "of",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "foreach key of this: print(key)"
+		"documentation": "foreach ... of ... {}"
 	},
 	{
 		"label": "using",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "using math"
+		"documentation": "using ..."
 	},
 	{
 		"label": "from",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "using sqrtOf from math"
+		"documentation": "using ... from ..."
 	},
 	{
 		"label": "try",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "try: a = 5"
+		"documentation": "try {}"
 	},
 	{
-		"label": "when",
+		"label": "catch",
 		"kind": "Keyword",
 		"detail": "",
 		"documentation": [
-			"try: a = 5",
-			"when error: print(error)"
+			"try {}",
+			"catch ... {}"
 		]
 	},
 	{
 		"label": "if",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "if 1 + 1 == 2: print('Yes')"
+		"documentation": "if ... {}"
 	},
 	{
 		"label": "else",
 		"kind": "Keyword",
 		"detail": "",
 		"documentation": [
-			"if 1 + 1 == 2: print('Yes')",
-			"else: print('No')"
+			"if ... {}",
+			"else {}"
 		]
 	},
 	{
 		"label": "switch",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": [
-			"using random from math",
-			"",
-			"switch random(0 ~ 100) {",
-			"\t... in 0 ~ 49: print('Between 0 and 49')",
-			"\tcase 50: print(\"It's 50\")",
-			"\telse: print('Between 51 and 100')",
-			"}"
-		]
+		"documentation": "switch ... {}"
 	},
 	{
 		"label": "case",
 		"kind": "Keyword",
 		"detail": "",
 		"documentation": [
-			"using random from math",
-			"",
-			"switch random(0 ~ 100) {",
-			"\tcase 50: print(\"It's 50\")",
+			"switch ... {",
+			"\tcase ... {}",
 			"}"
 		]
 	},
 	{
 		"label": "skip",
 		"kind": "Keyword",
-		"detail": "void",
-		"documentation": [
-			"on('message', message => {",
-			"\tif message.author.id == bot.id: skip",
-			"\t// ...",
-			"})"
-		]
+		"detail": "",
+		"documentation": "skip"
 	},
 	{
 		"label": "return",
 		"kind": "Keyword",
 		"detail": "",
 		"documentation": [
-			"fun decorate(text):",
-			"\treturn '✨ $(text) ✨'"
+			"fun ...() {",
+			"\treturn ...",
+			"}"
 		]
 	},
 	{
 		"label": "throw",
 		"kind": "Keyword",
 		"detail": "Prints the value to std and breaks the execution of your program",
-		"documentation": "throw new Error!"
+		"documentation": "throw ..."
 	},
 	{
 		"label": "for",
 		"kind": "Keyword",
 		"detail": "A classic for-loop",
-		"documentation": [
-			"for i = 0, i <= 10, i++:",
-			"\tprint('i = $(i)')"
-		]
+		"documentation": "for ..., ..., ... {}"
 	},
 	{
 		"label": "foreach",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "foreach number in 0 ~ 10: print('Number: $(number)')"
+		"documentation": "foreach ... in ... {}"
 	},
 	{
 		"label": "while",
 		"kind": "Keyword",
 		"detail": "Executes the code inside the braces until the condition is false",
-		"documentation": [
-			"varbl i = 0",
-			"while i <= 10: print(i++)"
-		]
+		"documentation": "while ... {}"
 	},
 	{
 		"label": "next",
 		"kind": "Keyword",
 		"detail": "Goes to the next step in the current loop",
 		"documentation": [
-			"varbl i = 0",
-			"while i <= 10 {",
-			"\tif i % 2 == 0: next",
-			"\tprint(i++)",
+			"while ... {",
+			"\tnext",
 			"}"
 		]
 	},
@@ -329,92 +313,101 @@
 		"kind": "Keyword",
 		"detail": "Breaks the current loop",
 		"documentation": [
-			"loop {",
-			"\tif requestToExit: break",
+			"while ... {",
+			"\tbreak",
 			"}"
 		]
 	},
 	{
 		"label": "loop",
 		"kind": "Keyword",
-		"detail": "Same as '```while true { ... }```'",
-		"documentation": "loop: render!"
+		"detail": "Same as '```while true {}```'",
+		"documentation": "loop {}"
 	},
 	{
 		"label": "new",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "new Array(1, 2, 3)"
+		"documentation": "new /* ... */()"
 	},
 	{
 		"label": "as",
 		"kind": "Keyword",
 		"detail": "",
-		"documentation": "using sqrtOf as squareRootOf from math"
+		"documentation": "using /* ... */ as /* ... */ from /* ... */"
 	},
 	{
 		"label": "Any",
 		"kind": "Struct",
-		"detail": "type Any",
-		"documentation": "varbl data: Any = read! -<code>- eval(code)"
+		"detail": "",
+		"documentation": "type Any: =null | Boolean | Number | Object"
 	},
   {
 		"label": "Boolean",
 		"kind": "Constructor",
 		"detail": "",
-		"documentation": "Boolean(0) => false"
+		"documentation": [
+			"type Boolean: =(true | false)",
+			"fun Boolean(from: Any) -> Boolean"
+		]
 	},
   {
 		"label": "Number",
 		"kind": "Constructor",
 		"detail": "",
-		"documentation": "Number('123') => 123"
+		"documentation": "fun Number(from: Any = '0') -> Number"
 	},
   {
 		"label": "String",
 		"kind": "Constructor",
 		"detail": "",
-		"documentation": "String(123) => '123'"
+		"documentation": "fun String(from: Any = 0) -> String"
 	},
   {
 		"label": "Object",
 		"kind": "Constructor",
 		"detail": "",
-		"documentation": "Object('name', 'Jhon') => { name: 'Jhon', # }"
+		"documentation": "fun Object(...(key: String = '', value: Any = null)) -> { *: Any }"
 	},
   {
 		"label": "Array",
 		"kind": "Constructor",
 		"detail": "",
-		"documentation": "Array(1, 2, 3) == [1, 2, 3]"
+		"documentation": [
+			"fun Array(from: Iter = '') -> [*Any = ...from]",
+			"fun Array(from: Any = 0) -> [from]",
+			"class Array(length: Number = 0) -> [*Any]"
+		]
 	},
   {
-		"label": "Tuple",
+		"label": "Iter",
 		"kind": "Constructor",
 		"detail": "",
-		"documentation": "Tuple([1, 2, 3])"
+		"documentation": "type Iter: { (*: Number): Any }"
 	},
   {
 		"label": "Enum",
 		"kind": "Constructor",
 		"detail": "",
-		"documentation": "Enum([1, 2, 3])"
+		"documentation": [
+			"// using Enum from utils",
+			"class Enum(from: Iter) -> Object",
+			"type Enum: { key: Any, value: Number, # }",
+			"fun Enum(...values) -> Enum"
+		]
 	},
   {
 		"label": "Function",
 		"kind": "Constructor",
 		"detail": "",
-		"documentation": [
-			"Function([], 'print(\\'Hello world!\\')')",
-			"\t// fun() { print('Hello world!') }"
-		]
+		"documentation": "fun Function(...params: String, body: String) -> Function"
 	},
   {
 		"label": "Promise",
 		"kind": "Constructor",
 		"detail": "",
 		"documentation": [
-			"Promise((resolve: Function, reject: Function) => {}) -> {",
+			"fun Promise((resolve: Function, reject: Function) => {}) -> {",
 			"\tvalue: Any = null,",
 			"\tstatus: 'pending' | 'resolved' | 'rejected' = 'pending'",
 			"}"
@@ -424,12 +417,15 @@
 		"label": "RegExp",
 		"kind": "Constructor",
 		"detail": "",
-		"documentation": "RegExp('hello', 'i') => /hello/i"
+		"documentation": "fun RegExp(body: String = '(?:)', flags?: Iter = '') -> RegExp"
 	},
   {
 		"label": "Range",
 		"kind": "Constructor",
 		"detail": "",
-		"documentation": "Range(0, 10) => { min: 0, max: 10, # }"
+		"documentation": [
+			"fun Range(a: Number = 0) -> 0 ~ a",
+			"fun Range(a: Number = 0, b: Number = 0) -> a ~ b"
+		]
 	}
 ]
