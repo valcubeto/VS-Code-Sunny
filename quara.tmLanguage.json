@@ -7,6 +7,10 @@
 		"string-patterns": {
 			"patterns": [
 				{
+					"name": "variable.qua",
+					"match": "\\$(?i:[a-z_][a-z_0-9]*)"
+				},
+				{
 					"name": "constant.character.format.qua",
 					"match": "%%"
 				},
@@ -94,7 +98,7 @@
 
 				{
 					"name": "string.regexp.qua regexp.qua",
-					"begin": "(?<=(?:^|(?:^|\\W)(?:if|while|and|or|try|return)|[=:;,\\[{(]|<|>)\\s*)/(?![)?*+]|[^/]*$)",
+					"begin": "(?<=(?:^|(?:^|\\W)(?:if|while|and|or|try|return|matches|is)|[=:;,\\[{(<>?])\\s*)/(?![)?*+]|[^/]*$)",
 					"patterns": [
 						{
 							"name": "constant.other.character-class.regexp.qua",
@@ -123,7 +127,7 @@
 				},
 				{
 					"name": "keyword.operator.assignment.qua",
-					"match": "="
+					"match": ":?="
 				},
 				{
 					"name": "keyword.operator.accessor.qua punctuation.accessor.qua",
