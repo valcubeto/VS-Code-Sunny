@@ -6,10 +6,13 @@ items.forEach(item => {
 		// like snippet bodys
 		item.documentation = item.documentation.join('\n');
 	}
-	
-	// I don't use a template string because there are a lot of escaped characters and it's hard to read
-	item.documentation = new vscode.MarkdownString(item.detail + '\n```quara\n' + item.documentation + '\n```');
-	
+
+	item.detail
+		? item.detail += '\n'
+		: item.detail = '';
+
+	item.documentation = new vscode.MarkdownString(item.detail + '```quara\n' + item.documentation + '\n```');
+
 	item.detail = `(${item.kind.toLowerCase()}) ${item.label}`;
 	item.kind = vscode.CompletionItemKind[item.kind];
 });
