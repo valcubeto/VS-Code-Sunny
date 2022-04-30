@@ -98,7 +98,7 @@
 
 				{
 					"name": "string.regexp.qua regexp.qua",
-					"begin": "(?<=(?:^|(?:^|\\W)(?:if|while|and|or|try|return|matches|is)|[=:;,\\[{(<>?])\\s*)/(?![)?*+]|[^/]*$)",
+					"begin": "(?<=(?:^|(?:^|\\W)(?:if|unless|while|until|and|or|throw|return)|[=:;,\\[{(<>?])\\s*)/(?![)?*+]|[^/]*$)",
 					"patterns": [
 						{
 							"name": "constant.other.character-class.regexp.qua",
@@ -115,7 +115,7 @@
 
 				{
 					"name": "keyword.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:set|get|as|ext|later|del|await|do|not|and|AND|or|OR|in|of|using|from|try|when|if|else|switch|case|skip|return|throw|for|foreach|while|next|break|loop)(?!\\w)"
+					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:as|extends|later|del|await|do|not|and|AND|or|OR|in|of|using|try|catch|if|unless|else|switch|case|skip|return|throw|for|foreach|while|until|next|break|loop)(?!\\w)"
 				},			
 				{
 					"name": "keyword.operator.qua",
@@ -137,7 +137,7 @@
 
 				{
 					"name": "storage.type.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:type|glob|varbl|const|fun|class|getter|setter|async|publ|priv|prot|static)(?!\\w)"
+					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:type|global|varbl|const|fun|class|getter|setter|async|publ|priv|prot|static)(?!\\w)"
 				},
 
 
@@ -159,7 +159,7 @@
 				},
 				{
 					"name": "entity.name.function.qua",
-					"match": "[A-Za-z_]\\w*(?=\\s*(?:\\?\\.\\s*)?(?:\\(|!(?!=)))"
+					"match": "(?<!(?<!(?<!\\.)\\.\\s*|\\w)class\\s+[A-Za-z_]*)[A-Za-z_]\\w*(?=\\s*(?:\\?\\.\\s*)?(?:\\(|!(?!=)))"
 				}
 			]
 		}

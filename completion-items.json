@@ -3,23 +3,23 @@
 		"label": "print",
 		"kind": "Function",
 		"detail": "Prints the values to stdout",
-		"documentation": "fun print(...values, separator := ' ', end := sys.eol) -> Void"
+		"documentation": "fun print(...values, separator := ' ', end := ((sys.eol))) -> ((utils.Void))"
 	},
 	{
 		"label": "write",
 		"kind": "Function",
 		"detail": "Prints the values to stdout",
-		"documentation": "fun write(...values, (separator, end) := '') -> Void"
+		"documentation": "fun write(...values, (separator, end) := '') -> ((utils.Void))"
 	},
 	{
 		"label": "read",
 		"kind": "Function",
-		"documentation": "fun readline! -> String"
+		"documentation": "fun read! -> String"
 	},
   {
 		"label": "exit",
 		"kind": "Function",
-		"documentation": "fun exit(code := 0) -> Void"
+		"documentation": "fun exit(code := 0) -> ((utils.Void))"
 	},
   {
 		"label": "eval",
@@ -199,6 +199,11 @@
 		"documentation": "if ... {}"
 	},
 	{
+		"label": "unless",
+		"kind": "Keyword",
+		"documentation": "unless ... {}"
+	},
+	{
 		"label": "else",
 		"kind": "Keyword",
 		"documentation": "if ... {} else {}"
@@ -257,6 +262,12 @@
 		"kind": "Keyword",
 		"detail": "Executes the code inside the braces until the condition is false",
 		"documentation": "while ... {}"
+	},
+	{
+		"label": "until",
+		"kind": "Keyword",
+		"detail": "Executes the code inside the braces until the condition is true",
+		"documentation": "until ... {}"
 	},
 	{
 		"label": "next",
@@ -328,9 +339,9 @@
 		"label": "Array",
 		"kind": "Constructor",
 		"documentation": [
-			"fun Array(value: ((utils.Iter)) = '') -> [...value]",
-			"fun Array(value: Any) -> [value]",
-			"class Array(length := 0) -> [*Void]"
+			"fun Array(value: ((utils.Iter)) = '') -> [...this.value]",
+			"fun Array(value: Any) -> [this.value]",
+			"class Array(length := 0) -> [*((utils.Void))]"
 		]
 	},
   {
@@ -338,7 +349,7 @@
 		"kind": "Constructor",
 		"documentation": [
 			"// utils.Lim",
-			"fun Lim(length: 0 ~ infy = 0) -> [Void, #%length]"
+			"fun Lim(length: 0 ~ infy = 0) -> [((utils.Void)), #length = this.length]"
 		]
 	},
   {
@@ -346,7 +357,7 @@
 		"kind": "Constructor",
 		"documentation": [
 			"// utils.Iter",
-			"type Iter: { *Number: Any }"
+			"type Iter: { *(Number): Any }"
 		]
 	},
   {
@@ -354,8 +365,8 @@
 		"kind": "Constructor",
 		"documentation": [
 			"// utils.Enum",
-			"class Enum(from: Iter)",
-			"type Enum: { key: Any, value: Number, #Enum }",
+			"class Enum(value: ((utils.Iter)))",
+			"type Enum: { *(Any): Number }",
 			"fun Enum(...values) -> Enum"
 		]
 	},
@@ -387,6 +398,9 @@
   {
 		"label": "Void",
 		"kind": "Struct",
-		"documentation": "type Void { ... }"
+		"documentation": [
+			"// utils.Void",
+			"type Void { ... }"
+		]
 	}
 ]
