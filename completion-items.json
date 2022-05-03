@@ -3,217 +3,205 @@
 		"label": "print",
 		"kind": "Function",
 		"detail": "Prints the values to stdout",
-		"documentation": "fun print(...values, separator := ' ', end := ((sys.eol))) -> ((utils.Void))"
-	},
-	{
+		"documentation": "fun print(...values, separator := ' ', end := ((sys.eol))) -> Void"
+	}, {
+		"label": "clean",
+		"kind": "Function",
+		"detail": "Cleans the console",
+		"documentation": "fun clean! -> Void"
+	}, {
 		"label": "write",
 		"kind": "Function",
 		"detail": "Prints the values to stdout",
-		"documentation": "fun write(...values, (separator, end) := '') -> ((utils.Void))"
-	},
-	{
+		"documentation": "fun write(...values, (separator, end): String) -> Void"
+	}, {
 		"label": "read",
 		"kind": "Function",
 		"documentation": "fun read! -> String"
-	},
-  {
+	}, {
 		"label": "exit",
 		"kind": "Function",
-		"documentation": "fun exit(code := 0) -> ((utils.Void))"
-	},
-  {
+		"documentation": "fun exit(exit_code: Number) -> Void"
+	}, {
 		"label": "eval",
 		"kind": "Function",
-		"documentation": "fun eval(code := '') -> Any"
-	},
-  {
+		"documentation": "fun eval(code: String) -> Any"
+	}, {
 		"label": "isset",
 		"kind": "Function",
 		"documentation": "fun isset(value: Any) -> Boolean"
-	},
-  {
+	}, {
 		"label": "typeof",
 		"kind": "Function",
 		"documentation": "fun typeof(value: Any) -> String"
-	},
-	{
+	}, {
 		"label": "infy",
 		"kind": "Constant",
 		"detail": "Represents the infinity",
 		"documentation": "infy"
-	},
-	{
+	}, {
 		"label": "nanum",
 		"kind": "Constant",
 		"detail": "Represents something that is not a number",
 		"documentation": "nanum"
-	},
-	{
+	}, {
 		"label": "null",
 		"kind": "Constant",
 		"detail": "Represents a nullish value",
 		"documentation": "null"
-	},
-	{
+	}, {
 		"label": "true",
 		"kind": "Constant",
 		"detail": "Represents a truthy value",
 		"documentation": "true"
-	},
-	{
+	}, {
 		"label": "false",
 		"kind": "Constant",
 		"detail": "Represents a falsey value",
 		"documentation": "false"
-	},
-	{
+	}, {
 		"label": "this",
 		"kind": "Constant",
 		"detail": "Represents the current object",
 		"documentation": "this"
-	},
-	{
+	}, {
 		"label": "extends",
 		"kind": "Keyword",
 		"detail": "Inherits all properties from another class",
 		"documentation": "class ... extends ... {}"
-	},
-	{
+	}, {
+		"label": "var",
+		"kind": "Keyword",
+		"documentation": "var ..."
+	}, {
+		"label": "const",
+		"kind": "Keyword",
+		"documentation": "const ... = ..."
+	}, {
 		"label": "getter",
 		"kind": "Keyword",
 		"detail": "Declares a function that is executed when you try to read the value of a variable",
 		"documentation": "getter for ... {}"
-	},
-	{
+	}, {
 		"label": "setter",
 		"kind": "Keyword",
 		"documentation": "setter for ... {}"
-	},
-	{
+	}, {
 		"label": "global",
 		"kind": "Keyword",
 		"documentation": "global ..."
-	},
-	{
+	}, {
 		"label": "later",
 		"kind": "Keyword",
 		"detail": "Allows you to declare a constant but assign a value later",
 		"documentation": "const ... later"
-	},
-	{
+	}, {
 		"label": "del",
 		"kind": "Keyword",
 		"detail": "Deletes a variable",
 		"documentation": "del ..."
-	},
-	{
+	}, {
+		"label": "with",
+		"kind": "Keyword",
+		"documentation": "with ... {}"
+	}, {
+		"label": "def",
+		"kind": "Keyword",
+		"documentation": "def ... {}"
+	}, {
 		"label": "publ",
 		"kind": "Keyword",
 		"documentation": "publ ..."
-	},
-	{
+	}, {
 		"label": "priv",
 		"kind": "Keyword",
 		"documentation": "priv ..."
-	},
-	{
+	}, {
 		"label": "prot",
 		"kind": "Keyword",
 		"documentation": "prot ..."
-	},
-	{
+	}, {
 		"label": "static",
 		"kind": "Keyword",
 		"documentation": "static ..."
-	},
-	{
+	}, {
 		"label": "async",
 		"kind": "Keyword",
 		"documentation": "async fun ...() {}"
-	},
-	{
+	}, {
 		"label": "await",
 		"kind": "Keyword",
 		"documentation": "await ...()"
-	},
-	{
+	}, {
 		"label": "do",
 		"kind": "Keyword",
-		"detail": "Shorthand for '```() => { ... } ()```'",
+		"detail": "Shorthand for '```(fun () { ... })()```'",
 		"documentation": "do { ... }"
-	},
-	{
+	}, {
 		"label": "not",
 		"kind": "Keyword",
 		"detail": "Returns the opposite of a boolean",
 		"documentation": "not ..."
-	},
-	{
+	}, {
 		"label": "and",
 		"kind": "Keyword",
 		"documentation": "... and ..."
-	},
-	{
+	}, {
 		"label": "AND",
 		"kind": "Keyword",
 		"documentation": "... AND ..."
-	},
-	{
+	}, {
 		"label": "or",
 		"kind": "Keyword",
 		"documentation": "... or ..."
-	},
-	{
+	}, {
 		"label": "OR",
 		"kind": "Keyword",
 		"documentation": "... OR ..."
-	},
-	{
+	}, {
 		"label": "in",
 		"kind": "Keyword",
 		"documentation": "... in ..."
-	},
-	{
+	}, {
 		"label": "of",
 		"kind": "Keyword",
 		"documentation": "foreach ... of ... {}"
-	},
-	{
+	}, {
 		"label": "using",
 		"kind": "Keyword",
 		"documentation": "using ..."
-	},
-	{
+	}, {
 		"label": "try",
 		"kind": "Keyword",
 		"documentation": "try {}"
-	},
-	{
+	}, {
 		"label": "catch",
 		"kind": "Keyword",
 		"documentation": "try {} catch ... {}"
-	},
-	{
+	}, {
 		"label": "if",
 		"kind": "Keyword",
 		"documentation": "if ... {}"
-	},
-	{
+	}, {
 		"label": "unless",
 		"kind": "Keyword",
 		"documentation": "unless ... {}"
-	},
-	{
+	}, {
 		"label": "else",
 		"kind": "Keyword",
-		"documentation": "if ... {} else {}"
-	},
-	{
+		"documentation": [
+			"if ... {} else {}",
+			"",
+			"switch ... {",
+			"\tcase ... {}",
+			"\telse {}",
+			"}"
+		]
+	}, {
 		"label": "switch",
 		"kind": "Keyword",
 		"documentation": "switch ... {}"
-	},
-	{
+	}, {
 		"label": "case",
 		"kind": "Keyword",
 		"documentation": [
@@ -221,13 +209,11 @@
 			"\tcase ... {}",
 			"}"
 		]
-	},
-	{
+	}, {
 		"label": "skip",
 		"kind": "Keyword",
 		"documentation": "skip"
-	},
-	{
+	}, {
 		"label": "return",
 		"kind": "Keyword",
 		"documentation": [
@@ -236,171 +222,164 @@
 			"\treturn ...",
 			"}"
 		]
-	},
-	{
+	}, {
 		"label": "throw",
 		"kind": "Keyword",
 		"detail": "Prints the value to std.err and breaks the execution of your program",
 		"documentation": "throw ..."
-	},
-	{
+	}, {
 		"label": "for",
 		"kind": "Keyword",
 		"detail": "A classic for-loop",
 		"documentation": "for ..., ..., ... {}"
-	},
-	{
+	}, {
 		"label": "foreach",
 		"kind": "Keyword",
 		"documentation": [
 			"foreach value in ... {}",
 			"foreach key of ... {}"
 		]
-	},
-	{
+	}, {
 		"label": "while",
 		"kind": "Keyword",
 		"detail": "Executes the code inside the braces until the condition is false",
 		"documentation": "while ... {}"
-	},
-	{
+	}, {
 		"label": "until",
 		"kind": "Keyword",
 		"detail": "Executes the code inside the braces until the condition is true",
 		"documentation": "until ... {}"
-	},
-	{
+	}, {
 		"label": "next",
 		"kind": "Keyword",
 		"detail": "Goes to the next step in the current loop",
 		"documentation": [
-			"while ... {",
+			"loop {",
 			"\t// ...",
 			"\tnext",
 			"}"
 		]
-	},
-	{
+	}, {
 		"label": "break",
 		"kind": "Keyword",
 		"detail": "Breaks the current loop",
 		"documentation": [
-			"while ... {",
+			"loop {",
 			"\t// ...",
 			"\tbreak",
 			"}"
 		]
-	},
-	{
+	}, {
 		"label": "loop",
 		"kind": "Keyword",
 		"detail": "Same as '```while true {}```'",
 		"documentation": "loop {}"
-	},
-	{
+	}, {
 		"label": "new",
 		"kind": "Keyword",
 		"documentation": "new ...()"
-	},
-	{
+	}, {
 		"label": "as",
 		"kind": "Keyword",
 		"documentation": "using ... as ..."
-	},
-	{
+	}, {
 		"label": "Any",
 		"kind": "Struct",
-		"documentation": "type Any: null | Boolean | Number | Object"
-	},
-  {
+		"documentation": "type Any: Boolean | Number | Object"
+	}, {
 		"label": "Boolean",
 		"kind": "Constructor",
 		"documentation": [
 			"type Boolean: true | false",
 			"fun Boolean(value: Any) -> Boolean"
 		]
-	},
-  {
+	}, {
 		"label": "Number",
 		"kind": "Constructor",
-		"documentation": "fun Number(value: Any = '0') -> Number"
-	},
-  {
+		"documentation": "fun Number(value: Any) -> Number"
+	}, {
 		"label": "String",
 		"kind": "Constructor",
-		"documentation": "fun String(value: Any = 0) -> String"
-	},
-  {
+		"documentation": "fun String(value: Any) -> String"
+	}, {
 		"label": "Object",
 		"kind": "Constructor",
-		"documentation": "fun Object(...(key := '', value: Any = null)) -> { *: Any }"
-	},
-  {
+		"documentation": "fun Object(...(key: String, value: Any?)) -> { *: Any }"
+	}, {
 		"label": "Array",
 		"kind": "Constructor",
 		"documentation": [
-			"fun Array(value: ((utils.Iter)) = '') -> [...this.value]",
-			"fun Array(value: Any) -> [this.value]",
-			"class Array(length := 0) -> [*((utils.Void))]"
+			"fun Array(value: Iter = '') -> [*Iter]",
+			"fun Array(value: Any) -> [Any]",
+			"class Array(length: 0 ~ Math.MAX) -> [*Void]"
 		]
-	},
-  {
+	}, {
 		"label": "Lim",
 		"kind": "Constructor",
 		"documentation": [
 			"// utils.Lim",
-			"fun Lim(length: 0 ~ infy = 0) -> [((utils.Void)), #length = this.length]"
+			"fun Lim(length: 0 ~ Number.MAX) -> [Void]"
 		]
-	},
-  {
+	}, {
 		"label": "Iter",
 		"kind": "Constructor",
 		"documentation": [
 			"// utils.Iter",
-			"type Iter: { *(Number): Any }"
+			"type Iter: { (Number): Any }"
 		]
-	},
-  {
+	}, {
 		"label": "Enum",
 		"kind": "Constructor",
 		"documentation": [
 			"// utils.Enum",
-			"class Enum(value: ((utils.Iter)))",
-			"type Enum: { *(Any): Number }",
+			"class Enum(value: Iter)",
+			"type Enum: { (Any): Number }",
 			"fun Enum(...values) -> Enum"
 		]
-	},
-  {
+	}, {
 		"label": "Function",
 		"kind": "Constructor",
 		"documentation": "fun Function(params: [String], body: String)"
-	},
-  {
+	}, {
 		"label": "Promise",
 		"kind": "Constructor",
 		"documentation": [
-			"fun Promise(((resolve, reject)?: fun (value: Any) -> ((utils.Void))) => {}) -> {",
-			"\tvalue: Any = null,",
-			"\tstatus: 'pending' | 'resolved' | 'rejected' = 'pending'",
+			"fun Promise(function: ((resolve, reject)?: (value: Any) -> Void) -> Any) -> {",
+			"\tvalue: Any?,",
+			"\tstatus: 'pending' | 'resolved' | 'rejected'",
 			"}"
 		]
-	},
-  {
+	}, {
 		"label": "RegExp",
 		"kind": "Constructor",
-		"documentation": "fun RegExp(body := '(?:)', flags?: ((utils.Iter)) = '')"
-	},
-  {
+		"documentation": "fun RegExp(body := '(?:)', flags?: Iter = '')"
+	}, {
 		"label": "Range",
 		"kind": "Constructor",
-		"documentation": "fun Range(a := 0, b? := 0) -> #{ (MIN, MAX): Number, __matches(), __in() }"
-	},
-  {
+		"documentation": "fun Range(a := 0, b? := 0)"
+	}, {
 		"label": "Void",
 		"kind": "Struct",
-		"documentation": [
-			"// utils.Void",
-			"type Void { ... }"
-		]
+		"documentation": "type Void"
+	}, {
+		"label": "Error",
+		"kind": "Constructor",
+		"documentation": "class Error"
+	}, {
+		"label": "SyntaxError",
+		"kind": "Constructor",
+		"documentation": "class SyntaxError extends Error"
+	}, {
+		"label": "TypeError",
+		"kind": "Constructor",
+		"documentation": "class TypeError extends Error"
+	}, {
+		"label": "ReferenceError",
+		"kind": "Constructor",
+		"documentation": "class ReferenceError extends Error"
+	}, {
+		"label": "InternalError",
+		"kind": "Constructor",
+		"documentation": "class InternalError extends Error"
 	}
 ]

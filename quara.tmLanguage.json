@@ -98,7 +98,7 @@
 
 				{
 					"name": "string.regexp.qua regexp.qua",
-					"begin": "(?<=(?:^|(?:^|\\W)(?:if|unless|while|until|and|or|throw|return)|[=:;,\\[{(<>?])\\s*)/(?![)?*+]|[^/]*$)",
+					"begin": "(?<=(?:^|(?:^|\\W)(?:if|unless|while|until|and|or|throw|return)|[|=:;,\\[{(<>?])\\s*)/(?![)?*+]|[^/]*$)",
 					"patterns": [
 						{
 							"name": "constant.other.character-class.regexp.qua",
@@ -115,7 +115,7 @@
 
 				{
 					"name": "keyword.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:as|extends|later|del|await|do|not|and|AND|or|OR|in|of|using|try|catch|if|unless|else|switch|case|skip|return|throw|for|foreach|while|until|next|break|loop)(?!\\w)"
+					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:with|as|extends|later|del|await|do|not|and|AND|or|OR|in|of|using|try|catch|if|unless|else|switch|case|skip|return|throw|for|foreach|while|until|next|break|loop)(?!\\w)"
 				},			
 				{
 					"name": "keyword.operator.qua",
@@ -127,23 +127,23 @@
 				},
 				{
 					"name": "keyword.operator.assignment.qua",
-					"match": ":?="
+					"match": "[-+*/^%&|?:]?="
 				},
 				{
 					"name": "keyword.operator.accessor.qua punctuation.accessor.qua",
-					"match": "\\??[.#]"
+					"match": "[.#]"
 				},
 
 
 				{
 					"name": "storage.type.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:type|global|varbl|const|fun|class|getter|setter|async|publ|priv|prot|static)(?!\\w)"
+					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:def|global|var|const|fun|class|getter|setter|async|publ|priv|prot|static)(?!\\w)"
 				},
 
 
 				{
 					"name": "support.class.builtin.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:Any|Boolean|Number|String|Object|Array|Function|Promise|RegExp|Range)(?!\\w)"
+					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:Void|Any|Boolean|Number|String|Object|Array|Function|Promise|RegExp|Range|Error|SyntaxError|TypeError|ReferenceError|InternalError)(?!\\w)"
 				},
 
 
