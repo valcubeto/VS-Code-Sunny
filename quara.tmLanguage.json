@@ -149,7 +149,7 @@
 
 				{
 					"name": "support.function.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:print|write|clean|read|exit|eval|isset|typeof)(?!\\w)"
+					"match": "(?<!\\w)((?<!(?<!\\.)\\.\\s*)(?:print|write|clean|read|exit|eval|isset|typeof)|__ctor|__dtor|__repr)(?!\\w)"
 				},
 
 

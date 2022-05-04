@@ -381,5 +381,17 @@
 		"label": "InternalError",
 		"kind": "Constructor",
 		"documentation": "class InternalError extends Error"
+	}, {
+		"label": "__ctor",
+		"kind": "Function",
+		"documentation": "fun __ctor!"
+	}, {
+		"label": "__dtor",
+		"kind": "Function",
+		"documentation": "fun __dtor!"
+	}, {
+		"label": "__repr",
+		"kind": "Function",
+		"documentation": "fun __repr!"
 	}
 ]
