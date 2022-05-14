@@ -3,7 +3,7 @@
 		"label": "print",
 		"kind": "Function",
 		"detail": "Prints the values to stdout",
-		"documentation": "fun print(...values, separator := ' ', end := ((sys.eol))) -> Void"
+		"documentation": "fun print(...values, sep := ' ', end := ((sys.EOL))) -> Void"
 	}, {
 		"label": "clean",
 		"kind": "Function",
@@ -13,7 +13,7 @@
 		"label": "write",
 		"kind": "Function",
 		"detail": "Prints the values to stdout",
-		"documentation": "fun write(...values, (separator, end): String) -> Void"
+		"documentation": "fun write(...values, (sep, end): String) -> Void"
 	}, {
 		"label": "read",
 		"kind": "Function",
@@ -108,6 +108,10 @@
 		"label": "def",
 		"kind": "Keyword",
 		"documentation": "def ... {}"
+	}, {
+		"label": "fun",
+		"kind": "Keyword",
+		"documentation": "fun ...() {}"
 	}, {
 		"label": "publ",
 		"kind": "Keyword",
@@ -285,26 +289,26 @@
 	}, {
 		"label": "Any",
 		"kind": "Struct",
-		"documentation": "type Any: Boolean | Number | Object"
+		"documentation": "def Any: Boolean | Number | Object"
 	}, {
 		"label": "Boolean",
 		"kind": "Constructor",
 		"documentation": [
-			"type Boolean: true | false",
+			"def Boolean: true | false",
 			"fun Boolean(value: Any) -> Boolean"
 		]
 	}, {
 		"label": "Number",
 		"kind": "Constructor",
-		"documentation": "fun Number(value: Any) -> Number"
+		"documentation": "fun Number(value: Any)"
 	}, {
 		"label": "String",
 		"kind": "Constructor",
-		"documentation": "fun String(value: Any) -> String"
+		"documentation": "fun String(value: Any)"
 	}, {
 		"label": "Object",
 		"kind": "Constructor",
-		"documentation": "fun Object(...(key: String, value: Any?)) -> { *: Any }"
+		"documentation": "fun Object(...(key: Any, value: Any?)) -> { *: Any? }"
 	}, {
 		"label": "Array",
 		"kind": "Constructor",
@@ -325,7 +329,7 @@
 		"kind": "Constructor",
 		"documentation": [
 			"// utils.Iter",
-			"type Iter: { (Number): Any }"
+			"def Iter: { (Number): Any }"
 		]
 	}, {
 		"label": "Enum",
@@ -333,7 +337,7 @@
 		"documentation": [
 			"// utils.Enum",
 			"class Enum(value: Iter)",
-			"type Enum: { (Any): Number }",
+			"def Enum: { (Any): Number }",
 			"fun Enum(...values) -> Enum"
 		]
 	}, {
@@ -352,7 +356,7 @@
 	}, {
 		"label": "RegExp",
 		"kind": "Constructor",
-		"documentation": "fun RegExp(body := '(?:)', flags?: Iter = '')"
+		"documentation": "fun RegExp(body := '(?:)', flags?: Iter)"
 	}, {
 		"label": "Range",
 		"kind": "Constructor",
@@ -360,7 +364,7 @@
 	}, {
 		"label": "Void",
 		"kind": "Struct",
-		"documentation": "type Void"
+		"documentation": "def Void"
 	}, {
 		"label": "Error",
 		"kind": "Constructor",

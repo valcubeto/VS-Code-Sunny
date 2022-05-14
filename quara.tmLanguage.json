@@ -4,162 +4,119 @@
 	"scopeName": "source.qua",
 	"patterns": [{ "include": "#all" }],
 	"repository": {
-		"string-patterns": {
-			"patterns": [
-				{
-					"name": "variable.qua",
-					"match": "\\$(?i:[a-z_][a-z_0-9]*)"
-				},
-				{
-					"name": "constant.character.format.qua",
-					"match": "%%"
-				},
-				{
-					"name": "constant.other.character-class.qua",
-					"match": "\\\\[trnv]"
-				},
-				{
-					"name": "constant.character.escape.qua",
-					"match": "\\\\."
-				},
-				{
-					"contentName": "variable.qua",
-					"begin": "\\$\\(",
-					"beginCaptures": {
-						"0": { "name": "punctuation.definition.template-expression.begin.qua" }
-					},
-					"patterns": [{ "include": "#all" }],
-					"end": "\\)",
-					"endCaptures": {
-						"0": { "name": "punctuation.definition.template-expression.end.qua" }
-					}
-				}
-			]
-		},
 		"all": {
 			"patterns": [
 				{
+					"name": "",
 					"begin": "\\(",
-					"beginCaptures": {
-						"0": { "name": "punctuation.definition.parameters.begin.qua" }
-					},
+					"beginCaptures": [{
+						"name": "punctuation.definition.parameters.begin.qua"
+					}],
 					"patterns": [{ "include": "#all" }],
 					"end": "\\)",
-					"endCaptures": {
-						"0": { "name": "punctuation.definition.parameters.end.qua" }
-					}
-				},
-
-
-				{
+					"endCaptures": [{
+						"name": "punctuation.definition.parameters.end.qua"
+					}]
+				}, {
 					"patterns": [
 						{
 							"name": "comment.line.qua",
 							"begin": "//",
-							"end": "\\n"
-						},
-						{
+							"end": "\\n|$"
+						}, {
 							"name": "comment.block.qua",
 							"begin": "/\\*",
 							"end": "\\*/"
 						}
 					]
-				},
-
-
-				{
+				}, {
 					"name": "constant.numeric.qua",
 					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:infy|nanum|(?i:0b[01]+|0x[0-9a-f]+|(?:0|0?[1-9][0-9]*)(?:(?:\\.[0-9]+)?(?:e[+-]?[0-9]+)?)))(?!\\w)"
-				},
-				{
+				}, {
 					"name": "constant.language.qua",
 					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:true|false|null)(?!\\w)"
-				},
-
-				{
+				}, {
 					"name": "punctuation.terminator.statement.qua",
 					"match": ";"
-				},
-
-
-				{
-					"name": "string.quoted.double.qua",
-					"begin": "\"",
-					"patterns": [{ "include": "#string-patterns" }],
-					"end": "\"|\\n"
-				},
-				{
-					"name": "string.quoted.single.qua",
-					"begin": "'",
-					"patterns": [{ "include": "#string-patterns" }],
-					"end": "'|\\n"
-				},
-
-
-				{
+				}, {
+					"name": "string.quoted.qua",
+					"begin": "\"|'",
+					"patterns": [
+						{
+							"name": "variable.qua",
+							"match": "\\$(?i:[a-z_][a-z_0-9]*(?:(\\.)[a-z_][a-z_0-9]*)?)",
+							"captures": { "1": {
+								"name": "keyword.operator.accessor.qua punctuation.accessor.qua"
+							}}
+						}, {
+							"name": "constant.character.format.qua",
+							"match": "%%"
+						}, {
+							"name": "constant.other.character-class.qua",
+							"match": "\\\\[trn]"
+						}, {
+							"name": "constant.character.escape.qua",
+							"match": "\\\\."
+						}, {
+							"contentName": "variable.qua",
+							"begin": "\\$\\(",
+							"beginCaptures": [{
+								"name": "punctuation.definition.template-expression.begin.qua"
+							}],
+							"patterns": [{ "include": "#all" }],
+							"end": "\\)",
+							"endCaptures": [{
+								"name": "punctuation.definition.template-expression.end.qua"
+							}]
+						}
+					],
+					"end": "\\0|\\n"
+				}, {
 					"name": "string.regexp.qua regexp.qua",
-					"begin": "(?<=(?:^|(?:^|\\W)(?:if|unless|while|until|and|or|throw|return)|[|=:;,\\[{(<>?])\\s*)/(?![)?*+]|[^/]*$)",
+					"begin": "(?<=(?:^|(?:^|\\W)(?:if|unless|while|until|and|or|throw|return|not|switch)|[|=:;,\\[{(<>?])\\s*)/(?![)?*+]|[^/]*$)",
 					"patterns": [
 						{
 							"name": "constant.other.character-class.regexp.qua",
-							"match": "\\\\[trnvWwDdSs]"
-						},
-						{
+							"match": "\\\\[trnWwDdSs]"
+						}, {
 							"name": "constant.character.escape.qua",
 							"match": "\\\\."
 						}
 					],
 					"end": "/(?i:[dgimsuy]{0,7})|$"
-				},
-
-
-				{
+				}, {
 					"name": "keyword.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:with|as|extends|later|del|await|do|not|and|AND|or|OR|in|of|using|try|catch|if|unless|else|switch|case|skip|return|throw|for|foreach|while|until|next|break|loop)(?!\\w)"
-				},			
-				{
-					"name": "keyword.operator.qua",
-					"match": "[-+*/^%~?|<>]|!="
-				},				
-				{
+					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:with|as|extends|later|del|await|do|not|and|AND|or|OR|in|of|try|catch|if|unless|else|switch|case|skip|return|throw|for|foreach|while|until|next|break|loop)(?!\\w)"
+				}, {
+					"name": "keyword.other.import.qua",
+					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:using)(?!\\w)"
+				}, {
 					"name": "keyword.operator.new.qua",
 					"match": "(?<!(?<!\\.)\\.\\s*|\\w)new(?!\\w)"
-				},
-				{
+				}, {
+					"name": "keyword.operator.qua",
+					"match": "[-+*/^%~?|<>@]|!="
+				}, {
 					"name": "keyword.operator.assignment.qua",
 					"match": "[-+*/^%&|?:]?="
-				},
-				{
+				}, {
 					"name": "keyword.operator.accessor.qua punctuation.accessor.qua",
-					"match": "[.#]"
-				},
-
-
-				{
+					"match": "\\."
+				}, {
 					"name": "storage.type.qua",
 					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:def|global|var|const|fun|class|getter|setter|async|publ|priv|prot|static)(?!\\w)"
-				},
-
-
-				{
+				}, {
 					"name": "support.class.builtin.qua",
 					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:Void|Any|Boolean|Number|String|Object|Array|Function|Promise|RegExp|Range|Error|SyntaxError|TypeError|ReferenceError|InternalError)(?!\\w)"
-				},
-
-
-				{
+				}, {
 					"name": "support.function.qua",
 					"match": "(?<!\\w)((?<!(?<!\\.)\\.\\s*)(?:print|write|clean|read|exit|eval|isset|typeof)|__ctor|__dtor|__repr)(?!\\w)"
-				},
-
-
-				{
+				}, {
 					"name": "entity.name.qua",
 					"match": "(?<!(?<!\\.)\\.\\s*|\\w)this(?!\\w)"
-				},
-				{
+				}, {
 					"name": "entity.name.function.qua",
-					"match": "(?<!(?<!(?<!\\.)\\.\\s*|\\w)class\\s+[A-Za-z_]*)[A-Za-z_]\\w*(?=\\s*(?:\\?\\.\\s*)?(?:\\(|!(?!=)))"
+					"match": "(?<![0-9])[A-Za-z_]\\w*(?=\\s*(?:\\?\\.\\s*)?(?:\\(|!(?!=)))"
 				}
 			]
 		}
