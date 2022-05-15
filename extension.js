@@ -3,8 +3,12 @@ const items = require('./completion-items.json');
 
 items.forEach(item => {
 	if (Array.isArray(item.documentation)) {
-		// like snippet bodys
 		item.documentation = item.documentation.join('\n');
+	}
+	
+	if (item.documentation.includes('@')) {
+		const { EOL } = require('node:os');
+		item.documentation = item.documentation.replace(/@(.+?)@/g, (_, code) => eval(code));
 	}
 
 	item.detail

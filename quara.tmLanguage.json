@@ -7,21 +7,48 @@
 		"all": {
 			"patterns": [
 				{
-					"name": "",
+					"match": "(?i:([a-z_][a-z_0-9]*))\\s*(=>)",
+					"captures": {
+						"1": {
+							"name": "meta.parameter.qua variable.parameter.qua"
+						},
+						"2": {
+							"name": "storage.type.function.arrow.qua meta.arrow.qua"
+						}
+					}
+				}, {
 					"begin": "\\(",
-					"beginCaptures": [{
-						"name": "punctuation.definition.parameters.begin.qua"
-					}],
-					"patterns": [{ "include": "#all" }],
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.parameters.begin.qua"
+						}
+					},
+					"patterns": [
+						{
+							"match": "(?<=(?:^|[(,])\\s*)(?i:([a-z_][a-z_0-9]*))\\s*(\\??=(?!=))",
+							"captures": {
+								"1": {
+									"name": "meta.parameter.qua variable.parameter.qua"
+								},
+								"2": {
+									"name": "keyword.operator.assignment.qua"
+								}
+							}
+						}, {
+							"include": "#all"
+						}
+					],
 					"end": "\\)",
-					"endCaptures": [{
-						"name": "punctuation.definition.parameters.end.qua"
-					}]
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.parameters.end.qua"
+						}
+					}
 				}, {
 					"patterns": [
 						{
 							"name": "comment.line.qua",
-							"begin": "//",
+							"begin": "//|#",
 							"end": "\\n|$"
 						}, {
 							"name": "comment.block.qua",
@@ -31,7 +58,7 @@
 					]
 				}, {
 					"name": "constant.numeric.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:infy|nanum|(?i:0b[01]+|0x[0-9a-f]+|(?:0|0?[1-9][0-9]*)(?:(?:\\.[0-9]+)?(?:e[+-]?[0-9]+)?)))(?!\\w)"
+					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:infy|nanum|(?i:0b[01]+|0x[0-9a-f]+|(?:[0-9]+)(?:(?:\\.[0-9]+)?(?:e[+-]?[0-9]+)?)))(?!\\w)"
 				}, {
 					"name": "constant.language.qua",
 					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:true|false|null)(?!\\w)"
@@ -60,14 +87,18 @@
 						}, {
 							"contentName": "variable.qua",
 							"begin": "\\$\\(",
-							"beginCaptures": [{
-								"name": "punctuation.definition.template-expression.begin.qua"
-							}],
+							"beginCaptures": {
+								"0": {
+									"name": "punctuation.definition.template-expression.begin.qua"
+								}
+							},
 							"patterns": [{ "include": "#all" }],
 							"end": "\\)",
-							"endCaptures": [{
-								"name": "punctuation.definition.template-expression.end.qua"
-							}]
+							"endCaptures": {
+								"0": {
+									"name": "punctuation.definition.template-expression.end.qua"
+								}
+							}
 						}
 					],
 					"end": "\\0|\\n"
@@ -107,13 +138,13 @@
 					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:def|global|var|const|fun|class|getter|setter|async|publ|priv|prot|static)(?!\\w)"
 				}, {
 					"name": "support.class.builtin.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:Void|Any|Boolean|Number|String|Object|Array|Function|Promise|RegExp|Range|Error|SyntaxError|TypeError|ReferenceError|InternalError)(?!\\w)"
+					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:Void|Any|Boolean|Number|String|Object|Array|Function|Promise|RegExp|Range|Error|SyntaxError|TypeError|RangeError|ReferenceError|InternalError)(?!\\w)"
 				}, {
 					"name": "support.function.qua",
-					"match": "(?<!\\w)((?<!(?<!\\.)\\.\\s*)(?:print|write|clean|read|exit|eval|isset|typeof)|__ctor|__dtor|__repr)(?!\\w)"
+					"match": "(?<!\\w)((?<!(?<!\\.)\\.\\s*)(?:print|write|clean|read|exit|eval|isempty|typeof)|__ctor|__dtor)(?!\\w)"
 				}, {
 					"name": "entity.name.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|\\w)this(?!\\w)"
+					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(this|args)(?!\\w)"
 				}, {
 					"name": "entity.name.function.qua",
 					"match": "(?<![0-9])[A-Za-z_]\\w*(?=\\s*(?:\\?\\.\\s*)?(?:\\(|!(?!=)))"
