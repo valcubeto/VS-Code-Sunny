@@ -11,9 +11,8 @@ items.forEach(item => {
 		item.documentation = item.documentation.replace(/@(.+?)@/g, (_, code) => eval(code));
 	}
 
-	item.detail
-		? item.detail += '\n'
-		: item.detail = '';
+	if (item.detail) item.detail += '\n'
+	else item.detail = '';
 
 	item.documentation = new vscode.MarkdownString(item.detail + '```quara\n' + item.documentation + '\n```');
 
