@@ -6,12 +6,11 @@ items.forEach(item => {
 		item.documentation = item.documentation.join('\n');
 	}
 	
-	if (item.documentation.includes('@')) {
-		const { EOL } = require('node:os');
-		item.documentation = item.documentation.replace(/@(.+?)@/g, (_, code) => eval(code));
+	if (item.documentation.includes('@@')) {
+		item.documentation = item.documentation.replace(/@@(.+?)@@/g, (_, code) => eval(`const{EOL}=require("node:os");${code}`));
 	}
 
-	if (item.detail) item.detail += '\n'
+	if (item.detail) item.detail += '\n';
 	else item.detail = '';
 
 	item.documentation = new vscode.MarkdownString(item.detail + '```quara\n' + item.documentation + '\n```');

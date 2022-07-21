@@ -7,13 +7,14 @@
 		"all": {
 			"patterns": [
 				{
-					"match": "(?i:([a-z_][a-z_0-9]*))\\s*(=>)",
+					"match": "(?<=@\\s*)(?:([A-Za-z_]\\w*)|\\(\\s*([A-Za-z_]\\w*)(?:\\s*,\\s*([A-Za-z_]\\w*))*\\s*\\))",
 					"captures": {
 						"1": {
-							"name": "meta.parameter.qua variable.parameter.qua"
-						},
-						"2": {
-							"name": "storage.type.function.arrow.qua meta.arrow.qua"
+							"name": "support.function.qua"
+						}, "2": {
+							"name": "support.function.qua"
+						}, "3": {
+							"name": "support.function.qua"
 						}
 					}
 				}, {
@@ -23,21 +24,9 @@
 							"name": "punctuation.definition.parameters.begin.qua"
 						}
 					},
-					"patterns": [
-						{
-							"match": "(?<=(?:^|[(,])\\s*)(?i:([a-z_][a-z_0-9]*))\\s*(\\??=(?!=))",
-							"captures": {
-								"1": {
-									"name": "meta.parameter.qua variable.parameter.qua"
-								},
-								"2": {
-									"name": "keyword.operator.assignment.qua"
-								}
-							}
-						}, {
-							"include": "#all"
-						}
-					],
+					"patterns": [{
+						"include": "#all"
+					}],
 					"end": "\\)",
 					"endCaptures": {
 						"0": {
@@ -48,7 +37,7 @@
 					"patterns": [
 						{
 							"name": "comment.line.qua",
-							"begin": "//|#",
+							"begin": "//",
 							"end": "\\n|$"
 						}, {
 							"name": "comment.block.qua",
@@ -71,10 +60,7 @@
 					"patterns": [
 						{
 							"name": "variable.qua",
-							"match": "\\$(?i:[a-z_][a-z_0-9]*(?:(\\.)[a-z_][a-z_0-9]*)?)",
-							"captures": { "1": {
-								"name": "keyword.operator.accessor.qua punctuation.accessor.qua"
-							}}
+							"match": "\\$(?i:[a-z_][a-z_0-9]*)"
 						}, {
 							"name": "constant.character.format.qua",
 							"match": "%%"
@@ -104,7 +90,7 @@
 					"end": "\\0|\\n"
 				}, {
 					"name": "string.regexp.qua regexp.qua",
-					"begin": "(?<=(?:^|(?:^|\\W)(?:if|unless|while|until|and|or|throw|return|not|switch)|[|=:;,\\[{(<>?])\\s*)/(?![)?*+]|[^/]*$)",
+					"begin": "(?<=(?:^|(?:^|\\W)(?:if|unless|while|until|and|or|throw|return|not|when|is)|[|=:;,\\[{(<>?])\\s*)/(?![)?*+]|[^/]*$)",
 					"patterns": [
 						{
 							"name": "constant.other.character-class.regexp.qua",
@@ -112,30 +98,39 @@
 						}, {
 							"name": "constant.character.escape.qua",
 							"match": "\\\\."
+						}, {
+							"name": "punctuation.definition.character-class.regexp.qua constant.other.character-class.set.regexp.qua",
+							"match": "\\[.+?\\]",
+							"captures": {}
+						}, {
+
 						}
 					],
 					"end": "/(?i:[dgimsuy]{0,7})|$"
 				}, {
 					"name": "keyword.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:with|as|extends|later|del|await|do|not|and|AND|or|OR|in|of|try|catch|if|unless|else|switch|case|skip|return|throw|for|foreach|while|until|next|break|loop)(?!\\w)"
+					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:as|extends|later|await|not|and|or|in|of|try|catch|if|unless|else|when|is|skip|return|throw|for|foreach|while|until|next|break|loop|del)(?!\\w)"
 				}, {
 					"name": "keyword.other.import.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:using)(?!\\w)"
-				}, {
-					"name": "keyword.operator.new.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|\\w)new(?!\\w)"
+					"match": "(?<!(?<!\\.)\\.\\s*|\\w)using(?!\\w)"
 				}, {
 					"name": "keyword.operator.qua",
-					"match": "[-+*/^%~?|<>@]|!="
+					"match": "[-+*/^%~?|<>@&]|!="
 				}, {
 					"name": "keyword.operator.assignment.qua",
 					"match": "[-+*/^%&|?:]?="
 				}, {
+					"name": "keyword.operator.type.annotation.qua meta.type.annotation.qua",
+					"match": ":"
+				}, {
 					"name": "keyword.operator.accessor.qua punctuation.accessor.qua",
 					"match": "\\."
 				}, {
+					"name": "invalid.deprecated.qua markup.strikethrough.qua",
+					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:AND|del|do|from|gen|global|getter|new|OR|setter|yield|with)(?!\\w)|[#$]"
+				}, {
 					"name": "storage.type.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:def|global|var|const|fun|class|getter|setter|async|publ|priv|prot|static)(?!\\w)"
+					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:def|var|const|fun|class|async|publ|priv|prot|static)(?!\\w)"
 				}, {
 					"name": "support.class.builtin.qua",
 					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:Void|Any|Boolean|Number|String|Object|Array|Function|Promise|RegExp|Range|Error|SyntaxError|TypeError|RangeError|ReferenceError|InternalError)(?!\\w)"
@@ -144,7 +139,7 @@
 					"match": "(?<!\\w)((?<!(?<!\\.)\\.\\s*)(?:print|write|clean|read|exit|eval|isempty|typeof)|__ctor|__dtor)(?!\\w)"
 				}, {
 					"name": "entity.name.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(this|args)(?!\\w)"
+					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(this|it|arguments)(?!\\w)"
 				}, {
 					"name": "entity.name.function.qua",
 					"match": "(?<![0-9])[A-Za-z_]\\w*(?=\\s*(?:\\?\\.\\s*)?(?:\\(|!(?!=)))"

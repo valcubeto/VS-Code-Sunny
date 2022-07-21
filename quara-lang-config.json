@@ -30,6 +30,8 @@
 	],
 	"onEnterRules": [{
 		"beforeText": ":$",
-		"action": { "indent": "indent" }
+		"action": {
+			"indent": "indent"
+		}
 	}]
 }
