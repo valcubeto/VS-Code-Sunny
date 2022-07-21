@@ -11,11 +11,6 @@
 			") -> Void"
 		]
 	}, {
-		"label": "clean",
-		"kind": "Function",
-		"detail": "Cleans the console",
-		"documentation": "fun clean! -> Void"
-	}, {
 		"label": "write",
 		"kind": "Function",
 		"detail": "Prints the values",
@@ -100,6 +95,11 @@
 		"kind": "Keyword",
 		"detail": "Declares a block-scoped variable, optionally initializing it to a value",
 		"documentation": "var ..."
+	}, {
+		"label": "del",
+		"kind": "Keyword",
+		"detail": "Deletes a variable",
+		"documentation": "del ..."
 	}, {
 		"label": "const",
 		"kind": "Keyword",
