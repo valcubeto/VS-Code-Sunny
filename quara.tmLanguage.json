@@ -2,7 +2,11 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "Quara",
 	"scopeName": "source.qua",
-	"patterns": [{ "include": "#all" }],
+	"patterns": [
+		{
+			"include": "#all"
+		}
+	],
 	"repository": {
 		"all": {
 			"patterns": [
@@ -11,66 +15,81 @@
 					"captures": {
 						"1": {
 							"name": "support.function.qua"
-						}, "2": {
+						},
+						"2": {
 							"name": "support.function.qua"
-						}, "3": {
+						},
+						"3": {
 							"name": "support.function.qua"
 						}
 					}
-				}, {
+				},
+				{
 					"begin": "\\(",
 					"beginCaptures": {
 						"0": {
 							"name": "punctuation.definition.parameters.begin.qua"
 						}
 					},
-					"patterns": [{
-						"include": "#all"
-					}],
+					"patterns": [
+						{
+							"include": "#all"
+						}
+					],
 					"end": "\\)",
 					"endCaptures": {
 						"0": {
 							"name": "punctuation.definition.parameters.end.qua"
 						}
 					}
-				}, {
+				},
+				{
 					"patterns": [
 						{
 							"name": "comment.line.qua",
 							"begin": "//",
 							"end": "\\n|$"
-						}, {
+						},
+						{
 							"name": "comment.block.qua",
 							"begin": "/\\*",
 							"end": "\\*/"
 						}
 					]
-				}, {
+				},
+				{
 					"name": "constant.numeric.qua",
 					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:infy|nanum|(?i:0b[01]+|0x[0-9a-f]+|(?:[0-9]+)(?:(?:\\.[0-9]+)?(?:e[+-]?[0-9]+)?)))(?!\\w)"
-				}, {
+				},
+				{
 					"name": "constant.language.qua",
 					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:true|false|null)(?!\\w)"
-				}, {
+				},
+				{
 					"name": "punctuation.terminator.statement.qua",
 					"match": ";"
-				}, {
+				},
+				{
 					"name": "string.quoted.qua",
 					"begin": "\"|'",
 					"patterns": [
 						{
 							"name": "variable.qua",
 							"match": "\\$(?i:[a-z_][a-z_0-9]*)"
-						}, {
+						},
+						{
 							"name": "constant.character.format.qua",
 							"match": "%%"
-						}, {
+						},
+						{
 							"name": "constant.other.character-class.qua",
 							"match": "\\\\[trn]"
-						}, {
+						},
+						{
 							"name": "constant.character.escape.qua",
 							"match": "\\\\."
-						}, {
+						},
+						{
 							"contentName": "variable.qua",
 							"begin": "\\$\\(",
 							"beginCaptures": {
@@ -78,7 +97,11 @@
 									"name": "punctuation.definition.template-expression.begin.qua"
 								}
 							},
-							"patterns": [{ "include": "#all" }],
+							"patterns": [
+								{
+									"include": "#all"
+								}
+							],
 							"end": "\\)",
 							"endCaptures": {
 								"0": {
@@ -88,59 +111,104 @@
 						}
 					],
 					"end": "\\0|\\n"
-				}, {
+				},
+				{
 					"name": "string.regexp.qua regexp.qua",
 					"begin": "(?<=(?:^|(?:^|\\W)(?:if|unless|while|until|and|or|throw|return|not|when|is)|[|=:;,\\[{(<>?])\\s*)/(?![)?*+]|[^/]*$)",
 					"patterns": [
 						{
+							"match": "\\^|\\$",
+							"name": "keyword.control.anchor.regexp"
+						},
+						{
+							"match": "\\\\[1-9]",
+							"name": "keyword.other.back-reference.regexp"
+						},
+						{
+							"match": "[?+*]|\\{(?:[0-9]+|[0-9]+,[0-9]+|,[0-9]+|[0-9]+,)\\}",
+							"name": "keyword.operator.quantifier.regexp"
+						},
+						{
+							"match": "\\|",
+							"name": "keyword.operator.or.regexp"
+						},
+						{
 							"name": "constant.other.character-class.regexp.qua",
 							"match": "\\\\[trnWwDdSs]"
-						}, {
+						},
+						{
 							"name": "constant.character.escape.qua",
 							"match": "\\\\."
-						}, {
+						},
+						{
+							"name": "invalid.illegal.qua",
+							"match": "\\[\\]"
+						},
+						{
 							"name": "punctuation.definition.character-class.regexp.qua constant.other.character-class.set.regexp.qua",
-							"match": "\\[.+?\\]",
-							"captures": {}
-						}, {
-
+							"begin": "\\[(\\^)?",
+							"beginCaptures": {
+								"1": {
+									"patterns": [
+										{
+											"match": "\\^",
+											"name": "keyword.operator.negation.regexp.qua"
+										}
+									]
+								}
+							},
+							"end": "\\]",
+							"patterns": [
+								{
+									"name": "keyword.operator.qua",
+									"match": "-"
+								}
+							]
 						}
 					],
-					"end": "/(?i:[dgimsuy]{0,7})|$"
-				}, {
+					"end": "/(?:[ig]|ig|gi)(?![\\w])|/|$"
+				},
+				{
 					"name": "keyword.qua",
 					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:as|extends|later|await|not|and|or|in|of|try|catch|if|unless|else|when|is|skip|return|throw|for|foreach|while|until|next|break|loop|del)(?!\\w)"
-				}, {
+				},
+				{
 					"name": "keyword.other.import.qua",
 					"match": "(?<!(?<!\\.)\\.\\s*|\\w)using(?!\\w)"
-				}, {
+				},
+				{
 					"name": "keyword.operator.qua",
 					"match": "[-+*/^%~?|<>@&]|!="
-				}, {
+				},
+				{
 					"name": "keyword.operator.assignment.qua",
 					"match": "[-+*/^%&|?:]?="
-				}, {
+				},
+				{
 					"name": "keyword.operator.type.annotation.qua meta.type.annotation.qua",
 					"match": ":"
-				}, {
+				},
+				{
 					"name": "keyword.operator.accessor.qua punctuation.accessor.qua",
 					"match": "\\."
-				}, {
-					"name": "invalid.deprecated.qua markup.strikethrough.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:AND|del|do|from|gen|global|getter|new|OR|setter|yield|with)(?!\\w)|[#$]"
-				}, {
+				},
+				{
 					"name": "storage.type.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:def|var|const|fun|class|async|publ|priv|prot|static)(?!\\w)"
-				}, {
+					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:type|var|const|fun|class|async|public|private|static)(?!\\w)"
+				},
+				{
 					"name": "support.class.builtin.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:Void|Any|Boolean|Number|String|Object|Array|Function|Promise|RegExp|Range|Error|SyntaxError|TypeError|RangeError|ReferenceError|InternalError)(?!\\w)"
-				}, {
+					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:Void|Any|Boolean|Number|String|Object|Array|Function|Promise|RegExp|Range|(?:Syntax|Type|Range|Reference|Internal)?Error)(?!\\w)"
+				},
+				{
 					"name": "support.function.qua",
-					"match": "(?<!\\w)((?<!(?<!\\.)\\.\\s*)(?:print|write|clean|read|exit|eval|isempty|typeof)|__ctor|__dtor)(?!\\w)"
-				}, {
+					"match": "(?<!\\w)((?<!(?<!\\.)\\.\\s*)(?:print|write|clear|read|exit|eval|isempty|typeof)|creator)(?!\\w)"
+				},
+				{
 					"name": "entity.name.qua",
 					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(this|it|arguments)(?!\\w)"
-				}, {
+				},
+				{
 					"name": "entity.name.function.qua",
 					"match": "(?<![0-9])[A-Za-z_]\\w*(?=\\s*(?:\\?\\.\\s*)?(?:\\(|!(?!=)))"
 				}
