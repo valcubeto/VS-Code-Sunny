@@ -1,28 +1,30 @@
 {
-	"name": "quara",
-	"displayName": "Quara",
-	"description": "Quara syntax highlighting and snippets",
+	"name": "quantum",
+	"displayName": "Quantum",
+	"description": "Quantum syntax highlighting and snippets",
 	"version": "0.0.1",
-	"engines": { "vscode": "^1.64.0" },
+	"engines": {
+		"vscode": "^1.64.0"
+	},
 	"categories": ["Programming Languages"],
-	"repository": "https://github.com/ValentineBucket/vsc-quara",
-	"activationEvents": ["onLanguage:quara"],
+	"repository": "https://github.com/ValentineBucket/vsc-quantum",
+	"activationEvents": ["onLanguage:quantum"],
 	"main": "./extension.js",
 	"contributes": {
 		"languages": [{
-			"id": "quara",
-			"aliases": ["Quara", "quara"],
+			"id": "quantum",
+			"aliases": ["Quantum", "quantum"],
 			"extensions": [".qua"],
-			"configuration": "./quara-lang-config.json"
+			"configuration": "./quantum-lang-config.json"
 		}],
 		"grammars": [{
-			"language": "quara",
+			"language": "quantum",
 			"scopeName": "source.qua",
-			"path": "./quara.tmLanguage.json"
+			"path": "./quantum.tmLanguage.json"
 		}],
 		"snippets": [{
-			"language": "quara",
-			"path": "./quara.code-snippets"
+			"language": "quantum",
+			"path": "./quantum.code-snippets"
 		}]
 	}
 }

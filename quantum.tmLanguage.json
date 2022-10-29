@@ -121,6 +121,10 @@
 							"name": "keyword.control.anchor.regexp"
 						},
 						{
+							"match": "(?<=\\()(?:\\?:|\\?<?[=!])",
+							"name": "entity.name.qua"
+						},
+						{
 							"match": "\\\\[1-9]",
 							"name": "keyword.other.back-reference.regexp"
 						},
@@ -166,15 +170,20 @@
 							]
 						}
 					],
-					"end": "/(?:[ig]|ig|gi)(?![\\w])|/|$"
+					"end": "/([ig]|ig|gi)(?![\\w])|/|$",
+					"endCaptures": {
+						"1": {
+							"name": "entity.name.qua"
+						}
+					}
 				},
 				{
 					"name": "keyword.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:as|extends|later|await|not|and|or|in|of|try|catch|if|unless|else|when|is|skip|return|throw|for|foreach|while|until|next|break|loop|del)(?!\\w)"
+					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:as|extends|later|await|not|and|or|in|of|try|catch|if|unless|else|when|is|skip|return|throw|foreach|while|until|next|break|loop|del)(?!\\w)"
 				},
 				{
 					"name": "keyword.other.import.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|\\w)using(?!\\w)"
+					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:import|from)(?!\\w)"
 				},
 				{
 					"name": "keyword.operator.qua",
@@ -202,11 +211,11 @@
 				},
 				{
 					"name": "support.function.qua",
-					"match": "(?<!\\w)((?<!(?<!\\.)\\.\\s*)(?:print|write|clear|read|exit|eval|isempty|typeof)|creator)(?!\\w)"
+					"match": "(?<!\\w)((?<!(?<!\\.)\\.\\s*)(?:print|write|clear|read|exit|eval|isempty|typeof)|__ctor|__dtor)(?!\\w)"
 				},
 				{
 					"name": "entity.name.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(this|it|arguments)(?!\\w)"
+					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(global|this|it|arguments)(?!\\w)"
 				},
 				{
 					"name": "entity.name.function.qua",
