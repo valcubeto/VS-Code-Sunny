@@ -4,8 +4,63 @@
 		"is": "keyword",
 		"description": "Executes the code if the condition is truthy",
 		"documentation": [
-			"if user.age < 18:",
-			"\tret 'Too young'"
+			"if user.age >= 18:",
+			"\tprint('Access granted')"
+		]
+	},
+	{
+		"name": "else",
+		"is": "keyword",
+		"description": "Executes the code if the previous conditions failed",
+		"documentation": [
+			"if user.age >= 18:",
+			"\tprint('Access granted')",
+			"else:",
+			"\tprint('Access denied')"
+		]
+	},
+	{
+		"name": "or",
+		"is": "keyword",
+		"description": "Evaluates the code at the right if the left code is false. Works as JavaScript's `||` and `else if`",
+		"documentation": [
+			"if user.age >= 18 or user.hasSpecialAccess:",
+			"\tprint('Access granted')",
+			"else:",
+			"\tprint('Access denied')",
+			"",
+			"if message == 'hello':",
+			"\tprint('Hello!')",
+			"or message == 'bye':",
+			"\tprint('Good bye!')",
+			"else:",
+			"\tprint('I did not understand :(')"
+		]
+	},
+	{
+		"name": "print",
+		"is": "function",
+		"description": "Prints all the values to the standard output",
+		"documentation": [
+			"print('Hello world!')",
+			"",
+			"fun print(...values: any?[], sep: str = ' ', end: str = '\n') -> void:",
+			"\twrite(values.join(sep), end)"
+		]
+	},
+	{
+		"name": "read",
+		"is": "function",
+		"description": "Gets the next line from the standard input",
+		"documentation": [
+			"line = read!",
+			"",
+			"// Example of usage",
+			"fun ask(question: str) -> str:",
+			"\twrite(question, ' ')",
+			"\tinput = read!",
+			"\tret input",
+			"age = ask('How old are you?')"
 		]
 	}
 ]

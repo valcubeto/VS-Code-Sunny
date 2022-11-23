@@ -8,6 +8,13 @@ const {
 
 const items = require('./completion-items.json')
 
+/**
+ * @typedef {{ label: string, kind: number, detail: string, documentation: string }} CompletionItem
+ * 'label' is the word to be completed, 'kind' is the icon to be displayed,
+ * 'detail' is a comment above the documentation, 'documentation' here is an example
+ */
+
+ /** @type {CompletionItem[]} */
 const completionItems = []
 
 /**
@@ -20,10 +27,6 @@ function capitalize(string) {
 }
 
 for (const item of items) {
-	/**
-	 * 
-	 * @type {{ label: string, kind: number,  }}
-	 */
 	const compItem = {}
 
 	compItem.label = item.name
@@ -42,7 +45,7 @@ for (const item of items) {
 	].join('\n')
 	compItem.documentation = new MarkdownString(documentation)
 
-	compItems.push(compItem)
+	completionItems.push(compItem)
 }
 
 function activate({ subscriptions }) {
