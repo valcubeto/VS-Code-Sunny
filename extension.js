@@ -1,5 +1,4 @@
 const {
-		window: { showInformationMessage },
 		languages: { registerCompletionItemProvider },
 		CompletionItemKind,
 		MarkdownString
