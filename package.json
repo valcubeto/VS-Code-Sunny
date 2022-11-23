@@ -1,13 +1,15 @@
 {
 	"name": "quantum",
+	"author": "Val Cubeta",
+	"publisher": "valcubeta",
 	"displayName": "Quantum",
-	"description": "Quantum syntax highlighting and snippets",
+	"description": "Quantum syntax highlighting",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.64.0"
 	},
 	"categories": ["Programming Languages"],
-	"repository": "https://github.com/ValentineBucket/vsc-quantum",
+	"repository": "https://github.com/ValCubeta/vsc-quantum",
 	"activationEvents": ["onLanguage:quantum"],
 	"main": "./extension.js",
 	"contributes": {
@@ -20,11 +22,7 @@
 		"grammars": [{
 			"language": "quantum",
 			"scopeName": "source.qua",
-			"path": "./quantum.tmLanguage.json"
-		}],
-		"snippets": [{
-			"language": "quantum",
-			"path": "./quantum.code-snippets"
+			"path": "./test.tmLanguage.json"
 		}]
 	}
 }

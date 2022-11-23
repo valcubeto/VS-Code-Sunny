@@ -1,27 +1,53 @@
-const vscode = require('vscode');
-const items = require('./completion-items.json');
+const {
+		window: { showInformationMessage },
+		languages: { registerCompletionItemProvider },
+		CompletionItemKind,
+		MarkdownString
+	} = require('vscode')
 
-items.forEach(item => {
-	if (Array.isArray(item.documentation)) {
-		item.documentation = item.documentation.join('\n');
-	}
-	
-	if (item.documentation.includes('@@')) {
-		item.documentation = item.documentation.replace(/@@(.+?)@@/g, (_, code) => eval(`const{EOL}=require("node:os");${code}`));
-	}
 
-	if (item.detail) item.detail += '\n';
-	else item.detail = '';
+const items = require('./completion-items.json')
 
-	item.documentation = new vscode.MarkdownString(item.detail + '```quara\n' + item.documentation + '\n```');
+const finalItems = []
 
-	item.detail = `(${item.kind.toLowerCase()}) ${item.label}`;
-	item.kind = vscode.CompletionItemKind[item.kind];
-});
-
-function activate({ subscriptions }) {
-	const provider = vscode.languages.registerCompletionItemProvider('quara', { provideCompletionItems: () => items });
-	subscriptions.push(provider);
+/**
+ * Uppercases the first letter of each word
+ * @param {string} string The string to be capitalized
+ * @returns {string} The capitalized string
+ */
+function capitalize(string) {
+	return string.replace(/(?<!\w)\w(?=\w)/g, firstLetter => firstLetter.toUpperCase())
 }
 
-module.exports = { activate };
+for (const item of items) {
+	const finalItem = {}
+
+	finalItem.label = item.name
+	finalItem.kind = CompletionItemKind[capitalize(item.is)]
+	finalItem.detail = `${capitalize(item.is)}: ${item.name}`
+
+	const documentation = [
+		item.description,
+		'',
+		'**Example**:',
+		'```quantum',
+		Array.isArray(item.documentation)
+			? item.documentation.join('\n')
+			: item.documentation,
+		'```'
+	].join('\n')
+	finalItem.documentation = new MarkdownString(documentation)
+
+	finalItems.push(finalItem)
+}
+
+function activate({ subscriptions }) {
+	const provider = registerCompletionItemProvider('quantum', {
+		provideCompletionItems() {
+			return finalItems
+		}
+	})
+	subscriptions.push(provider)
+}
+
+module.exports = { activate }

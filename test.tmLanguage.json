@@ -1,0 +1,95 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Quantum",
+	"scopeName": "source.qua",
+	"patterns": [
+		{
+			"include": "#main"
+		}
+	],
+	"repository": {
+		"main": {
+			"patterns": [
+				{
+					"name": "comment.line.qua",
+					"begin": "//",
+					"end": "\\n"
+				},
+				{
+					"name": "comment.block.qua",
+					"begin": "/\\*",
+					"end": "\\*/"
+				},
+				{
+					"name": "constant.numeric.qua",
+					"match": "[0-9]"
+				},
+				{
+					"include": "#operators"
+				},
+				{
+					"match": "[_A-Za-z][_A-Za-z0-9]*",
+					"captures": {
+						"0": {
+							"patterns": [
+								{
+									"include": "#words"
+								}
+							]
+						}
+					}
+				},
+				{
+					"include": "#objects"
+				},
+				{
+					"include": "#strings"
+				}
+			]
+		},
+		"operators": {
+			"patterns": [
+				{
+					"name": "keyword.operator.type.annotation.qua meta.type.annotation.qua",
+					"match": ":"
+				},
+				{
+					"name": "keyword.operator.qua",
+					"match": "[-+/*|~]|[=!<>]=?|\\?|\\.{3}",
+					"comment": "- | + | / | * | '|' | ~ | == | != | >= | <= | ! | > | < | ?"
+				},
+				{
+					"name": "keyword.operator.accessor.qua punctuation.accessor.qua",
+					"match": "\\."
+				},
+				{
+					"name": "keyword.operator.assignment.qua",
+					"match": "(?:[-+/*:]|\\?\\?)?=",
+					"comment": "-= | += | /= | *= | := | ??= | ="
+				}
+			]
+		},
+		"words": {
+			"patterns": [
+				{
+					"name": "keyword.other.import.qua",
+					"match": "^(?:import|from)$"
+				},
+				{
+					"name": "keyword.qua",
+					"match": "(?<!\\w|\\.(?!\\.\\.))(?:if|else|when|is|try|catch|ret)(?!\\w)"
+				},
+				{
+					"name": "support.class.builtin.qua",
+					"match": "any|void|bool|num|str|obj|regexp"
+				}
+			]
+		},
+		"objects": {
+			"patterns": []
+		},
+		"strings": {
+			"patterns": []
+		}
+	}
+}

@@ -12,6 +12,7 @@
 			"patterns": [
 				{
 					"match": "(?<=@\\s*)(?:([A-Za-z_]\\w*)|\\(\\s*([A-Za-z_]\\w*)(?:\\s*,\\s*([A-Za-z_]\\w*))*\\s*\\))",
+					"comment": "@name | @(name) | @(name, name)",
 					"captures": {
 						"1": {
 							"name": "support.function.qua"
@@ -203,7 +204,7 @@
 				},
 				{
 					"name": "storage.type.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:type|var|const|fun|class|async|public|private|static)(?!\\w)"
+					"match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:type|const|fun|class|async|public|private|static)(?!\\w)"
 				},
 				{
 					"name": "support.class.builtin.qua",
