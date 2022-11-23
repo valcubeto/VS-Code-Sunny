@@ -8,7 +8,7 @@ const {
 
 const items = require('./completion-items.json')
 
-const finalItems = []
+const completionItems = []
 
 /**
  * Uppercases the first letter of each word
@@ -20,11 +20,15 @@ function capitalize(string) {
 }
 
 for (const item of items) {
-	const finalItem = {}
+	/**
+	 * 
+	 * @type {{ label: string, kind: number,  }}
+	 */
+	const compItem = {}
 
-	finalItem.label = item.name
-	finalItem.kind = CompletionItemKind[capitalize(item.is)]
-	finalItem.detail = `${capitalize(item.is)}: ${item.name}`
+	compItem.label = item.name
+	compItem.kind = CompletionItemKind[capitalize(item.is)]
+	compItem.detail = `${capitalize(item.is)}: ${item.name}`
 
 	const documentation = [
 		item.description,
@@ -36,15 +40,15 @@ for (const item of items) {
 			: item.documentation,
 		'```'
 	].join('\n')
-	finalItem.documentation = new MarkdownString(documentation)
+	compItem.documentation = new MarkdownString(documentation)
 
-	finalItems.push(finalItem)
+	compItems.push(compItem)
 }
 
 function activate({ subscriptions }) {
 	const provider = registerCompletionItemProvider('quantum', {
 		provideCompletionItems() {
-			return finalItems
+			return completionItems
 		}
 	})
 	subscriptions.push(provider)
