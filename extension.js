@@ -39,16 +39,18 @@ for (const item of items) {
 	compItem.kind = CompletionItemKind[kind]
 	compItem.detail = `${itemIs}: ${item.name}`
 
-	const documentation = [
-		item.description,
-		'',
-		'**Example**:',
-		'```quantum',
-		Array.isArray(item.documentation)
-			? item.documentation.join('\n')
-			: item.documentation,
-		'```'
-	].join('\n')
+	const documentation = item.documentation
+	  ? [
+	    	item.description,
+		    '',
+		    '**Example**:',
+	    	'```quantum',
+	    	Array.isArray(item.documentation)
+			    ? item.documentation.join('\n')
+		    	: item.documentation,
+		    '```'
+	    ].join('\n')
+	  : item.description
 	compItem.documentation = new MarkdownString(documentation)
 
 	completionItems.push(compItem)
