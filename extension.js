@@ -25,12 +25,19 @@ function capitalize(string) {
 	return string.replace(/(?<!\w)\w(?=\w)/g, firstLetter => firstLetter.toUpperCase())
 }
 
+const Kinds = {
+  'type': 'struct'
+}
+
 for (const item of items) {
 	const compItem = {}
-
 	compItem.label = item.name
-	compItem.kind = CompletionItemKind[capitalize(item.is)]
-	compItem.detail = `${capitalize(item.is)}: ${item.name}`
+	const itemIs = capitalize(item.is)
+  const kind = item.is in Kinds
+    ? capitalize(Kinds[item.is])
+    : itemIs
+	compItem.kind = CompletionItemKind[kind]
+	compItem.detail = `${itemIs}: ${item.name}`
 
 	const documentation = [
 		item.description,
