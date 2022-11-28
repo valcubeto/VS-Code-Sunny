@@ -145,5 +145,21 @@
 	    "\tcustom = true",
 	    ")",
 	  ]
-	}
+	},
+	{
+	  "name": "obj",
+	  "is": "type",
+	  "description": "Matches an object",
+	  "documentation": [
+	    "obj:<KeysType = str, ValuesType = any?, match_empty = false>"
+	  ]
+	},
+	{
+	  "name": "arr",
+	  "is": "type",
+	  "description": "Matches an array",
+	  "documentation": [
+	    "arr:<ItemsType = any?, match_empty = false>"
+	  ]
+	},
 ]
