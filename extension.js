@@ -26,31 +26,30 @@ function capitalize(string) {
 }
 
 const Kinds = {
-  'type': 'struct'
+	'type': 'struct'
 }
 
 for (const item of items) {
 	const compItem = {}
 	compItem.label = item.name
 	const itemIs = capitalize(item.is)
-  const kind = item.is in Kinds
-    ? capitalize(Kinds[item.is])
-    : itemIs
+	const kind = item.is in Kinds
+		? capitalize(Kinds[item.is])
+		: itemIs
 	compItem.kind = CompletionItemKind[kind]
 	compItem.detail = `${itemIs}: ${item.name}`
 
 	const documentation = item.documentation
-	  ? [
-	    	item.description,
-		    '',
-		    '**Example**:',
-	    	'```quantum',
-	    	Array.isArray(item.documentation)
-			    ? item.documentation.join('\n')
-		    	: item.documentation,
-		    '```'
-	    ].join('\n')
-	  : item.description
+		? [
+				item.description? `${item.description}\n` : '',
+				'**Example**:',
+				'```quantum',
+				Array.isArray(item.documentation)
+					? item.documentation.join('\n')
+					: item.documentation,
+				'```'
+			].join('\n')
+		: item.description
 	compItem.documentation = new MarkdownString(documentation)
 
 	completionItems.push(compItem)
