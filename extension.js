@@ -8,51 +8,78 @@ const {
 const items = require('./completion-items.json')
 
 /**
- * @typedef {{ label: string, kind: number, detail: string, documentation: string }} CompletionItem
- * 'label' is the word to be completed, 'kind' is the icon to be displayed,
- * 'detail' is a comment above the documentation, 'documentation' here is an example
+ * @typedef {typeof items.keywords} CompletionItem
  */
 
- /** @type {CompletionItem[]} */
+/**
+ * @typedef {{ label: string, kind: number, detail: string, documentation: MarkdownString }} VSCompletionItem
+ * 'label' is the word to be completed, 'kind' is the icon to be displayed,
+ * 'detail' is a title, 'documentation' is a markdown
+ */
+
+ /** @type {CompletionItem} */
 const completionItems = []
 
 /**
- * Uppercases the first letter of each word
- * @param {string} string The string to be capitalized
- * @returns {string} The capitalized string
+ * If the value is an array returns it joined by a new line
+ * @param {string | string[]} value The string or array
+ * @returns {string} The string or the joined array
  */
-function capitalize(string) {
-	return string.replace(/(?<!\w)\w(?=\w)/g, firstLetter => firstLetter.toUpperCase())
+function joinIfArray(value) {
+	if (Array.isArray(value))
+		return value.join('\n')
+	else
+		return `${value}`
+}
+
+/**
+ * @param {CompletionItem} item
+ * @param {string} kind
+ * @returns {VSCompletionItem}
+ */
+function createCompletionItem(item, kind) {
+	const documentation = []
+
+	if (item.description)
+		documentation.push(item.description, '')
+
+	if (item.documentation)
+		documentation.push(
+			'**Documentation**',
+			'```quantum',
+			joinIfArray(item.documentation),
+			'```'
+		)
+
+	if (item.example)
+		documentation.push(
+		'**Example**',
+		'```quantum',
+		joinIfArray(item.example),
+		'```'
+	)
+
+	const completionItem = {
+		kind: CompletionItemKind[kind],
+		label: item.name,
+		detail: `${kind}: ${item.name}`,
+		documentation: new MarkdownString(documentation.join('\n'))
+	}
+
+	return completionItem
 }
 
 const Kinds = {
-	'type': 'struct'
+	'keywords': 'Keyword',
+	'types': 'Struct',
+	'functions': 'Function'
 }
 
-for (const item of items) {
-	const compItem = {}
-	compItem.label = item.name
-	const itemIs = capitalize(item.is)
-	const kind = item.is in Kinds
-		? capitalize(Kinds[item.is])
-		: itemIs
-	compItem.kind = CompletionItemKind[kind]
-	compItem.detail = `${itemIs}: ${item.name}`
-
-	const documentation = item.documentation
-		? [
-				item.description? `${item.description}\n` : '',
-				'**Example**:',
-				'```quantum',
-				Array.isArray(item.documentation)
-					? item.documentation.join('\n')
-					: item.documentation,
-				'```'
-			].join('\n')
-		: item.description
-	compItem.documentation = new MarkdownString(documentation)
-
-	completionItems.push(compItem)
+for (const kind in items) {
+	items[kind].forEach(item => {
+		const completionItem = createCompletionItem(item, Kinds[kind])
+		completionItems.push(completionItem)
+	})
 }
 
 function activate({ subscriptions }) {

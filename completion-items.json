@@ -1,165 +1,179 @@
-[
-	{
-		"name": "if",
-		"is": "keyword",
-		"description": "Executes the code if the condition is truthy",
-		"documentation": [
-			"if user.age >= 18:",
-			"\tprint('Access granted')"
-		]
-	},
-	{
-		"name": "else",
-		"is": "keyword",
-		"description": "Executes the code if the previous conditions failed",
-		"documentation": [
-			"if user.age >= 18:",
-			"\tprint('Access granted')",
-			"else:",
-			"\tprint('Access denied')"
-		]
-	},
-	{
-		"name": "or",
-		"is": "keyword",
-		"description": "Evaluates the code at the right if at the the left is false. Works as JavaScript's `||` and `else if`",
-		"documentation": [
-			"if user.age >= 18 or user.hasSpecialAccess:",
-			"\tprint('Access granted')",
-			"else:",
-			"\tprint('Access denied')",
-			"",
-			"if message == 'hello':",
-			"\tprint('Hello!')",
-			"or message == 'bye':",
-			"\tprint('Good bye!')",
-			"else:",
-			"\tprint('I did not understand :(')"
-		]
-	},
-	{
-		"name": "switch",
-		"is": "keyword",
-		"description": "-",
-		"documentation": [
-		  "print(",
-			"\tswitch message.to_lower!:",
-			"\t\tis 'hello': 'Hello!'",
-			"\t\tis 'bye':   'Goodbye!'",
-			"\t\telse:       'I did not understand...",
-			")"
-		]
-	},
-	{
-		"name": "print",
-		"is": "function",
-		"description": "Prints all the values to the standard output",
-		"documentation": [
-			"print('Hello world!')",
-			"",
-			"fun print(...values: any?[], sep: str = ' ', end: str = '\n') -> void:",
-			"\twrite(values.join(sep), end)"
-		]
-	},
-	{
-	  "name": "void",
-	  "is": "type",
-	  "description": "Matches null and empty values",
-	  "documentation": [
-	    "// The function must be called with an argument, but it can be a number or a void. Also must return null or do not return anything",
-	    "fun test(x: num?) -> void:",
-	    "\tif x:",
-	    "\t\tprint(x)"
-	  ]
-	},
-	{
-	  "name": "any",
-	  "is": "type",
-	  "description": "Matches any type that is not void",
-	  "documentation": [
-	    "fun test! -> any:",
-	    "\treturn math.random!    // must return anything"
-	  ]
-	},
-	{
-	  "name": "bool",
-	  "is": "type",
-	  "description": "Matches `true` or `false`"
-	},
-	{
-	  "name": "bool",
-	  "is": "function",
-	  "description": "Converts the value into a boolean",
-	  "documentation": [
-	    "bool()      // false",
-	    "bool(null)  // false",
-	    "bool(0)     // false",
-	    "bool(nanum) // false",
-	    "bool('')    // false",
-	    "bool([])    // false",
-	    "bool({})    // false",
-	    "bool(false) // false",
-	    "bool(/* Anything else */)    // true"
-	  ]
-	},
-	{
-	  "name": "num",
-	  "is": "type",
-	  "description": "Matches a number or `nanum`"
-	},
-	{
-	  "name": "num",
-	  "is": "function",
-	  "description": "Converts the value into a number",
-	  "documentation": [
-	    "num('123') // 123",
-	    "num()      // 0",
-	    "num(null)  // 0",
-	    "num(false) // 0",
-	    "num(true)  // 1",
-	    "num(/* Anything else */)    // nanum"
-	  ]
-	},
-	{
-	  "name": "str",
-	  "is": "type",
-	  "description": "Matches a string"
-	},
-	{
-	  "name": "str",
-	  "is": "function",
-	  "description": "Converts the value into a string",
-	  "documentation": [
-	    "str(123)       // '123'",
-	    "str([1, 2, 3]) // '1, 2, 3'",
-	    "str({})        // '<obj object>'",
-	    "str(Error())   // '<Error object>'",
-	    "str(null)      // 'null'",
-	    "str(true)      // 'true'",
-	    "str()          // '<empty>'",
-	    "str(print)     // '<function print>'",
-	    "",
-	    "// 'Error: calls the to_string method'",
-	    "str(",
-	    "\tError('calls the to_string method')",
-	    "\tuse_custom = true",
-	    ")"
-	  ]
-	},
-	{
-	  "name": "obj",
-	  "is": "type",
-	  "description": "Matches an object",
-	  "documentation": [
-	    "obj:<KeysType = str, ValuesType = any?, match_empty = false>"
-	  ]
-	},
-	{
-	  "name": "arr",
-	  "is": "type",
-	  "description": "Matches an array",
-	  "documentation": [
-	    "arr:<ItemsType = any?, match_empty = false>"
-	  ]
-	}
-]
+{
+	"keywords": [
+		{
+			"name": "if",
+			"description": "Executes the code if the condition can be converted to true",
+			"example": [
+				"if user.age >= 18:",
+				"\tprint('Access granted')"
+			]
+		},
+		{
+			"name": "else",
+			"description": "Executes the code if the previous conditions failed",
+			"example": [
+				"if user.age >= 18:",
+				"\tprint('Access granted')",
+				"else:",
+				"\tprint('Access denied')"
+			]
+		},
+		{
+			"name": "or",
+			"description": "Evaluates the code at the right if the code at the left is false. Also is an `else if`",
+			"example": [
+				"if user.age >= 18 or user.hasSpecialAccess:",
+				"\tprint('Access granted')",
+				"else:",
+				"\tprint('Access denied')",
+				"",
+				"if message == 'hello':",
+				"\tprint('Hello!')",
+				"or message == 'bye':",
+				"\tprint('Goodbye!')",
+				"else:",
+				"\tprint('I did not understand...')"
+			]
+		},
+		{
+			"name": "switch",
+			"example": [
+				"print(",
+				"\tswitch message.to_lower!:",
+				"\t\tis 'hello':",
+				"\t\t\t'Hello!'",
+				"\t\tis 'bye':",
+				"\t\t\t'Goodbye!'",
+				"\t\telse:",
+				"\t\t\t'I did not understand...",
+				")"
+			]
+		}
+	],
+	"types": [
+		{
+			"name": "void",
+			"description": "Matches null and empty values",
+			"documentation": "type void = (null | __empty__))",
+			"example": [
+				"// The function must be called with an argument,",
+				"// but it can be a number or a void.",
+				"// Also must return null or do not return anything",
+				"fun test(x: num?) -> void:",
+				"\tif x:",
+				"\t\tprint(x)"
+			]
+		},
+		{
+			"name": "any",
+			"description": "Matches any type that is not void",
+			"documentation": "type any = not void",
+			"example": [
+				"fun test! -> any:",
+				"\treturn math.random! // must return anything"
+			]
+		},
+		{
+			"name": "bool",
+			"description": "Matches `true` or `false`",
+			"documentation": "type bool = (true | false)"
+		},
+		{
+			"name": "num",
+			"description": "Matches a number or `nanum`"
+		},
+
+		{
+			"name": "str",
+			"description": "Matches a string"
+		},
+		{
+			"name": "obj",
+			"description": "Matches an object",
+			"documentation": [
+				"type obj:<",
+				"\tKeysType = str",
+				"\tValuesType = any?",
+				"\tmatch_empty: bool = false",
+				">"
+			]
+		},
+		{
+			"name": "arr",
+			"description": "Matches an array",
+			"documentation": [
+				"type arr:<",
+				"\tItemsType = any?",
+				"\tmatch_empty: bool = false",
+				">"
+			]
+		}
+	],
+	"functions": [
+		{
+			"name": "print",
+			"description": "Prints all the values to the standard output",
+			"documentation": [
+				"fun print(",
+				"\t\t...values: arr:<match_empty = true>",
+				"\t\tsep: str = ' '",
+				"\t\tend: str = '\\n'",
+				"\t) -> void"
+			],
+			"example": [
+				"print('Hello world!')",
+				"print('Hello', 'world!')",
+				"print('Hello world', end = '!!!\\n')"
+			]
+		},
+		{
+			"name": "bool",
+			"description": "Converts the value into a boolean",
+			"documentation": "fun bool(value?) -> bool",
+			"example": [
+				"bool()      // false",
+				"bool(null)  // false",
+				"bool(0)     // false",
+				"bool(nanum) // false",
+				"bool('')    // false",
+				"bool([])    // false",
+				"bool({})    // false",
+				"bool(false) // false",
+				"bool(/* Anything else */) // true"
+			]
+		},
+		{
+			"name": "num",
+			"description": "Converts the value into a number",
+			"documentation": [
+				"num('123') // 123",
+				"num()      // 0",
+				"num(null)  // 0",
+				"num(false) // 0",
+				"num(true)  // 1",
+				"num(/* Anything else */) // nanum"
+			]
+		},
+		{
+			"name": "str",
+			"description": "Converts the value into a string",
+			"documentation": "fun str(value?, use_custom?: bool) -> str",
+			"example": [
+				"str(123)       // '123'",
+				"str([1, 2, 3]) // '1, 2, 3'",
+				"str({})        // '<obj object>'",
+				"str(Error())   // '<Error object>'",
+				"str(null)      // 'null'",
+				"str(true)      // 'true'",
+				"str()          // '<empty>'",
+				"str(print)     // '<function print>'",
+				"",
+				"// 'Error: calls the to_string method'",
+				"str(",
+				"\tError('calls the to_string method')",
+				"\tuse_custom = true",
+				")"
+			]
+		}
+	]
+}
