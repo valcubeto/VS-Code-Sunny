@@ -133,11 +133,16 @@
 	    "str(123)          // '123'",
 	    "str([1, 2, 3])    // '1, 2, 3'",
 	    "str({})           // '<obj object>'",
-	    "str(Error())      // '<Error object>'",
 	    "str(null)         // 'null'",
 	    "str(true)         // 'true'",
 	    "str()             // '<empty>'",
 	    "str(print)        // '<function print>'",
+	    "",
+	    "// 'Error: calls the to_string method'",
+	    "str(",
+	    "\tError('calls the to_string method')",
+	    "\tcheck_custom = true",
+	    ")",
 	  ]
 	}
 ]
