@@ -80,5 +80,10 @@
 	    "fun test! -> any:",
 	    "\treturn math.random!    // must return anything"
 	  ]
+	},
+	{
+	  "name": "bool",
+	  "is": "type",
+	  "description": "Matches true or false"
 	}
 ]
