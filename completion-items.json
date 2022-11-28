@@ -62,8 +62,19 @@
 		]
 	},
 	{
+	  "name": "void",
+	  "is": "type",
+	  "description": "Matches null and empty values",
+	  "documentation": [
+	    "// The function must be called with an argument, but it can be a number or a void. Also must return null or do not return anything"
+	    "fun test(x: num?) -> void:",
+	    "\tif x:",
+	    "\t\tprint(x)"
+	  ]
+	},
+	{
 	  "name": "any",
-	  "is": "struct",
+	  "is": "type",
 	  "description": "Matches any type that is not void",
 	  "documentation": [
 	    "fun test! -> any:",
