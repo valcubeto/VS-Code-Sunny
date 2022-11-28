@@ -60,5 +60,14 @@
 			"fun print(...values: any?[], sep: str = ' ', end: str = '\n') -> void:",
 			"\twrite(values.join(sep), end)"
 		]
+	},
+	{
+	  "name": "any",
+	  "is": "struct",
+	  "description": "Matches any type that is not void",
+	  "documentation": [
+	    "fun test! -> any:",
+	    "\treturn math.random!    // must return anything"
+	  ]
 	}
 ]
