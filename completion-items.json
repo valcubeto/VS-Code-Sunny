@@ -38,6 +38,22 @@
 		]
 	},
 	{
+		"name": "switch",
+		"is": "keyword",
+		"description": "-",
+		"documentation": [
+		  "print(",
+			"\tswitch message.to_lower!:",
+			"\t\tis 'hello':",
+			"\t\t\t'Hello!'",
+			"\t\tis 'bye':",
+			"\t\t\t'Goodbye!'",
+			"\t\telse:",
+			"\t\t\t'I did not understand...",
+			")"
+		]
+	},
+	{
 		"name": "print",
 		"is": "function",
 		"description": "Prints all the values to the standard output",
@@ -46,21 +62,6 @@
 			"",
 			"fun print(...values: any?[], sep: str = ' ', end: str = '\n') -> void:",
 			"\twrite(values.join(sep), end)"
-		]
-	},
-	{
-		"name": "read",
-		"is": "function",
-		"description": "Gets the next line from the standard input",
-		"documentation": [
-			"line = read!",
-			"",
-			"// Example of usage",
-			"fun ask(question: str) -> str:",
-			"\twrite(question, ' ')",
-			"\tinput = read!",
-			"\tret input",
-			"age = ask('How old are you?')"
 		]
 	}
 ]
