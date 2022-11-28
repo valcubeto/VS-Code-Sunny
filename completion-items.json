@@ -44,12 +44,9 @@
 		"documentation": [
 		  "print(",
 			"\tswitch message.to_lower!:",
-			"\t\tis 'hello':",
-			"\t\t\t'Hello!'",
-			"\t\tis 'bye':",
-			"\t\t\t'Goodbye!'",
-			"\t\telse:",
-			"\t\t\t'I did not understand...",
+			"\t\tis 'hello': 'Hello!'",
+			"\t\tis 'bye':   'Goodbye!'",
+			"\t\telse:       'I did not understand...",
 			")"
 		]
 	},
