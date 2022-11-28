@@ -84,7 +84,7 @@
 	{
 	  "name": "bool",
 	  "is": "type",
-	  "description": "Matches true or false"
+	  "description": "Matches `true` or `false`"
 	},
 	{
 	  "name": "bool",
@@ -100,6 +100,44 @@
 	    "bool({})       // false",
 	    "bool(false)    // false",
 	    "bool(/* Anything else */)    // true"
+	  ]
+	},
+	{
+	  "name": "num",
+	  "is": "type",
+	  "description": "Matches a number or `nanum`"
+	},
+	{
+	  "name": "num",
+	  "is": "function",
+	  "description": "Converts the value into a number",
+	  "documentation": [
+	    "num('123')    // 123",
+	    "num()         // 0",
+	    "num(null)     // 0",
+	    "num(false)    // 0",
+	    "num(true)     // 1",
+	    "num(/* Anything else */)    // nanum",
+	  ]
+	},
+	{
+	  "name": "str",
+	  "is": "type",
+	  "description": "Matches a string"
+	},
+	{
+	  "name": "str",
+	  "is": "function",
+	  "description": "Converts the value to a string",
+	  "documentation": [
+	    "str(123)          // '123'",
+	    "str([1, 2, 3])    // '1, 2, 3'",
+	    "str({})           // '<obj object>'",
+	    "str(Error())      // '<Error object>'",
+	    "str(null)         // 'null'",
+	    "str(true)         // 'true'",
+	    "str()             // '<empty>'",
+	    "str(print)        // '<function print>'",
 	  ]
 	}
 ]
