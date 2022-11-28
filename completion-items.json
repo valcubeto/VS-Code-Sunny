@@ -128,7 +128,7 @@
 	{
 	  "name": "str",
 	  "is": "function",
-	  "description": "Converts the value to a string",
+	  "description": "Converts the value into a string",
 	  "documentation": [
 	    "str(123)          // '123'",
 	    "str([1, 2, 3])    // '1, 2, 3'",
