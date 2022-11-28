@@ -22,7 +22,7 @@
 	{
 		"name": "or",
 		"is": "keyword",
-		"description": "Evaluates the code at the right if the left code is false. Works as JavaScript's `||` and `else if`",
+		"description": "Evaluates the code at the right if at the the left is false. Works as JavaScript's `||` and `else if`",
 		"documentation": [
 			"if user.age >= 18 or user.hasSpecialAccess:",
 			"\tprint('Access granted')",
