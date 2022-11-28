@@ -66,7 +66,7 @@
 	  "is": "type",
 	  "description": "Matches null and empty values",
 	  "documentation": [
-	    "// The function must be called with an argument, but it can be a number or a void. Also must return null or do not return anything"
+	    "// The function must be called with an argument, but it can be a number or a void. Also must return null or do not return anything",
 	    "fun test(x: num?) -> void:",
 	    "\tif x:",
 	    "\t\tprint(x)"
@@ -117,7 +117,7 @@
 	    "num(null)     // 0",
 	    "num(false)    // 0",
 	    "num(true)     // 1",
-	    "num(/* Anything else */)    // nanum",
+	    "num(/* Anything else */)    // nanum"
 	  ]
 	},
 	{
@@ -143,7 +143,7 @@
 	    "str(",
 	    "\tError('calls the to_string method')",
 	    "\tcustom = true",
-	    ")",
+	    ")"
 	  ]
 	},
 	{
@@ -161,5 +161,5 @@
 	  "documentation": [
 	    "arr:<ItemsType = any?, match_empty = false>"
 	  ]
-	},
+	}
 ]
