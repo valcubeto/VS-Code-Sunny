@@ -142,7 +142,7 @@
 	    "// 'Error: calls the to_string method'",
 	    "str(",
 	    "\tError('calls the to_string method')",
-	    "\tcustom = true",
+	    "\tuse_custom = true",
 	    ")"
 	  ]
 	},
