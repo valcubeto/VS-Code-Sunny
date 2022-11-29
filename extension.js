@@ -7,14 +7,9 @@ const {
 
 const items = require('./completion-items.json')
 
-/**
+/** 
  * @typedef {typeof items.keywords} CompletionItem
- */
-
-/**
- * @typedef {{ label: string, kind: number, detail: string, documentation: MarkdownString }} VSCompletionItem
- * 'label' is the word to be completed, 'kind' is the icon to be displayed,
- * 'detail' is a title, 'documentation' is a markdown
+ * @typedef {typeof import('vscode').CompletionItem} VSCompletionItem
  */
 
  /** @type {CompletionItem} */
@@ -30,6 +25,12 @@ function joinIfArray(value) {
 		return value.join('\n')
 	else
 		return `${value}`
+}
+
+const Kinds = {
+	'keywords': 'Keyword',
+	'types': 'Struct',
+	'functions': 'Function'
 }
 
 /**
@@ -60,7 +61,7 @@ function createCompletionItem(item, kind) {
 	)
 
 	const completionItem = {
-		kind: CompletionItemKind[kind],
+		kind: CompletionItemKind[Kinds[kind]],
 		label: item.name,
 		detail: `${kind}: ${item.name}`,
 		documentation: new MarkdownString(documentation.join('\n'))
@@ -69,15 +70,9 @@ function createCompletionItem(item, kind) {
 	return completionItem
 }
 
-const Kinds = {
-	'keywords': 'Keyword',
-	'types': 'Struct',
-	'functions': 'Function'
-}
-
 for (const kind in items) {
 	items[kind].forEach(item => {
-		const completionItem = createCompletionItem(item, Kinds[kind])
+		const completionItem = createCompletionItem(item, kind)
 		completionItems.push(completionItem)
 	})
 }

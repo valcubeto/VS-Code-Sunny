@@ -92,8 +92,8 @@
 			"description": "Matches an object",
 			"documentation": [
 				"type obj:<",
-				"\tKeysType = str",
-				"\tValuesType = any?",
+				"\tKeys = str",
+				"\tValues = any?",
 				"\tmatch_empty: bool = false",
 				">"
 			]
@@ -103,7 +103,7 @@
 			"description": "Matches an array",
 			"documentation": [
 				"type arr:<",
-				"\tItemsType = any?",
+				"\tItems = any?",
 				"\tmatch_empty: bool = false",
 				">"
 			]
@@ -125,6 +125,32 @@
 				"print('Hello', 'world!')",
 				"print('Hello world', end = '!!!\\n')"
 			]
+		},
+		{
+			"name": "typeof",
+			"description": "Returns a string representation of the type of the value",
+			"documentation": [
+				"fun typeof(value?) -> (",
+				"\t| 'void'",
+				"\t| 'boolean'",
+				"\t| 'number'",
+				"\t| 'string'",
+				"\t| 'object'",
+				"\t| 'array'",
+				"\t| 'regexp'",
+				"\t| 'function'",
+				")"
+			]
+		},
+		{
+			"name": "eval",
+			"description": "Evaluates the string as code",
+			"documentation": "fun eval(string: str)"
+		},
+		{
+			"name": "exit",
+			"description": "Ends the process",
+			"documentation": "fun exit(code?: num = 0)"
 		},
 		{
 			"name": "bool",
