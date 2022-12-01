@@ -84,12 +84,6 @@
 					"match": "any|void|bool|num|str|obj|regexp"
 				}
 			]
-		},
-		"objects": {
-			"patterns": []
-		},
-		"strings": {
-			"patterns": []
 		}
 	}
 }
