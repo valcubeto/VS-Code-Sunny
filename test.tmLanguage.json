@@ -25,13 +25,6 @@
 					"match": "(?<![a-z_A-Z.])[0-9]+(?:'[0-9]+)*(?:\\.[0-9])?(?:[eE][-+][0-9]+)?(?![a-z_A-Z])"
 				},
 				{
-					"include": "#operators"
-				},
-				{
-					"name": "keyword.conditional.qua",
-					"match": "(?<![a-z_A-Z.])(?:if|else)(?![a-z_A-Z])"
-				},
-				{
 					"name": "keyword.operator.type.annotation.qua meta.type.annotation.qua",
 					"match": ":"
 				},
@@ -55,12 +48,16 @@
 				},
 				{
 					"name": "keyword.qua",
-					"match": "(?<![a-z_A-Z.])(?:if|else|when|is|try|catch|return|throw)(?![a-z_A-Z])"
+					"match": "(?<![a-z_A-Z.])(?:if|unless|or|when|is|else|try|catch|then|return|throw)(?![a-z_A-Z])"
 				},
 				{
 					"name": "support.class.builtin.qua",
-					"match": "(?<![a-z_A-Z])(?:any|void|bool|num|str|obj|arr|regexp)(?![a-z_A-Z])"
-				}
+					"match": "(?<![a-z_A-Z.])(?:any|void|bool|num|str|obj|arr|regexp)(?![a-z_A-Z])"
+				},
+				{
+					"name": "support.function.builtin.qua",
+					"match": "(?<![a-z_A-Z.])(?:bool|num|str|obj|arr|regexp)(?=\\s*\\()"
+				},
 			]
 		}
 	}
