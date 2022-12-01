@@ -55,7 +55,7 @@
 				},
 				{
 					"name": "keyword.qua",
-					"match": "(?<!\\w|\\.(?!\\.\\.))(?:if|else|when|is|try|catch|ret)(?!\\w)"
+					"match": "(?<![a-z_A-Z.])(?:if|else|when|is|try|catch|return|throw)(?![a-z_A-Z])"
 				},
 				{
 					"name": "support.class.builtin.qua",
