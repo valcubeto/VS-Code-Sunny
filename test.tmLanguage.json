@@ -66,11 +66,7 @@
 					"name": "keyword.operator.assignment.qua",
 					"match": "(?:[-+/*:]|\\?\\?)?=",
 					"comment": "-= | += | /= | *= | := | ??= | ="
-				}
-			]
-		},
-		"words": {
-			"patterns": [
+				},
 				{
 					"name": "keyword.other.import.qua",
 					"match": "^(?:import|from)$"
