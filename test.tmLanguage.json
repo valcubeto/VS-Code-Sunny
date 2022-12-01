@@ -59,7 +59,7 @@
 					"comment": "- | + | / | * | '|' | ~ | == | != | >= | <= | ! | > | < | ? | ..."
 				},
 				{
-					"name": "keyword.operator.accessor.qua punctuation.accessor.qua",
+					"name": "punctuation.accessor.qua keyword.operator.accessor.qua",
 					"match": "\\."
 				},
 				{
