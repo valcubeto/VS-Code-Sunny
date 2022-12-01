@@ -56,7 +56,7 @@
 				{
 					"name": "keyword.operator.qua",
 					"match": "[-+/*|~]|[=!<>]=?|\\?|\\.{3}",
-					"comment": "- | + | / | * | '|' | ~ | == | != | >= | <= | ! | > | < | ?"
+					"comment": "- | + | / | * | '|' | ~ | == | != | >= | <= | ! | > | < | ? | ..."
 				},
 				{
 					"name": "keyword.operator.accessor.qua punctuation.accessor.qua",
