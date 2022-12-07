@@ -63,7 +63,7 @@ function createCompletionItem(item, kind) {
 	const completionItem = {
 		kind: CompletionItemKind[Kinds[kind]],
 		label: item.name,
-		detail: `${kind}: ${item.name}`,
+		detail: `${kind.slice(0, -1)}: ${item.name}`,
 		documentation: new MarkdownString(documentation.join('\n'))
 	}
 

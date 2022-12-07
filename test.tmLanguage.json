@@ -22,16 +22,21 @@
 				},
 				{
 					"name": "constant.numeric.qua",
-					"match": "(?<![a-z_A-Z.])[0-9]+(?:'[0-9]+)*(?:\\.[0-9])?(?:[eE][-+][0-9]+)?(?![a-z_A-Z])"
+					"match": "(?<![a-z_A-Z.0-9])(?:[0-9]+(?:'[0-9]+)*(?:\\.[0-9])?(?:[eE][-+]?[0-9]+)?|nanum|infy|0b[01]+|0x[0-9a-fA-F]+)(?![a-z_A-Z0-9])",
+					"comment": "1234567890 | 1'234'567'890 | 12345.67890 | 12345e+67890 | nanum | infy | 0b101010 | 0x5050FF"
 				},
 				{
 					"name": "keyword.operator.type.annotation.qua meta.type.annotation.qua",
 					"match": ":"
 				},
 				{
+					"name": "keyword.operator.rest.qua",
+					"match": "\\.{3}"
+				},
+				{
 					"name": "keyword.operator.qua",
-					"match": "[-+/*|]|[=!<>]=?|\\?|\\.{3}",
-					"comment": "- | + | / | * | '|' | == | != | >= | <= | ! | > | < | ? | ..."
+					"match": "[-+/*|]|[=!<>]=?|\\?",
+					"comment": "- | + | / | * | '|' | == | != | >= | <= | ! | > | < | ?"
 				},
 				{
 					"name": "punctuation.accessor.qua keyword.operator.accessor.qua",
@@ -43,21 +48,75 @@
 					"comment": "+= | -= | ="
 				},
 				{
+					"begin": "\\(",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.parameters.begin.qua"
+						}
+					},
+					"patterns": [
+						{
+							"name": "variable.parameter.qua",
+							"match": "(?<![a-z_A-Z.0-9])[a-z_A-Z]+(?=\\s*=)"
+						},
+						{
+							"include": "#main"
+						}
+					],
+					"end": "\\)",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.parameters.end.qua"
+						}
+					}
+				},
+				{
+					"begin": "(?<=fun\\s+[a-z_A-Z]+\\s*)\\(",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.parameters.begin.qua"
+						}
+					},
+					"patterns": [
+						{
+							"name": "variable.parameter.qua",
+							"match": "(?<![a-z_A-Z.0-9])[a-z_A-Z]+(?=\\s*[=,):])"
+						},
+						{
+							"include": "#main"
+						}
+					],
+					"end": "\\)",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.parameters.end.qua"
+						}
+					}
+				},
+				{
 					"name": "keyword.other.import.qua",
-					"match": "(?<![a-z_A-Z.])(?:import|from)(?![a-z_A-Z])"
+					"match": "(?<![a-z_A-Z.0-9])(?:import|from)(?![a-z_A-Z0-9])"
+				},
+				{
+					"name": "keyword.other.import.qua keyword.other.export.qua",
+					"match": "(?<![a-z_A-Z.0-9])export(?![a-z_A-Z0-9])"
 				},
 				{
 					"name": "keyword.qua",
-					"match": "(?<![a-z_A-Z.])(?:if|unless|or|when|is|else|try|catch|then|return|throw)(?![a-z_A-Z])"
-				},
-				{
-					"name": "support.class.builtin.qua",
-					"match": "(?<![a-z_A-Z.])(?:any|void|bool|num|str|obj|arr|regexp)(?![a-z_A-Z])"
+					"match": "(?<![a-z_A-Z.0-9])(?:if|unless|or|when|is|else|try|catch|then|return|throw)(?![a-z_A-Z0-9])"
 				},
 				{
 					"name": "support.function.builtin.qua",
-					"match": "(?<![a-z_A-Z.])(?:bool|num|str|obj|arr|regexp)(?=\\s*\\()"
+					"match": "(?<![a-z_A-Z.0-9])(?:print|typeof|eval|isempty|(?:Syntax|Type|Range|Reference)?Error|to_string|__ctor)(?![a-z_A-Z0-9])"
 				},
+				{
+					"name": "support.function.builtin.qua",
+					"match": "(?<![a-z_A-Z.0-9])(?:bool|num|str|obj|arr|regexp)(?=\\s*\\()"
+				},
+				{
+					"name": "support.class.builtin.qua",
+					"match": "(?<![a-z_A-Z.0-9])(?:any|void|bool|num|str|obj|arr|regexp|(?:Syntax|Type|Range|Reference)?Error)(?![a-z_A-Z0-9])"
+				}
 			]
 		}
 	}
