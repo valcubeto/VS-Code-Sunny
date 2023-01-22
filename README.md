@@ -1,7 +1,7 @@
-# VSC Quara
-Visual Studio Code extension for Quara!
+# VSC Quantum
+A Visual Studio Code extension for Quantum
 
 # Includes:
-* Syntax highlighting
-* Completion items
-* Snippets
+- Syntax highlighting
+- Completion items
+- idk

@@ -1,100 +1,41 @@
 {
 	"keywords": [
 		{
-			"name": "if",
-			"description": "Executes the code if the condition can be converted to true",
-			"example": [
-				"if user.age >= 18:",
-				"\tprint('Access granted')"
-			]
+			"name": "if"
 		},
 		{
-			"name": "else",
-			"description": "Executes the code if the previous conditions failed",
-			"example": [
-				"if user.age >= 18:",
-				"\tprint('Access granted')",
-				"else:",
-				"\tprint('Access denied')"
-			]
+			"name": "else"
 		},
 		{
-			"name": "or",
-			"description": "Evaluates the code at the right if the code at the left is false. Also is an `else if`",
-			"example": [
-				"if user.age >= 18 or user.hasSpecialAccess:",
-				"\tprint('Access granted')",
-				"else:",
-				"\tprint('Access denied')",
-				"",
-				"if message == 'hello':",
-				"\tprint('Hello!')",
-				"or message == 'bye':",
-				"\tprint('Goodbye!')",
-				"else:",
-				"\tprint('I did not understand...')"
-			]
+			"name": "or"
 		},
 		{
-			"name": "switch",
-			"example": [
-				"print(",
-				"\tswitch message.to_lower!:",
-				"\t\tis 'hello':",
-				"\t\t\t'Hello!'",
-				"\t\tis 'bye':",
-				"\t\t\t'Goodbye!'",
-				"\t\telse:",
-				"\t\t\t'I did not understand...",
-				")"
-			]
+			"name": "switch"
 		}
 	],
 	"types": [
 		{
-			"name": "void",
-			"description": "Matches null and empty values",
-			"documentation": "type void = (null | __empty__))",
-			"example": [
-				"// The function must be called with an argument,",
-				"// but it can be a number or a void.",
-				"// Also must return null or do not return anything",
-				"fun test(x: num?) -> void:",
-				"\tif x:",
-				"\t\tprint(x)"
-			]
+			"name": "void"
 		},
 		{
-			"name": "any",
-			"description": "Matches any type that is not void",
-			"documentation": "type any = not void",
-			"example": [
-				"fun test! -> any:",
-				"\treturn math.random! // must return anything"
-			]
+			"name": "any"
 		},
 		{
-			"name": "bool",
-			"description": "Matches `true` or `false`",
-			"documentation": "type bool = (true | false)"
+			"name": "bool"
 		},
 		{
-			"name": "num",
-			"description": "Matches a number or `nanum`"
+			"name": "num"
 		},
-
 		{
-			"name": "str",
-			"description": "Matches a string"
+			"name": "str"
 		},
 		{
 			"name": "obj",
-			"description": "Matches an object",
 			"documentation": [
-				"type obj:<",
-				"\tKeys = str",
-				"\tValues = any?",
-				"\tmatch_empty: bool = false",
+				"obj<",
+				"\tK = str",
+				"\tV = any?",
+				"\tsize = range(1, obj.MAX_SIZE)",
 				">"
 			]
 		},
@@ -102,9 +43,9 @@
 			"name": "arr",
 			"description": "Matches an array",
 			"documentation": [
-				"type arr:<",
-				"\tItems = any?",
-				"\tmatch_empty: bool = false",
+				"type arr<",
+				"\tI = any?",
+				"\tsize = range(1, arr.MAX_SIZE)",
 				">"
 			]
 		}
@@ -115,22 +56,17 @@
 			"description": "Prints all the values to the standard output",
 			"documentation": [
 				"fun print(",
-				"\t\t...values: arr:<match_empty = true>",
-				"\t\tsep: str = ' '",
-				"\t\tend: str = '\\n'",
+				"\t\t...values: arr.AnySize",
+				"\t\tsep := ' '",
+				"\t\tend := '\\n'",
 				"\t) -> void"
-			],
-			"example": [
-				"print('Hello world!')",
-				"print('Hello', 'world!')",
-				"print('Hello world', end = '!!!\\n')"
 			]
 		},
 		{
 			"name": "typeof",
 			"description": "Returns a string representation of the type of the value",
 			"documentation": [
-				"fun typeof(value?) -> (",
+				"fun typeof(value: any?) -> (",
 				"\t| 'void'",
 				"\t| 'boolean'",
 				"\t| 'number'",
@@ -145,7 +81,7 @@
 		{
 			"name": "eval",
 			"description": "Evaluates the string as code",
-			"documentation": "fun eval(string: str)"
+			"documentation": "fun eval(string: str) -> any?"
 		},
 		{
 			"name": "exit",
@@ -155,51 +91,17 @@
 		{
 			"name": "bool",
 			"description": "Converts the value into a boolean",
-			"documentation": "fun bool(value?) -> bool",
-			"example": [
-				"bool()      // false",
-				"bool(null)  // false",
-				"bool(0)     // false",
-				"bool(nanum) // false",
-				"bool('')    // false",
-				"bool([])    // false",
-				"bool({})    // false",
-				"bool(false) // false",
-				"bool(/* Anything else */) // true"
-			]
+			"documentation": "fun bool(value: any?) -> bool"
 		},
 		{
 			"name": "num",
 			"description": "Converts the value into a number",
-			"documentation": [
-				"num('123') // 123",
-				"num()      // 0",
-				"num(null)  // 0",
-				"num(false) // 0",
-				"num(true)  // 1",
-				"num(/* Anything else */) // nanum"
-			]
+			"documentation": "fun num(value: any?) -> num"
 		},
 		{
 			"name": "str",
 			"description": "Converts the value into a string",
-			"documentation": "fun str(value?, use_custom?: bool) -> str",
-			"example": [
-				"str(123)       // '123'",
-				"str([1, 2, 3]) // '1, 2, 3'",
-				"str({})        // '<obj object>'",
-				"str(Error())   // '<Error object>'",
-				"str(null)      // 'null'",
-				"str(true)      // 'true'",
-				"str()          // '<empty>'",
-				"str(print)     // '<function print>'",
-				"",
-				"// 'Error: calls the to_string method'",
-				"str(",
-				"\tError('calls the to_string method')",
-				"\tuse_custom = true",
-				")"
-			]
+			"documentation": "fun str(value: any?, converter := ('default' | 'custom')) -> str"
 		}
 	]
 }

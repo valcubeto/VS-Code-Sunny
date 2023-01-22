@@ -1,28 +1,47 @@
 {
 	"name": "quantum",
 	"author": "Val Cubeta",
-	"publisher": "valcubeta",
+	"publisher": "Val Cubeta",
 	"displayName": "Quantum",
 	"description": "Quantum syntax highlighting",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.64.0"
 	},
-	"categories": ["Programming Languages"],
+	"categories": [
+		"Programming Languages"
+	],
 	"repository": "https://github.com/ValCubeta/vsc-quantum",
-	"activationEvents": ["onLanguage:quantum"],
+	"activationEvents": [
+		"onLanguage:quantum"
+	],
 	"main": "./extension.js",
 	"contributes": {
-		"languages": [{
-			"id": "quantum",
-			"aliases": ["Quantum", "quantum"],
-			"extensions": [".qua"],
-			"configuration": "./quantum-lang-config.json"
-		}],
-		"grammars": [{
-			"language": "quantum",
-			"scopeName": "source.qua",
-			"path": "./test.tmLanguage.json"
-		}]
+		"snippets": [
+			{
+				"language": "quantum",
+				"path": "quantum.code-snippets"
+			}
+		],
+		"languages": [
+			{
+				"id": "quantum",
+				"aliases": [
+					"Quantum",
+					"quantum"
+				],
+				"extensions": [
+					".qua"
+				],
+				"configuration": "./quantum-lang-config.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "quantum",
+				"scopeName": "source.qua",
+				"path": "./test.tmLanguage.json"
+			}
+		]
 	}
 }

@@ -1,0 +1,69 @@
+if
+	else
+	or
+unless
+
+	switch
+
+or
+and
+
+loop
+	break
+	skip
+while
+until
+for
+	in
+	of
+
+import
+	from
+	as
+
+then
+
+const
+fun
+	this
+	return
+	// unsafe
+	- yield
+type
+class
+	extends
+	// class arr: model <V = any?>; arr<str>
+	model
+	private
+	public
+	static
+
+
+// types
+void
+any
+bool
+num
+str
+arr
+obj
+Function
+regexp
+Range
+This
+
+// functions
+eval
+exit
+print
+typeof
+
+// constants
+global
+it
+
+
+// libs
+random
+async
+math
