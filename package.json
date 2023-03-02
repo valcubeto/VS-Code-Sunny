@@ -12,9 +12,6 @@
 		"Programming Languages"
 	],
 	"repository": "https://github.com/ValCubeta/vsc-quantum",
-	"activationEvents": [
-		"onLanguage:quantum"
-	],
 	"main": "./extension.js",
 	"contributes": {
 		"snippets": [
