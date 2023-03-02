@@ -33,9 +33,9 @@
 			"name": "obj",
 			"documentation": [
 				"obj<",
-				"\tK = str",
-				"\tV = any?",
-				"\tsize = range(1, obj.MAX_SIZE)",
+				"\tK? = str",
+				"\tV? = any?",
+				"\tsize? = Range(1, obj.MAX_SIZE)",
 				">"
 			]
 		},
@@ -44,8 +44,8 @@
 			"description": "Matches an array",
 			"documentation": [
 				"type arr<",
-				"\tI = any?",
-				"\tsize = range(1, arr.MAX_SIZE)",
+				"\tI? = any?",
+				"\tsize? = Range(1, arr.MAX_SIZE)",
 				">"
 			]
 		}
@@ -58,7 +58,7 @@
 				"fun print(",
 				"\t\t...values: arr.AnySize",
 				"\t\tsep := ' '",
-				"\t\tend := '\\n'",
+				"\t\tend := sys.EOL",
 				"\t) -> void"
 			]
 		},
@@ -67,15 +67,16 @@
 			"description": "Returns a string representation of the type of the value",
 			"documentation": [
 				"fun typeof(value: any?) -> (",
-				"\t| 'void'",
-				"\t| 'boolean'",
-				"\t| 'number'",
-				"\t| 'string'",
-				"\t| 'object'",
-				"\t| 'array'",
-				"\t| 'regexp'",
-				"\t| 'function'",
-				")"
+				"\t\t| 'void'",
+				"\t\t| 'boolean'",
+				"\t\t| 'number'",
+				"\t\t| 'range'",
+				"\t\t| 'string'",
+				"\t\t| 'regexp'",
+				"\t\t| 'array'",
+				"\t\t| 'object'",
+				"\t\t| 'function'",
+				"\t)"
 			]
 		},
 		{
@@ -86,7 +87,7 @@
 		{
 			"name": "exit",
 			"description": "Ends the process",
-			"documentation": "fun exit(code?: num = 0)"
+			"documentation": "fun exit(code: in Range(0, num.MAX_INT))"
 		},
 		{
 			"name": "bool",
@@ -95,13 +96,18 @@
 		},
 		{
 			"name": "num",
-			"description": "Converts the value into a number",
+			"description": "Converts the value into a number. Will return ```nanum``` if fails",
 			"documentation": "fun num(value: any?) -> num"
 		},
 		{
 			"name": "str",
 			"description": "Converts the value into a string",
-			"documentation": "fun str(value: any?, converter := ('default' | 'custom')) -> str"
+			"documentation": [
+				"fun str(",
+				"\t\tvalue: any?",
+				"\t\tconverter?: ('default' | 'custom') = 'default'",
+				"\t) -> str"
+			]
 		}
 	]
 }
