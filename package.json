@@ -1,41 +1,44 @@
 {
-	"name": "quantum",
-	"author": "Val Cubeta",
-	"publisher": "Val Cubeta",
-	"displayName": "Quantum",
-	"description": "Quantum syntax highlighting",
+	"activationEvents": [
+		"onLanguage:sunny"
+	],
+	"name": "sunny",
+	"author": "ValCubeta",
+	"publisher": "ValCubeta",
+	"displayName": "Sunny",
+	"description": "Syntax highlighting for the Sunny programming language",
 	"version": "1.0.0",
 	"engines": {
-		"vscode": "^1.64.0"
+		"vscode": "^1.22.0"
 	},
 	"categories": [
 		"Programming Languages"
 	],
-	"repository": "https://github.com/ValCubeta/vsc-quantum",
+	"repository": "https://github.com/ValCubeta/vsc-sunny",
 	"main": "./extension.js",
 	"contributes": {
 		"snippets": [
 			{
-				"language": "quantum",
-				"path": "quantum.code-snippets"
+				"language": "sunny",
+				"path": "sunny.code-snippets"
 			}
 		],
 		"languages": [
 			{
-				"id": "quantum",
+				"id": "sunny",
 				"aliases": [
-					"Quantum",
-					"quantum"
+					"sunny",
+					"sunny"
 				],
 				"extensions": [
-					".qua"
+					".sny"
 				],
-				"configuration": "./quantum-lang-config.json"
+				"configuration": "./sunny-lang-config.json"
 			}
 		],
 		"grammars": [
 			{
-				"language": "quantum",
+				"language": "sunny",
 				"scopeName": "source.qua",
 				"path": "./test.tmLanguage.json"
 			}

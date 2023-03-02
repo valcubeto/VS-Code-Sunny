@@ -1,5 +1,5 @@
-# VSC Quantum
-A Visual Studio Code extension for Quantum
+# VSC Sunny
+A Visual Studio Code extension for Sunny
 
 # Includes:
 - Syntax highlighting

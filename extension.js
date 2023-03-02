@@ -17,10 +17,11 @@ try {
 	 * @returns {string} The string or the joined array
 	 */
 	function joinIfArray(value) {
-		if (Array.isArray(value))
+		if (Array.isArray(value)) {
 			return value.join('\n')
-		else
+		} else {
 			return `${value}`
+		}
 	}
 
 	const KindMap = {
@@ -44,7 +45,7 @@ try {
 		if (item.documentation) {
 			documentation.push(
 				'**Documentation**',
-				'```quantum',
+				'```sunny',
 				joinIfArray(item.documentation),
 				'```'
 			)
@@ -53,7 +54,7 @@ try {
 		if (item.example) {
 			documentation.push(
 				'**Example**',
-				'```quantum',
+				'```sunny',
 				joinIfArray(item.example),
 				'```'
 			)
@@ -77,12 +78,12 @@ try {
 	}
 
 	function activate({ subscriptions }) {
-		const completionItemProvider = vscode.languages.registerCompletionItemProvider('quantum', {
+		const completionItemProvider = vscode.languages.registerCompletionItemProvider('sunny', {
 			provideCompletionItems(document, position, token, context) {
 				return completionItems
 			}
 		})
-		const hoverProvider = vscode.languages.registerHoverProvider('quantum', {
+		const hoverProvider = vscode.languages.registerHoverProvider('sunny', {
 			provideHover(document, position, token, next) {
 				if (document.isUntitled) return 
 				// const sunny = cp.spawn('bin/sunny-analizer', [`--line=${position.line}`, `--char=${position.character}`, document.uri.fsPath])
@@ -102,7 +103,7 @@ try {
 						},
 						"fileName": "c:\\Users\\valen\\OneDrive\\Escritorio\\finally-qmark\\docs.qua",
 						"isUntitled": false,
-						"languageId": "quantum",
+						"languageId": "sunny",
 						"version": 1,
 						"isClosed": false,
 						"isDirty": false,
