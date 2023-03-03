@@ -3,8 +3,8 @@
 		"onLanguage:sunny"
 	],
 	"name": "sunny",
-	"author": "ValCubeta",
-	"publisher": "ValCubeta",
+	"author": "Val Cubeta",
+	"publisher": "Val Cubeta",
 	"displayName": "Sunny",
 	"description": "Syntax highlighting for the Sunny programming language",
 	"version": "1.0.0",
@@ -28,7 +28,7 @@
 				"id": "sunny",
 				"aliases": [
 					"sunny",
-					"sunny"
+					"Sunny"
 				],
 				"extensions": [
 					".sny"
@@ -40,7 +40,7 @@
 			{
 				"language": "sunny",
 				"scopeName": "source.qua",
-				"path": "./test.tmLanguage.json"
+				"path": "./sunny.tmLanguage.json"
 			}
 		]
 	}
