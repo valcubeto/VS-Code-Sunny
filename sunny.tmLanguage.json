@@ -227,7 +227,7 @@
 				},
 				{
 					"name": "variable.language.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z])(global|it)(?![a-z_A-Z])"
+					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z])(it)(?![a-z_A-Z])"
 				},
 				{
 					"name": "constant.language.qua",
