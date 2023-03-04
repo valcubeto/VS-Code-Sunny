@@ -1,7 +1,7 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "Sunny",
-	"scopeName": "source.qua",
+	"scopeName": "source.sny",
 	"patterns": [
 		{
 			"include": "#main"
@@ -11,33 +11,33 @@
 		"main": {
 			"patterns": [
 				{
-					"name": "comment.line.qua",
+					"name": "comment.line.sny",
 					"begin": "//",
 					"end": "\\n"
 				},
 				{
-					"name": "comment.block.qua",
+					"name": "comment.block.sny",
 					"begin": "/\\*",
 					"end": "\\*/"
 				},
 				{
-					"name": "string.quoted.qua",
+					"name": "string.quoted.sny",
 					"begin": "'|\"",
 					"patterns": [
 						{
-							"name": "constant.other.character-class.qua",
+							"name": "constant.other.character-class.sny",
 							"match": "\\\\[trn]"
 						},
 						{
-							"name": "constant.character.escape.qua",
+							"name": "constant.character.escape.sny",
 							"match": "\\\\."
 						},
 						{
-							"name": "variable.qua",
+							"name": "variable.sny",
 							"match": "(\\$)([a-z_A-Z]+(?:\\.[a-z_A-Z]+)*)",
 							"captures": {
 								"1": {
-									"name": "punctuation.definition.template-expression.begin.qua"
+									"name": "punctuation.definition.template-expression.begin.sny"
 								},
 								"2": {
 									"patterns": [
@@ -49,11 +49,11 @@
 							}
 						},
 						{
-							"contentName": "variable.qua",
+							"contentName": "variable.sny",
 							"begin": "\\$\\(",
 							"beginCaptures": {
 								"0": {
-									"name": "punctuation.definition.template-expression.begin.qua"
+									"name": "punctuation.definition.template-expression.begin.sny"
 								}
 							},
 							"patterns": [
@@ -64,7 +64,7 @@
 							"end": "\\)",
 							"endCaptures": {
 								"0": {
-									"name": "punctuation.definition.template-expression.end.qua"
+									"name": "punctuation.definition.template-expression.end.sny"
 								}
 							}
 						}
@@ -72,12 +72,12 @@
 					"end": "\\0|\\n"
 				},
 				{
-					"name": "string.regexp.qua regexp.qua",
+					"name": "string.regexp.sny regexp.sny",
 					"begin": "$              (?<=(?:^|if|unless|or|when|is|return|throw|not|and|or|in|of|while|until|[^a-z_A-Z\\s])\\s*)/(?![)?*+]|[^/]*\\n)",
 					"comment": "Matches if is preceeded by a keyword or an operator and if is not followed by `)`, `?`, `*`, or `+` and there is the end",
 					"patterns": [
 						{
-							"name": "invalid.illegal.qua",
+							"name": "invalid.illegal.sny",
 							"match": "\\[\\]|\\{,?\\}|\\\\0"
 						},
 						{
@@ -86,7 +86,7 @@
 						},
 						{
 							"match": "(?<=\\()(?:\\?:|\\?<?[=!]|\\?i:)",
-							"name": "entity.name.qua"
+							"name": "entity.name.sny"
 						},
 						{
 							"match": "\\\\[1-9]",
@@ -94,41 +94,41 @@
 						},
 						{
 							"match": "[?+*]|\\{(?:[0-9]+|[0-9]*,[0-9]*)\\}",
-							"name": "keyword.operator.quantifier.regexp"
+							"name": "keyword.operator.snyntifier.regexp"
 						},
 						{
 							"match": "\\|",
 							"name": "keyword.operator.or.regexp"
 						},
 						{
-							"name": "constant.other.character-class.regexp.qua",
+							"name": "constant.other.character-class.regexp.sny",
 							"match": "\\\\[trnWwDdSs]"
 						},
 						{
-							"name": "constant.character.escape.qua",
+							"name": "constant.character.escape.sny",
 							"match": "\\\\."
 						},
 						{
-							"name": "punctuation.definition.character-class.regexp.qua constant.other.character-class.set.regexp.qua",
+							"name": "punctuation.definition.character-class.regexp.sny constant.other.character-class.set.regexp.sny",
 							"begin": "\\[(?:(\\^)|(-))?",
 							"beginCaptures": {
 								"1": {
-									"name": "keyword.operator.negation.regexp.qua"
+									"name": "keyword.operator.negation.regexp.sny"
 								},
 								"2": {
-									"name": "punctuation.definition.character-class.regexp.qua constant.other.character-class.set.regexp.qua"
+									"name": "punctuation.definition.character-class.regexp.sny constant.other.character-class.set.regexp.sny"
 								}
 							},
 							"patterns": [
 								{
-									"name": "keyword.operator.qua",
+									"name": "keyword.operator.sny",
 									"match": "-"
 								}
 							],
 							"end": "(-)?\\]|\\n",
 							"endCaptures": {
 								"1": {
-									"name": "punctuation.definition.character-class.regexp.qua constant.other.character-class.set.regexp.qua"
+									"name": "punctuation.definition.character-class.regexp.sny constant.other.character-class.set.regexp.sny"
 								}
 							}
 						}
@@ -136,34 +136,34 @@
 					"end": "/(i|g|ig|gi)(?![a-z_A-Z])|/",
 					"endCaptures": {
 						"1": {
-							"name": "entity.name.qua"
+							"name": "entity.name.sny"
 						}
 					}
 				},
 				{
-					"name": "constant.numeric.qua",
+					"name": "constant.numeric.sny",
 					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z])(?:[0-9]+(?:'[0-9]+)*(?:\\.[0-9]+)?(?:[eE][-+]?[0-9]+)?|nanum|infy|0b[01]+|0x[0-9a-fA-F]+)(?![a-z_A-Z])",
 					"comment": "1234567890 | 1'234'567'890 | 12345.67890 | 12345e+67890 | nanum | infy | 0b101010 | 0x5050FF"
 				},
 				{
-					"name": "keyword.operator.type.annotation.qua meta.type.annotation.qua",
+					"name": "keyword.operator.type.annotation.sny meta.type.annotation.sny",
 					"match": ":"
 				},
 				{
-					"name": "keyword.operator.rest.qua",
+					"name": "keyword.operator.rest.sny",
 					"match": "\\.{3}"
 				},
 				{
-					"name": "keyword.operator.qua",
+					"name": "keyword.operator.sny",
 					"match": "[-+/*|]|[=!<>]=?|\\?",
 					"comment": "- + / * | == != >= <= > < ?"
 				},
 				{
-					"name": "punctuation.accessor.qua keyword.operator.accessor.qua",
+					"name": "punctuation.accessor.sny keyword.operator.accessor.sny",
 					"match": "\\."
 				},
 				{
-					"name": "keyword.operator.assignment.qua",
+					"name": "keyword.operator.assignment.sny",
 					"match": "[+-]?=",
 					"comment": "+= -= ="
 				},
@@ -171,12 +171,12 @@
 					"begin": "\\(",
 					"beginCaptures": {
 						"0": {
-							"name": "punctuation.definition.parameters.begin.qua"
+							"name": "punctuation.definition.parameters.begin.sny"
 						}
 					},
 					"patterns": [
 						{
-							"name": "variable.parameter.qua",
+							"name": "variable.parameter.sny",
 							"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z])[a-z_A-Z]+(?=\\s*=)"
 						},
 						{
@@ -186,7 +186,7 @@
 					"end": "\\)",
 					"endCaptures": {
 						"0": {
-							"name": "punctuation.definition.parameters.end.qua"
+							"name": "punctuation.definition.parameters.end.sny"
 						}
 					}
 				},
@@ -194,47 +194,47 @@
 					"match": "(@)\\s*([a-z_A-Z]+)",
 					"captures": {
 						"1": {
-							"name": "keyword.operator.qua"
+							"name": "keyword.operator.sny"
 						},
 						"2": {
-							"name": "entity.name.function.decorator.qua"
+							"name": "entity.name.function.decorator.sny"
 						}
 					}
 				},
 				{
-					"name": "keyword.other.import.qua",
+					"name": "keyword.other.import.sny",
 					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z])(?:import|from|as|export)(?![a-z_A-Z])"
 				},
 				{
-					"name": "keyword.qua",
+					"name": "keyword.sny",
 					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z])(?:if|unless|or|when|is|else|try|catch|then|return|throw|extends|not|and|or|for|in|of|skip|while|until|next|break|loop|del|to)(?![a-z_A-Z])"
 				},
 				{
-					"name": "storage.type.qua",
-					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z])(?:typedef|var|const|fun|class|static|private|public)(?![a-z_A-Z])"
+					"name": "storage.type.sny",
+					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z])(?:typedef|var|const|fun|class|model|static|private|public)(?![a-z_A-Z])"
 				},
 				{
-					"name": "support.function.builtin.qua",
+					"name": "support.function.builtin.sny",
 					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z])(?:(?:print|typeof|eval|__ctor__|to_string)|(?:bool|num|str|dict|list|RegExp|Type)(?=\\s*\\())"
 				},
 				{
-					"name": "support.class.builtin.qua",
+					"name": "support.class.builtin.sny",
 					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z])(?:(?:Syntax|Type|Range|Reference|Internal)?Error|bool|num|str|dict|list|RegExp|Type|Range)(?![a-z_A-Z])"
 				},
 				{
-					"name": "support.class.builtin.qua",
+					"name": "support.class.builtin.sny",
 					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z])(?:any|void|Function)(?![a-z_A-Z])"
 				},
 				{
-					"name": "variable.language.qua",
+					"name": "variable.language.sny",
 					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z])(it)(?![a-z_A-Z])"
 				},
 				{
-					"name": "constant.language.qua",
+					"name": "constant.language.sny",
 					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z])(?:true|false|null)(?![a-z_A-Z])"
 				},
 				{
-					"name": "entity.name.function.qua",
+					"name": "entity.name.function.sny",
 					"match": "(?<![a-z_A-Z])[a-z_A-Z]+(?=\\s*(?:\\?\\.\\s*)?\\()",
 					"comment": "abc()"
 				}

@@ -1,21 +1,10 @@
 {
-	"activationEvents": [
-		"onLanguage:sunny"
-	],
 	"name": "sunny",
 	"author": "Val Cubeta",
-	"publisher": "Val Cubeta",
-	"displayName": "Sunny",
+	"publisher": "valcubeta",
+	"displayName": "Sunny syntax",
 	"description": "Syntax highlighting for the Sunny programming language",
 	"version": "1.0.0",
-	"engines": {
-		"vscode": "^1.22.0"
-	},
-	"categories": [
-		"Programming Languages"
-	],
-	"repository": "https://github.com/ValCubeta/vsc-sunny",
-	"main": "./extension.js",
 	"contributes": {
 		"snippets": [
 			{
@@ -27,8 +16,8 @@
 			{
 				"id": "sunny",
 				"aliases": [
-					"sunny",
-					"Sunny"
+					"Sunny",
+					"sunny"
 				],
 				"extensions": [
 					".sny"
@@ -39,9 +28,17 @@
 		"grammars": [
 			{
 				"language": "sunny",
-				"scopeName": "source.qua",
+				"scopeName": "source.sny",
 				"path": "./sunny.tmLanguage.json"
 			}
 		]
-	}
+	},
+	"main": "./extension.js",
+	"engines": {
+		"vscode": "^1.22.0"
+	},
+	"categories": [
+		"Programming Languages"
+	],
+	"repository": "https://github.com/ValCubeta/vsc-sunny"
 }

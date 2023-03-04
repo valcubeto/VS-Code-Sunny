@@ -1,7 +1,5 @@
 if
 	else
-	or
-unless
 
 	switch
 
@@ -24,6 +22,7 @@ import
 then
 
 const
+var
 fun
 	this
 	return

@@ -2,10 +2,32 @@
 	"Main function": {
 		"prefix": "fun main",
 		"description": "The entrypoint of your program",
-		"body": "${0:fun main($1):\n\t$2}"
-	}/* ,
-	"import": {
-		"prefix": "import",
-		"body": "import '${TM_DIRECTORY/[\\\\]/${1:?\\/:lib}/g}$1'"
-	} */
+		"body": "fun main(${1:args: str[*]}):\n\t${0:return}"
+	},
+	"Class": {
+		"prefix": "class",
+		"description": "Class declaration",
+		"body": "class ${1:ClassName}:\n\tfun __ctor__(${2:self}):\n\t\t${0:return}"
+	},
+	"Try-catch": {
+		"prefix": "trycatch",
+		"description": "Try-catch block",
+		"body": [
+			"try:",
+			"\t${1:throw new Error('Empty block')}",
+			"catch ${2:Error} as ${3:error}:",
+			"\t${0:print(error)}"
+		]
+	},
+	"for i in range": {
+		"prefix": "forin",
+		"body": [
+			"for ${1:i} in ${2:iterable}:",
+			"\t${0:print(i)}"
+		]
+	},
+	"Custom type test": {
+		"prefix": "typedef",
+		"body": "typedef ${1:MyType} = Type((${2:value}) => ${0:value})"
+	}
 }
