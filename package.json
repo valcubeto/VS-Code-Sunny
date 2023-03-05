@@ -1,15 +1,30 @@
 {
 	"name": "sunny",
-	"author": "Val Cubeta",
-	"publisher": "valcubeta",
 	"displayName": "Sunny syntax",
 	"description": "Syntax highlighting for the Sunny programming language",
 	"version": "1.0.0",
+	"publisher": "valcubeta",
+	"author": {
+		"name": "Val Cubeta",
+		"url": "https://twitter.com/valcubetaa"
+	},
+	"engines": {
+		"vscode": "^1.22.0"
+	},
+	"categories": [
+		"Programming Languages"
+	],
+	"keywords": [
+		"sunny syntax",
+		"sunny highlight"
+	],
+	"main": "./extension.js",
 	"contributes": {
-		"snippets": [
+		"grammars": [
 			{
 				"language": "sunny",
-				"path": "sunny.code-snippets"
+				"scopeName": "source.sny",
+				"path": "./sunny.tmLanguage.json"
 			}
 		],
 		"languages": [
@@ -25,20 +40,17 @@
 				"configuration": "./sunny-lang-config.json"
 			}
 		],
-		"grammars": [
+		"snippets": [
 			{
 				"language": "sunny",
-				"scopeName": "source.sny",
-				"path": "./sunny.tmLanguage.json"
+				"path": "sunny.code-snippets"
 			}
 		]
 	},
-	"main": "./extension.js",
-	"engines": {
-		"vscode": "^1.22.0"
-	},
-	"categories": [
-		"Programming Languages"
-	],
-	"repository": "https://github.com/ValCubeta/vsc-sunny"
+	"license": "MIT",
+	"bugs": "https://github.com/ValCubeta/vsc-sunny/issues",
+	"repository": "https://github.com/ValCubeta/vsc-sunny",
+	"__metadata": {
+		"publisherDisplayName": "Val Cubeta"
+	}
 }
