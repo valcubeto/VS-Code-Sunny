@@ -1,5 +1,5 @@
-# VSC Sunny
-A Visual Studio Code extension for Sunny
+# Sunny
+A Visual Studio Code extension for the Sunny programming language
 
 # Includes:
 - Syntax highlighting
