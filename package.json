@@ -43,7 +43,7 @@
 		"snippets": [
 			{
 				"language": "sunny",
-				"path": "sunny.code-snippets"
+				"path": "./sunny.code-snippets"
 			}
 		]
 	},
