@@ -12,13 +12,24 @@
 			"patterns": [
 				{
 					"name": "comment.line.sny",
-					"begin": "//",
+					"begin": "#",
 					"end": "\\n"
 				},
 				{
-					"name": "comment.block.sny",
-					"begin": "/\\*",
-					"end": "\\*/"
+					"name": "string.quoted.sny",
+					"begin": "(?<![a-z_A-Z])r(['\"])",
+					"patterns": [
+						{
+							"name": "invalid.sny",
+							"match": "\\n"
+						}
+					],
+					"end": "(\\1)|(.$)",
+					"endCaptures": {
+						"2": {
+							"name": "invalid.sny"
+						} 
+					}
 				},
 				{
 					"name": "string.quoted.sny",
@@ -33,24 +44,8 @@
 							"match": "\\\\."
 						},
 						{
-							"name": "variable.sny",
-							"match": "(\\$)([a-z_A-Z]+(?:\\.[a-z_A-Z]+)*)",
-							"captures": {
-								"1": {
-									"name": "punctuation.definition.template-expression.begin.sny"
-								},
-								"2": {
-									"patterns": [
-										{
-											"include": "#main"
-										}
-									]
-								}
-							}
-						},
-						{
 							"contentName": "variable.sny",
-							"begin": "\\$\\(",
+							"begin": "\\$\\{",
 							"beginCaptures": {
 								"0": {
 									"name": "punctuation.definition.template-expression.begin.sny"
@@ -61,7 +56,7 @@
 									"include": "#main"
 								}
 							],
-							"end": "\\)",
+							"end": "\\}",
 							"endCaptures": {
 								"0": {
 									"name": "punctuation.definition.template-expression.end.sny"
@@ -69,7 +64,12 @@
 							}
 						}
 					],
-					"end": "\\0|\\n"
+					"end": "(\\0)|(.$)",
+					"endCaptures": {
+						"2": {
+							"name": "invalid.sny"
+						} 
+					}
 				},
 				{
 					"name": "string.regexp.sny regexp.sny",
@@ -142,25 +142,25 @@
 				},
 				{
 					"name": "constant.numeric.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z0-9])(?:[0-9]+(?:'[0-9]+)*(?:\\.[0-9]+)?(?:[eE][-+]?[0-9]+)?|nanum|infy|0b[01]+|0x[0-9a-fA-F]+)(?![a-z_A-Z])",
+					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z0-9])(?:[0-9]+(?:'[0-9]+)*(?:\\.[0-9]+)?(?:[eE][-+]?[0-9]+)?|infinity|0b[01]+|0x[0-9a-fA-F]+)(?![a-z_A-Z])",
 					"comment": "1234567890 | 1'234'567'890 | 12345.67890 | 12345e+67890 | nanum | infy | 0b101010 | 0x5050FF"
-				},
-				{
-					"name": "keyword.operator.type.annotation.sny meta.type.annotation.sny",
-					"match": ":"
 				},
 				{
 					"name": "keyword.operator.rest.sny",
 					"match": "\\.{3}"
 				},
 				{
+					"name": "punctuation.accessor.sny keyword.operator.accessor.sny",
+					"match": "\\.|::"
+				},
+				{
+					"name": "keyword.operator.type.annotation.sny meta.type.annotation.sny",
+					"match": ":"
+				},
+				{
 					"name": "keyword.operator.sny",
 					"match": "[-+/*|]|[=!<>]=?|\\?",
 					"comment": "- + / * | == != >= <= > < ?"
-				},
-				{
-					"name": "punctuation.accessor.sny keyword.operator.accessor.sny",
-					"match": "\\."
 				},
 				{
 					"name": "keyword.operator.assignment.sny",
@@ -177,7 +177,7 @@
 					"patterns": [
 						{
 							"name": "variable.parameter.sny",
-							"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z])[a-z_A-Z]+(?=\\s*=)"
+							"match": "(?<=(?:^|,)\\s*)[a-z_]+"
 						},
 						{
 							"include": "#main"
@@ -203,40 +203,40 @@
 				},
 				{
 					"name": "keyword.other.import.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z])(?:import|from|as|export)(?![a-z_A-Z])"
+					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:import|from|as|export)(?![a-z_A-Z])"
 				},
 				{
 					"name": "keyword.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z])(?:if|unless|or|when|is|else|try|catch|then|return|throw|extends|not|and|or|for|in|of|skip|while|until|next|break|loop|del|to)(?![a-z_A-Z])"
+					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:if|else|unless|match|try|catch|then|return|throw|extends|not|and|or|loop|while|break|skip|for|in|of|to)(?![a-z_A-Z])"
 				},
 				{
 					"name": "storage.type.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z])(?:typedef|var|const|fun|class|model|static|private|public)(?![a-z_A-Z])"
+					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:typedef|var|const|fun|class|static|private|public)(?![a-z_A-Z])"
 				},
 				{
 					"name": "support.function.builtin.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z])(?:(?:print|typeof|eval|__ctor__|to_string)|(?:bool|num|str|dict|list|RegExp|Type)(?=\\s*\\())"
+					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:println|typeof|eval)(?![a-z_A-Z])"
 				},
 				{
 					"name": "support.class.builtin.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z])(?:(?:Syntax|Type|Range|Reference|Internal)?Error|bool|num|str|dict|list|RegExp|Type|Range)(?![a-z_A-Z])"
-				},
-				{
-					"name": "support.class.builtin.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z])(?:any|void|Function)(?![a-z_A-Z])"
+					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:any|bool|num|str|dict|list|range|Type|(?:Syntax|Type|Range|Reference|Internal|Load|Argument)?Error|Warning)(?![a-z_A-Z])"
 				},
 				{
 					"name": "variable.language.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z])(it)(?![a-z_A-Z])"
+					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(it)(?![a-z_A-Z])"
 				},
 				{
 					"name": "constant.language.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z])(?:true|false|null)(?![a-z_A-Z])"
+					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:true|false|none)(?![a-z_A-Z])"
 				},
 				{
 					"name": "entity.name.function.sny",
 					"match": "(?<![a-z_A-Z])[a-z_A-Z]+(?=\\s*(?:\\?\\.\\s*)?\\()",
 					"comment": "abc()"
+				},
+				{
+					"name": "variable.language.sny",
+					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:self|super)(?![a-z_A-Z])"
 				}
 			]
 		}

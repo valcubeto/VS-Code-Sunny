@@ -15,9 +15,6 @@
 	],
 	"types": [
 		{
-			"name": "void"
-		},
-		{
 			"name": "any"
 		},
 		{
@@ -30,21 +27,21 @@
 			"name": "str"
 		},
 		{
-			"name": "obj",
+			"name": "dict",
 			"documentation": [
-				"obj<",
+				"dict<",
+				"\tT? = any?",
 				"\tK? = str",
-				"\tV? = any?",
-				"\tsize? = Range(1, obj.MAX_SIZE)",
+				"\tsize? = range(1, dict.MAX_LEN)",
 				">"
 			]
 		},
 		{
-			"name": "arr",
-			"description": "Matches an array",
+			"name": "list",
+			"description": "Matches a list",
 			"documentation": [
-				"type arr<",
-				"\tI? = any?",
+				"type list<",
+				"\tT?: Type = any?",
 				"\tsize? = Range(1, arr.MAX_SIZE)",
 				">"
 			]
@@ -56,27 +53,27 @@
 			"description": "Prints all the values to the standard output",
 			"documentation": [
 				"fun print(",
-				"\t\t...values: arr.AnySize",
+				"\t\t...values: list",
 				"\t\tsep := ' '",
-				"\t\tend := sys.EOL",
-				"\t) -> void"
+				"\t\tend := os.EOL",
+				"\t)"
 			]
 		},
 		{
 			"name": "typeof",
 			"description": "Returns a string representation of the type of the value",
 			"documentation": [
-				"fun typeof(value: any?) -> (",
-				"\t\t| 'void'",
-				"\t\t| 'boolean'",
-				"\t\t| 'number'",
-				"\t\t| 'range'",
-				"\t\t| 'string'",
-				"\t\t| 'regexp'",
-				"\t\t| 'array'",
-				"\t\t| 'object'",
-				"\t\t| 'function'",
-				"\t)"
+				"fun typeof(value: any?) -> Lit<",
+				"\t\t'void'",
+				"\t\t'boolean'",
+				"\t\t'number'",
+				"\t\t'range'",
+				"\t\t'string'",
+				"\t\t'list'",
+				"\t\t'dict'",
+				"\t\t'function'",
+				"\t\t'type'",
+				"\t>"
 			]
 		},
 		{
@@ -88,26 +85,6 @@
 			"name": "exit",
 			"description": "Ends the process",
 			"documentation": "fun exit(code: in Range(0, num.MAX_INT))"
-		},
-		{
-			"name": "bool",
-			"description": "Converts the value into a boolean",
-			"documentation": "fun bool(value: any?) -> bool"
-		},
-		{
-			"name": "num",
-			"description": "Converts the value into a number. Will return ```nanum``` if fails",
-			"documentation": "fun num(value: any?) -> num"
-		},
-		{
-			"name": "str",
-			"description": "Converts the value into a string",
-			"documentation": [
-				"fun str(",
-				"\t\tvalue: any?",
-				"\t\tconverter?: ('default' | 'custom') = 'default'",
-				"\t) -> str"
-			]
 		}
 	]
 }
