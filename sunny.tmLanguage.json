@@ -185,7 +185,7 @@
 				},
 				{
 					"name": "keyword.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:with|mod|struct|if|else|match|return|throw|impl|loop|while|break|skip|for|in)(?![a-z_A-Z])"
+					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:where|with|mod|struct|if|else|match|return|throw|impl|loop|while|break|skip|for|in)(?![a-z_A-Z])"
 				},
 				{
 					"name": "storage.type.sny",

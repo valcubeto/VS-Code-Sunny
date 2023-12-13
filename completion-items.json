@@ -7,84 +7,128 @@
 			"name": "else"
 		},
 		{
-			"name": "or"
+			"name": "match",
+			"description": "Match a value with a given pattern"
 		},
 		{
-			"name": "switch"
+			"name": "struct",
+			"description": "When defining a class, specify its fields"
+		},
+		{
+			"name": "for",
+			"description": "Iterate over the elements of a given value"
+		},
+		{
+			"name": "in",
+			"description": "In the for loop, specify the value you want to iterate"
+		},
+		{
+			"name": "with",
+			"description": "Make a value global inside its code block. You can access its values using the dot syntax (e. g. `with self { .x = 5 }`)"
+		},
+		{
+			"name": "class",
+			"description": "Define a class, an interface for interacting with a set of values (fields)"
+		},
+		{
+			"name": "impl",
+			"description": "Implement a trait for a class"
+		},
+		{
+			"name": "fun",
+			"description": "Define a function, a block of code you want to reuse"
+		},
+		{
+			"name": "return",
+			"description": "Stop the execution of a function, usually returning a value"
+		},
+		{
+			"name": "priv",
+			"description": "Specify that the following value is private. Default for class fields"
+		},
+		{
+			"name": "pub",
+			"description": "Specify that the following value is public"
+		},
+		{
+			"name": "where",
+			"description": "Specify that a type must implement a trait"
+		},
+		{
+			"name": "false"
+		},
+		{
+			"name": "true"
+		},
+		{
+			"name": "use",
+			"description": "Import classes, traits, functions, constants or types from other files"
+		},
+		{
+			"name": "from",
+			"description": "When importing something, specify the path where that value is"
+		},
+		{
+			"name": "as",
+			"description": "Used to rename things"
 		}
 	],
 	"types": [
 		{
-			"name": "any"
+			"name": "bool",
+			"description": "Represents a state, `true` or `false`"
 		},
 		{
-			"name": "bool"
-		},
-		{
-			"name": "num"
-		},
-		{
-			"name": "str"
-		},
-		{
-			"name": "dict",
+			"name": "int",
+			"description": "The unsigned integer number type. Just a sugar for `std::number::i64`",
 			"documentation": [
-				"dict<",
-				"\tT? = any?",
-				"\tK? = str",
-				"\tsize? = range(1, dict.MAX_LEN)",
-				">"
+				"#[allow(non_camel_case_types)]",
+				"typedef int = i64"
 			]
 		},
 		{
-			"name": "list",
-			"description": "Matches a list",
+			"name": "uint",
+			"description": "The integer number type. Just a sugar for `std::number::u64`",
 			"documentation": [
-				"type list<",
-				"\tT?: Type = any?",
-				"\tsize? = Range(1, arr.MAX_SIZE)",
-				">"
+				"#[allow(non_camel_case_types)]",
+				"typedef uint = u64"
 			]
+		},
+		{
+			"name": "float",
+			"description": "The floating point number type. Just a sugar for `std::number::f64`",
+			"documentation": [
+				"#[allow(non_camel_case_types)]",
+				"typedef float = f64"
+			]
+		},
+		{
+			"name": "String",
+			"description": "`Vec<u8>` but UTF-8 encoded"
+		},
+		{
+			"name": "Dict",
+			"documentation": [
+				"typedef Dict<T> = HashMap<String, T>"
+			]
+		},
+		{
+			"name": "Vec",
+			"description": "A sorted by insertion list of elements"
 		}
 	],
 	"functions": [
 		{
 			"name": "print",
-			"description": "Prints all the values to the standard output",
+			"description": "Prints the passed value to the standard output",
 			"documentation": [
-				"fun print(",
-				"\t\t...values: list",
-				"\t\tsep := ' '",
-				"\t\tend := os.EOL",
-				"\t)"
+				"fun println<T>(value: T)",
+				"where",
+				"\tT: Display",
+				"{",
+				"\tprint(f\"{value}{EOL}\")",
+				"}"
 			]
-		},
-		{
-			"name": "typeof",
-			"description": "Returns a string representation of the type of the value",
-			"documentation": [
-				"fun typeof(value: any?) -> Lit<",
-				"\t\t'void'",
-				"\t\t'boolean'",
-				"\t\t'number'",
-				"\t\t'range'",
-				"\t\t'string'",
-				"\t\t'list'",
-				"\t\t'dict'",
-				"\t\t'function'",
-				"\t\t'type'",
-				"\t>"
-			]
-		},
-		{
-			"name": "eval",
-			"description": "Evaluates the string as code",
-			"documentation": "fun eval(string: str) -> any?"
-		},
-		{
-			"name": "exit",
-			"description": "Ends the process",
-			"documentation": "fun exit(code: in Range(0, num.MAX_INT))"
 		}
 	]
 }
