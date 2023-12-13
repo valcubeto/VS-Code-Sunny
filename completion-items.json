@@ -24,11 +24,11 @@
 		},
 		{
 			"name": "with",
-			"description": "Make a value global inside its code block. You can access its values using the dot syntax (e. g. `with self { .x = 5 }`)"
+			"description": "Make a value global inside a code block. You can access its fields using the dot syntax (e. g. `with self { .x = 5 }`)"
 		},
 		{
 			"name": "class",
-			"description": "Define a class, an interface for interacting with a set of values (fields)"
+			"description": "Define a class, an interface for interacting with a set of values, its fields"
 		},
 		{
 			"name": "impl",
