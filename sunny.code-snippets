@@ -3,8 +3,8 @@
 		"prefix": "fun main",
 		"description": "The entrypoint of your program",
 		"body": [
-			"fun main(${1:args: str[*]})${2| -> none , -> num::u8 , |}{",
-			"\t$3",
+			"fun main() {",
+			"\t$0",
 			"}"
 		]
 	},
@@ -12,34 +12,19 @@
 		"prefix": "class",
 		"description": "Class declaration",
 		"body": [
-			"class ${1:ClassName} {",
-			"\tstatic fun new(${2:self}) {",
-			"\t\t$3",
+			"class ${1:MyClass} {",
+			"\tstruct {",
+			"\t\t$0",
 			"\t}",
-			"}"
-		]
-	},
-	"try-catch": {
-		"prefix": "trycatch",
-		"description": "Try-catch block",
-		"body": [
-			"try {",
-			"\t$1",
-			"} catch ${2:Error}${4|, as ${3:error}|} {",
-			"\t$4",
 			"}"
 		]
 	},
 	"for in": {
 		"prefix": "forin",
 		"body": [
-			"for ${1:i} in ${2:my_list} {",
-			"\t${3:print(i)}",
+			"for ${1:i} in ${2:Range::new(0, 10)} {",
+			"\t$0",
 			"}"
 		]
-	},
-	"Custom type test": {
-		"prefix": "typedef",
-		"body": "typedef ${1:MyType}${3:<$2>} = ${6:Type::new((${4:value}) => ${5:value})}"
 	}
 }
