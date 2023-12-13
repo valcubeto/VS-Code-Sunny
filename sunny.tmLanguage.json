@@ -16,9 +16,9 @@
 					"end": "$"
 				},
 				{
-					"name": "string.quoted.double.sny",
-					"begin": "\"",
-					"end": "\"|(.)$|$",
+					"name": "string.raw.sny",
+					"begin": "r(\"|')",
+					"end": "\\1|(.)$|$",
 					"endCaptures": {
 						"1": {
 							"name": "invalid.sny"
@@ -26,12 +26,12 @@
 					}
 				},
 				{
-					"name": "string.quoted.single.sny",
-					"begin": "'",
+					"name": "string.format.sny",
+					"begin": "f(\"|')",
 					"patterns": [
 						{
-							"name": "constant.other.character-class.sny",
-							"match": "\\\\[trne]"
+							"name": "constant.other.character-class.sny constant.character.escape.sny",
+							"match": "\\\\[nrte]"
 						},
 						{
 							"name": "constant.character.escape.sny",
@@ -48,7 +48,7 @@
 						},
 						{
 							"contentName": "variable.sny",
-							"begin": "\\$\\(",
+							"begin": "\\{",
 							"beginCaptures": {
 								"0": {
 									"name": "punctuation.definition.template-expression.begin.sny"
@@ -59,7 +59,7 @@
 									"include": "#main"
 								}
 							],
-							"end": "\\)",
+							"end": "\\}",
 							"endCaptures": {
 								"0": {
 									"name": "punctuation.definition.template-expression.end.sny"
@@ -67,7 +67,36 @@
 							}
 						}
 					],
-					"end": "'|(.)$|$",
+					"end": "\\1|(.)$|$",
+					"endCaptures": {
+						"1": {
+							"name": "invalid.sny"
+						} 
+					}
+				},
+				{
+					"name": "string.sny",
+					"begin": "(\"|')",
+					"patterns": [
+						{
+							"name": "constant.other.character-class.sny constant.character.escape.sny",
+							"match": "\\\\[nrte]"
+						},
+						{
+							"name": "constant.character.escape.sny",
+							"match": "\\\\u\\{([0-9a-zA-Z]{1,6})\\}",
+							"captures": {
+								"1": {
+									"name": "constant.numeric.sny"
+								}
+							}
+						},
+						{
+							"name": "constant.character.escape.sny",
+							"match": "\\\\."
+						}
+					],
+					"end": "\\1|(.)$|$",
 					"endCaptures": {
 						"1": {
 							"name": "invalid.sny"
@@ -76,8 +105,8 @@
 				},
 				{
 					"name": "constant.numeric.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z0-9])(?:[0-9]+(?:'[0-9]+)*(?:\\.[0-9]+)?(?:[eE][-+]?[0-9]+)?|infinity|0b[01]+('[01]+)*|0x[0-9a-fA-F]+('[0-9a-fA-F]+)*)(?![a-z_A-Z])",
-					"comment": "1'234.567e+890 | infinity | 0b10'10 | 0x50'50'FF"
+					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z0-9])(?:[0-9]+(?:(_|')[0-9]+)*(?:\\.[0-9]+)?(?:[eE][-+]?[0-9]+)?|0b[01]+((_|')[01]+)*|0x[0-9a-fA-F]+((_|')[0-9a-fA-F]+)*)(?![a-z_A-Z])",
+					"comment": "1'234.567e+890 | 0b10'10 | 0x50'50'FF"
 				},
 				{
 					"name": "keyword.operator.rest.sny",
@@ -98,7 +127,7 @@
 				},
 				{
 					"name": "keyword.operator.assignment.sny",
-					"match": "(?:[+-/%]|([*|&]){2}?)?=",
+					"match": "(?:[-+*/%|&^]{1,2})?=",
 					"comment": "+= -= /= *= %= **= ||= &&= ="
 				},
 				{
@@ -152,40 +181,36 @@
 				},
 				{
 					"name": "keyword.other.import.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:import|from|as|export)(?![a-z_A-Z])"
+					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:use|from|as)(?![a-z_A-Z])"
 				},
 				{
 					"name": "keyword.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:if|else|unless|match|then|return|throw|extend|loop|while|break|skip|for|in|to)(?![a-z_A-Z])"
+					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:with|mod|struct|if|else|match|return|throw|impl|loop|while|break|skip|for|in)(?![a-z_A-Z])"
 				},
 				{
 					"name": "storage.type.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:namespace|typedef|var|const|fun|struct|priv|pub)(?![a-z_A-Z])"
+					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:mod|typedef|var|const|let|fun|class|priv|pub)(?![a-z_A-Z])"
 				},
 				{
 					"name": "support.function.builtin.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:println|typeof|eval)(?![a-z_A-Z])"
+					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:println)(?![a-z_A-Z])"
 				},
 				{
 					"name": "support.class.builtin.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:Any|Bool|u8|u16|u32|u64|u128|usize|i8|i16|i32|i64|i128|isize|f32|f64|String|Dict|List|Range|Type|(?:Syntax|Type|Range|Reference|Internal|Load|Argument)?Error|Warning|Self|Super)(?![a-z_A-Z])"
+					"match": "(?:Self|Super|(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:Any|bool|int|uint|float|String|Dict|Vec|Range))(?![a-z_A-Z])"
 				},
 				{
 					"name": "variable.language.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(it)(?![a-z_A-Z])"
+					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:self)(?![a-z_A-Z])"
 				},
 				{
 					"name": "constant.language.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:true|false|none)(?![a-z_A-Z])"
+					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:true|false)(?![a-z_A-Z])"
 				},
 				{
 					"name": "entity.name.function.sny",
 					"match": "(?<![a-z_A-Z])[a-z_A-Z]+(?=\\s*(?:\\?\\.\\s*)?\\()",
 					"comment": "abc()"
-				},
-				{
-					"name": "variable.language.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:self|super)(?![a-z_A-Z])"
 				}
 			]
 		}
