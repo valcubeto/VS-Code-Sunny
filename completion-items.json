@@ -119,7 +119,7 @@
 	],
 	"functions": [
 		{
-			"name": "print",
+			"name": "println",
 			"description": "Prints the passed value to the standard output",
 			"documentation": [
 				"fun println<T>(value: T)",
