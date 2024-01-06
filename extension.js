@@ -53,7 +53,6 @@ try {
 
 		if (item.example) {
 			documentation.push(
-				'**Example**',
 				'```sunny',
 				joinIfArray(item.example),
 				'```'
@@ -79,47 +78,13 @@ try {
 
 	function activate({ subscriptions }) {
 		const completionItemProvider = vscode.languages.registerCompletionItemProvider('sunny', {
-			provideCompletionItems(document, position, token, context) {
+			provideCompletionItems(_document, _position, _token, _context) {
 				return completionItems
 			}
 		})
 		const hoverProvider = vscode.languages.registerHoverProvider('sunny', {
-			provideHover(document, position, token, next) {
-				if (document.isUntitled) return 
-				// const sunny = cp.spawn('bin/sunny-analizer', [`--line=${position.line}`, `--char=${position.character}`, document.uri.fsPath])
-				/*
-				*/
-				// vscode.window.showInformationMessage(JSON.stringify({ document, position, token, next }, null, 2))
-				/*
-				{
-					"document": {
-						"uri": {
-							"$mid": 1,
-							"fsPath": "c:\\Users\\valen\\OneDrive\\Escritorio\\finally-qmark\\docs.qua",
-							"_sep": 1,
-							"external": "file:///c%3A/Users/valen/OneDrive/Escritorio/finally-qmark/docs.qua",
-							"path": "/C:/Users/valen/OneDrive/Escritorio/finally-qmark/docs.qua",
-							"scheme": "file"
-						},
-						"fileName": "c:\\Users\\valen\\OneDrive\\Escritorio\\finally-qmark\\docs.qua",
-						"isUntitled": false,
-						"languageId": "sunny",
-						"version": 1,
-						"isClosed": false,
-						"isDirty": false,
-						"eol": 1,
-						"lineCount": 103
-					},
-					"position": {
-						"line": 72,
-						"character": 62
-					},
-					"token": {
-						"a": false,
-						"b": null
-					}
-				}
-				*/
+			provideHover(document, _position, _token, _next) {
+				// if (document.isUntitled) return
 				return [
 					{
 						name: 'void',

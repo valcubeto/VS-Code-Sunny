@@ -1,68 +1,44 @@
 if
 	else
 
-	switch
-
-or
-and
+	match
 
 loop
 	break
 	skip
 while
-until
 for
 	in
-	of
 
-import
+use
 	from
 	as
 
-then
-
 const
 var
+let
 fun
-	this
+	self
 	return
 	// unsafe
-	- yield
-type
+	// yield
+typedef
 class
-	extends
-	// class arr: model <V = any?>; arr<str>
-	model
-	private
-	public
-	static
+	struct
+	enum
+priv
+pub
 
 
 // types
-void
-any
 bool
-num
-str
-arr
-obj
+int, uint, float
+String
+Vec
+Dict
 Function
-regexp
 Range
-This
+Self, Super
 
 // functions
-eval
-exit
-print
-typeof
-
-// constants
-global
-it
-
-
-// libs
-random
-async
-math
+println

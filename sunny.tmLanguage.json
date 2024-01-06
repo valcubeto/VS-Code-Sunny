@@ -1,218 +1,218 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "Sunny",
-	"scopeName": "source.sny",
-	"patterns": [
-		{
-			"include": "#main"
-		}
-	],
-	"repository": {
-		"main": {
-			"patterns": [
-				{
-					"name": "comment.line.sny",
-					"begin": "#",
-					"end": "$"
-				},
-				{
-					"name": "string.raw.sny",
-					"begin": "r(\"|')",
-					"end": "\\1|(.)$|$",
-					"endCaptures": {
-						"1": {
-							"name": "invalid.sny"
-						} 
-					}
-				},
-				{
-					"name": "string.format.sny",
-					"begin": "f(\"|')",
-					"patterns": [
-						{
-							"name": "constant.other.character-class.sny constant.character.escape.sny",
-							"match": "\\\\[nrte]"
-						},
-						{
-							"name": "constant.character.escape.sny",
-							"match": "\\\\u\\{([0-9a-zA-Z]{1,6})\\}",
-							"captures": {
-								"1": {
-									"name": "constant.numeric.sny"
-								}
-							}
-						},
-						{
-							"name": "constant.character.escape.sny",
-							"match": "\\\\."
-						},
-						{
-							"contentName": "variable.sny",
-							"begin": "\\{",
-							"beginCaptures": {
-								"0": {
-									"name": "punctuation.definition.template-expression.begin.sny"
-								}
-							},
-							"patterns": [
-								{
-									"include": "#main"
-								}
-							],
-							"end": "\\}",
-							"endCaptures": {
-								"0": {
-									"name": "punctuation.definition.template-expression.end.sny"
-								}
-							}
-						}
-					],
-					"end": "\\1|(.)$|$",
-					"endCaptures": {
-						"1": {
-							"name": "invalid.sny"
-						} 
-					}
-				},
-				{
-					"name": "string.sny",
-					"begin": "(\"|')",
-					"patterns": [
-						{
-							"name": "constant.other.character-class.sny constant.character.escape.sny",
-							"match": "\\\\[nrte]"
-						},
-						{
-							"name": "constant.character.escape.sny",
-							"match": "\\\\u\\{([0-9a-zA-Z]{1,6})\\}",
-							"captures": {
-								"1": {
-									"name": "constant.numeric.sny"
-								}
-							}
-						},
-						{
-							"name": "constant.character.escape.sny",
-							"match": "\\\\."
-						}
-					],
-					"end": "\\1|(.)$|$",
-					"endCaptures": {
-						"1": {
-							"name": "invalid.sny"
-						} 
-					}
-				},
-				{
-					"name": "constant.numeric.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|[a-z_A-Z0-9])(?:[0-9]+(?:(_|')[0-9]+)*(?:\\.[0-9]+)?(?:[eE][-+]?[0-9]+)?|0b[01]+((_|')[01]+)*|0x[0-9a-fA-F]+((_|')[0-9a-fA-F]+)*)(?![a-z_A-Z])",
-					"comment": "1'234.567e+890 | 0b10'10 | 0x50'50'FF"
-				},
-				{
-					"name": "keyword.operator.rest.sny",
-					"match": "\\.{3}"
-				},
-				{
-					"name": "punctuation.accessor.sny keyword.operator.accessor.sny",
-					"match": "\\.|::"
-				},
-				{
-					"name": "keyword.operator.type.annotation.sny meta.type.annotation.sny",
-					"match": ":"
-				},
-				{
-					"name": "keyword.operator.sny",
-					"match": "[-+/*|%!]|[=!<>]=?|\\?",
-					"comment": "- + / * % ! | == != >= <= > < ?"
-				},
-				{
-					"name": "keyword.operator.assignment.sny",
-					"match": "(?:[-+*/%|&^]{1,2})?=",
-					"comment": "+= -= /= *= %= **= ||= &&= ="
-				},
-				{
-					"begin": "\\(",
-					"beginCaptures": {
-						"0": {
-							"name": "meta.brace.round.sny"
-						}
-					},
-					"patterns": [
-						{
-							"include": "#main"
-						}
-					],
-					"end": "\\)",
-					"endCaptures": {
-						"0": {
-							"name": "meta.brace.round.sny"
-						}
-					}
-				},
-				{
-					"begin": "\\{",
-					"beginCaptures": {
-						"0": {
-							"name": "punctuation.definition.block.sny"
-						}
-					},
-					"patterns": [
-						{
-							"include": "#main"
-						}
-					],
-					"end": "\\}",
-					"endCaptures": {
-						"0": {
-							"name": "punctuation.definition.block.sny"
-						}
-					}
-				},
-				{
-					"match": "(@)\\s*([a-z_A-Z]+)",
-					"captures": {
-						"1": {
-							"name": "keyword.operator.sny"
-						},
-						"2": {
-							"name": "entity.name.function.decorator.sny"
-						}
-					}
-				},
-				{
-					"name": "keyword.other.import.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:use|from|as)(?![a-z_A-Z])"
-				},
-				{
-					"name": "keyword.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:where|with|mod|struct|if|else|match|return|throw|impl|loop|while|break|skip|for|in)(?![a-z_A-Z])"
-				},
-				{
-					"name": "storage.type.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:mod|typedef|var|const|let|fun|class|priv|pub)(?![a-z_A-Z])"
-				},
-				{
-					"name": "support.function.builtin.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:println)(?![a-z_A-Z])"
-				},
-				{
-					"name": "support.class.builtin.sny",
-					"match": "(?:Self|Super|(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:Any|bool|int|uint|float|String|Dict|Vec|Range))(?![a-z_A-Z])"
-				},
-				{
-					"name": "variable.language.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:self)(?![a-z_A-Z])"
-				},
-				{
-					"name": "constant.language.sny",
-					"match": "(?<!(?<!\\.)\\.\\s*|::|[a-z_A-Z])(?:true|false)(?![a-z_A-Z])"
-				},
-				{
-					"name": "entity.name.function.sny",
-					"match": "(?<![a-z_A-Z])[a-z_A-Z]+(?=\\s*(?:\\?\\.\\s*)?\\()",
-					"comment": "abc()"
-				}
-			]
-		}
-	}
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Sunny",
+  "scopeName": "source.sny",
+  "patterns": [
+    {
+      "include": "#sunny"
+    }
+  ],
+  "repository": {
+    "sunny": {
+      "patterns": [
+        {
+          "name": "comment.line.sny",
+          "begin": "#",
+          "end": "$"
+        },
+        {
+          "name": "comment.block.sny",
+          "begin": "##",
+          "end": "##"
+        },
+        {
+          "name": "string.raw.sny",
+          "begin": "r(\\$*)(\"|')",
+          "end": "\\2\\1"
+        },
+        {
+          "name": "string.format.sny",
+          "begin": "f(\\$*)(\"|')",
+          "patterns": [
+            {
+              "name": "constant.other.character-class.sny constant.character.escape.sny",
+              "match": "\\\\[nrte]"
+            },
+            {
+              "name": "constant.character.escape.sny",
+              "match": "\\\\u\\{([0-9a-zA-Z]{1,6})\\}",
+              "captures": {
+                "1": {
+                  "name": "constant.numeric.sny"
+                }
+              }
+            },
+            {
+              "name": "constant.character.escape.sny",
+              "match": "\\\\."
+            },
+            {
+              "contentName": "variable.sny",
+              "begin": "\\{",
+              "beginCaptures": {
+                "0": {
+                  "name": "punctuation.definition.template-expression.begin.sny"
+                }
+              },
+              "patterns": [
+                {
+                  "include": "#sunny"
+                }
+              ],
+              "end": "\\}",
+              "endCaptures": {
+                "0": {
+                  "name": "punctuation.definition.template-expression.end.sny"
+                }
+              }
+            }
+          ],
+          "end": "\\2\\1|(.)$|$",
+          "endCaptures": {
+            "1": {
+              "name": "invalid.sny"
+            } 
+          }
+        },
+        {
+          "name": "string.sny",
+          "begin": "(\\$*)(\"|')",
+          "patterns": [
+            {
+              "name": "constant.other.character-class.sny constant.character.escape.sny",
+              "match": "\\\\[nrte]"
+            },
+            {
+              "name": "constant.character.escape.sny",
+              "match": "\\\\u\\{([0-9a-zA-Z]{1,6})\\}",
+              "captures": {
+                "1": {
+                  "name": "constant.numeric.sny"
+                }
+              }
+            },
+            {
+              "name": "constant.character.escape.sny",
+              "match": "\\\\."
+            }
+          ],
+          "end": "\\2\\1|(.)$|$",
+          "endCaptures": {
+            "1": {
+              "name": "invalid.sny"
+            } 
+          }
+        },
+        {
+          "name": "constant.numeric.sny",
+          "match": "(?<![^.]\\.\\s*|\\w)(?:[0-9_]+(?:\\.[0-9_]+)?(?:[eE][-+]?[0-9_]+)?|0b[01_]+|0x[0-9a-fA-F_]+)(?!\\w)",
+          "comment": "1'234.567e+890 | 0b10'10 | 0x50'50'FF"
+        },
+        {
+          "name": "keyword.operator.rest.sny",
+          "match": "\\.{3}"
+        },
+        {
+          "name": "punctuation.accessor.sny keyword.operator.accessor.sny",
+          "match": "\\.|::"
+        },
+        {
+          "name": "keyword.operator.type.annotation.sny meta.type.annotation.sny",
+          "match": ":"
+        },
+        {
+          "name": "keyword.operator.sny",
+          "match": "[-+/*|%!?]|[=!<>]=?",
+          "comment": "- + / * % ! | == != >= <= > < ?"
+        },
+        {
+          "name": "keyword.operator.assignment.sny",
+          "match": "(?:[-+/%^:]|[*|&]{1,2})?=",
+          "comment": "+= -= /= *= %= **= ||= &&= ="
+        },
+        {
+          "begin": "\\(",
+          "beginCaptures": {
+            "0": {
+              "name": "meta.brace.round.sny"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#main"
+            }
+          ],
+          "end": "\\)",
+          "endCaptures": {
+            "0": {
+              "name": "meta.brace.round.sny"
+            }
+          }
+        },
+        {
+          "begin": "\\{",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.block.sny"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#main"
+            }
+          ],
+          "end": "\\}",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.block.sny"
+            }
+          }
+        },
+        {
+          "match": "(@)\\s*(\\w+)",
+          "captures": {
+            "1": {
+              "name": "keyword.operator.sny"
+            },
+            "2": {
+              "name": "entity.name.function.decorator.sny"
+            }
+          }
+        },
+        {
+          "name": "keyword.other.import.sny",
+          "match": "(?<!(?:\\.|::)\\s*|\\w)(?:use|from|as)(?!\\w)"
+        },
+        {
+          "name": "keyword.sny",
+          "match": "(?<!(?:\\.|::)\\s*|\\w)(?:priv|pub|where|with|if|else|match|return|impl|loop|while|break|skip|for|in)(?!\\w)"
+        },
+        {
+          "name": "storage.type.sny",
+          "match": "(?<!(?:\\.|::)\\s*|\\w)(?:mod|typedef|var|const|let|fun|class|struct|enum)(?!\\w)"
+        },
+        {
+          "name": "support.function.builtin.sny",
+          "match": "(?<!(?<!\\.)\\.\\s*|\\w)(?:println)(?!\\w)"
+        },
+        {
+          "name": "support.class.builtin.sny",
+          "match": "(?:(?<!(?<!\\.)\\.\\s*|\\w)(?:Self|Super|bool|int|uint|float|String|Dict|Vec|Range))(?!\\w)"
+        },
+        {
+          "name": "variable.language.sny",
+          "match": "(?<!(?:\\.|::)\\s*|\\w)(?:self|_)(?!\\w)"
+        },
+        {
+          "name": "constant.language.sny",
+          "match": "(?<!(?<!\\.)\\.\\s*|::|\\w)(?:true|false)(?!\\w)"
+        },
+        {
+          "name": "entity.name.function.sny",
+          "match": "(?<!\\w)\\w+(?=\\s*(?:\\?\\.\\s*)?\\()",
+          "comment": "abc()"
+        }
+      ]
+    }
+  }
 }
