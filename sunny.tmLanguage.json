@@ -12,22 +12,33 @@
       "patterns": [
         {
           "name": "comment.line.sny",
-          "begin": "#",
-          "end": "$"
+          "begin": "//",
+          "end": "$|\\n"
         },
         {
-          "name": "comment.block.sny",
-          "begin": "##",
-          "end": "##"
-        },
-        {
+          "begin": "(?<!\\w)r(\\$*)(\"|')",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.string.start.sunny"
+            },
+            "2": {
+              "name": "punctuation.definition.string.start.sunny"
+            }
+          },
           "name": "string.raw.sny",
-          "begin": "r(\\$*)(\"|')",
-          "end": "\\2\\1"
+          "end": "(\\2\\1)|(.)?$",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.string.end.sunny"
+            },
+            "2": {
+              "name": "invalid.sny"
+            } 
+          }
         },
         {
           "name": "string.format.sny",
-          "begin": "f(\\$*)(\"|')",
+          "begin": "(?<!\\w)f(\\$*)(\"|')",
           "patterns": [
             {
               "name": "constant.other.character-class.sny constant.character.escape.sny",
@@ -67,9 +78,47 @@
               }
             }
           ],
-          "end": "\\2\\1|(.)$|$",
+          "end": "(\\2\\1)",
+        },
+        {
+          "name": "string.format.sny",
+          "begin": "(?<!\\w)(?:rf|fr)(\\$*)(\"|')",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.string.start.sny"
+            },
+            "2": {
+              "name": "punctuation.definition.string.start.sny"
+            }
+          },
+          "patterns": [
+            {
+              "contentName": "variable.sny",
+              "begin": "\\{",
+              "beginCaptures": {
+                "0": {
+                  "name": "punctuation.definition.template-expression.begin.sny"
+                }
+              },
+              "patterns": [
+                {
+                  "include": "#sunny"
+                }
+              ],
+              "end": "\\}",
+              "endCaptures": {
+                "0": {
+                  "name": "punctuation.definition.template-expression.end.sny"
+                }
+              }
+            }
+          ],
+          "end": "(\\2\\1)|(.)$|$",
           "endCaptures": {
             "1": {
+              "name": "punctuation.definition.string.end.sny"
+            },
+            "2": {
               "name": "invalid.sny"
             } 
           }
@@ -84,7 +133,7 @@
             },
             {
               "name": "constant.character.escape.sny",
-              "match": "\\\\u\\{([0-9a-zA-Z]{1,6})\\}",
+              "match": "\\\\u\\{([0-9a-fA-F]+)\\}",
               "captures": {
                 "1": {
                   "name": "constant.numeric.sny"
@@ -118,13 +167,18 @@
         },
         {
           "name": "keyword.operator.sny",
-          "match": "\\*\\*?|[-+/|%!?~]|[=!<>]=?|<<|>>",
-          "comment": "- + / * % ! | == != >= <= > < ?"
+          "match": "[=!<>]=",
+          "comment": "== != >= <="
         },
         {
           "name": "keyword.operator.assignment.sny",
-          "match": "(?:[-+/%^:]|[*|&]{1,2})?=",
-          "comment": "+= -= /= *= %= **= ||= &&= ="
+          "match": "(?:[-+/%^:]|[*|&]{1,2}|[<>]{2})?=",
+          "comment": "+= -= /= *= %= **= ||= &&= = &= |= ^= := >>= <<="
+        },
+        {
+          "name": "keyword.operator.sny",
+          "match": "[*<>]{1,2}|[-+/|%!?~=!]",
+          "comment": "- + / * % ! | > < ? ** >> <<"
         },
         {
           "name": "keyword.operator.type.annotation.sny meta.type.annotation.sny",
@@ -134,18 +188,18 @@
           "begin": "\\(",
           "beginCaptures": {
             "0": {
-              "name": "meta.brace.round.sny"
+              "name": "meta.brace.round.sny punctuation.brackets.round.sny"
             }
           },
           "patterns": [
             {
-              "include": "#main"
+              "include": "#sunny"
             }
           ],
           "end": "\\)",
           "endCaptures": {
             "0": {
-              "name": "meta.brace.round.sny"
+              "name": "meta.brace.round.sny punctuation.brackets.round.sny"
             }
           }
         },
@@ -153,18 +207,37 @@
           "begin": "\\{",
           "beginCaptures": {
             "0": {
-              "name": "punctuation.definition.block.sny"
+              "name": "punctuation.definition.block.sny punctuation.brackets.curly.sny"
             }
           },
           "patterns": [
             {
-              "include": "#main"
+              "include": "#sunny"
             }
           ],
           "end": "\\}",
           "endCaptures": {
             "0": {
-              "name": "punctuation.definition.block.sny"
+              "name": "punctuation.definition.block.sny punctuation.brackets.curly.sny"
+            }
+          }
+        },
+        {
+          "begin": "\\[",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.brackets.square.sny"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#sunny"
+            }
+          ],
+          "end": "\\]",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.brackets.square.sny"
             }
           }
         },
@@ -185,11 +258,11 @@
         },
         {
           "name": "keyword.sny",
-          "match": "(?<!(?:\\.|::)\\s*|\\w)(?:priv|pub|where|with|if|else|match|return|impl|loop|while|break|skip|for|in)(?!\\w)"
+          "match": "(?<!\\w)(?:await)(?!\\w)|(?<!(?:\\.|::)\\s*|\\w)(?:async|struct|enum|defer|priv|pub|where|with|if|else|match|return|impl|loop|while|break|skip|for|in)(?!\\w)"
         },
         {
           "name": "storage.type.sny",
-          "match": "(?<!(?:\\.|::)\\s*|\\w)(?:mod|typedef|var|const|let|fun|class|struct|enum)(?!\\w)"
+          "match": "(?<!(?:\\.|::)\\s*|\\w)(?:mixin|mod|typedef|var|const|let|fun|class)(?!\\w)"
         },
         {
           "name": "support.function.builtin.sny",
