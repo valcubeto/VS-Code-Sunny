@@ -39,6 +39,14 @@
         {
           "name": "string.format.sny",
           "begin": "(?<!\\w)f(\\$*)(\"|')",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.string.start.sny"
+            },
+            "2": {
+              "name": "punctuation.definition.string.start.sny"
+            }
+          },
           "patterns": [
             {
               "name": "constant.other.character-class.sny constant.character.escape.sny",
@@ -79,6 +87,11 @@
             }
           ],
           "end": "(\\2\\1)",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.sny"
+            }
+          }
         },
         {
           "name": "string.format.sny",
@@ -126,6 +139,14 @@
         {
           "name": "string.sny",
           "begin": "(\\$*)(\"|')",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.string.start.sny"
+            },
+            "2": {
+              "name": "punctuation.definition.string.start.sny"
+            }
+          },
           "patterns": [
             {
               "name": "constant.other.character-class.sny constant.character.escape.sny",
@@ -145,9 +166,12 @@
               "match": "\\\\."
             }
           ],
-          "end": "\\2\\1|(.)$|$",
+          "end": "(\\2\\1)|(.)$|$",
           "endCaptures": {
             "1": {
+              "name": "punctuation.definition.string.end.sny"
+            },
+            "2": {
               "name": "invalid.sny"
             } 
           }
