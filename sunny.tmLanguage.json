@@ -201,8 +201,8 @@
         },
         {
           "name": "keyword.operator.sny",
-          "match": "[*<>]{1,2}|[-+/|%!?~=!]",
-          "comment": "- + / * % ! | > < ? ** >> <<"
+          "match": "[-+*/|&^%!?!<>@$]",
+          "comment": "- + * ** / | & ^ % ! ? < > << >> @ $"
         },
         {
           "name": "keyword.operator.type.annotation.sny meta.type.annotation.sny",
@@ -266,12 +266,12 @@
           }
         },
         {
-          "match": "(@)\\s*(\\w+)",
+          "match": "#\\[\\s*(\\w+)?\\s*\\]",
           "captures": {
-            "1": {
+            "0": {
               "name": "keyword.operator.sny"
             },
-            "2": {
+            "1": {
               "name": "entity.name.function.decorator.sny"
             }
           }
@@ -286,7 +286,7 @@
         },
         {
           "name": "storage.type.sny",
-          "match": "(?<!(?:\\.|::)\\s*|\\w)(?:flagset|struct|enum|mixin|typedef|var|const|let|fun|class)(?!\\w)"
+          "match": "(?<!(?:\\.|::)\\s*|\\w)(?:flagset|struct|enum|mixin|typedef|var|const|let|fun|class|macro)(?!\\w)"
         },
         {
           "name": "support.function.builtin.sny",
@@ -306,7 +306,7 @@
         },
         {
           "name": "entity.name.function.sny",
-          "match": "(?<!\\w)\\w+(?=\\s*(?:\\?\\.\\s*)?\\()",
+          "match": "(?<!\\w)\\w+!?(?=\\s*(?:\\?\\.\\s*)?\\()",
           "comment": "abc()"
         }
       ]
