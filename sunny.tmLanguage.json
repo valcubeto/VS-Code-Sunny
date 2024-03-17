@@ -302,7 +302,7 @@
         },
         {
           "name": "constant.language.sny",
-          "match": "(?<!(?<!\\.)\\.\\s*|::|\\w)(?:true|false)(?!\\w)"
+          "match": "(?<!(?<!\\.)\\.\\s*|::|\\w)(?:true|false|TRUE|FALSE)(?!\\w)"
         },
         {
           "name": "entity.name.function.sny",
