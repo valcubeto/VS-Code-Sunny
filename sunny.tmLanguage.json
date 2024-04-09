@@ -286,7 +286,7 @@
         },
         {
           "name": "storage.type.sny",
-          "match": "(?<!(?:\\.|::)\\s*|\\w)(?:bitset|struct|enum|mixin|typedef|var|const|let|fun|class|macro)(?!\\w)"
+          "match": "(?<!(?:\\.|::)\\s*|\\w)(?:bitset|struct|enum|trait|typedef|var|const|let|fun|class|macro)(?!\\w)"
         },
         {
           "name": "support.function.builtin.sny",
