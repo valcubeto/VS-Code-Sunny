@@ -16,6 +16,11 @@
           "end": "$|\\n"
         },
         {
+          "name": "comment.block.sny",
+          "begin": "/\\*",
+          "end": "\\*/"
+        },
+        {
           "begin": "(?<!\\w)r(\\$*)(\"|')",
           "beginCaptures": {
             "1": {

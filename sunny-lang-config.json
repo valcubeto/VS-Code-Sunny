@@ -1,6 +1,7 @@
 {
 	"comments": {
-		"lineComment": "//"
+		"lineComment": "//",
+		"blockComment": ["/*", "*/"]
 	},
 	"brackets": [
 		[
@@ -61,6 +62,10 @@
 		],
 		[
 			"f\"",
+			"\""
+		],
+		[
+			"c\"",
 			"\""
 		],
 		[
