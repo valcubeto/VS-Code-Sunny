@@ -287,11 +287,11 @@
         },
         {
           "name": "keyword.sny",
-          "match": "(?<!\\w)(?:await)(?!\\w)|(?<!(?:\\.|::)\\s*|\\w)(?:new|then|async|defer|priv|pub|where|with|if|else|match|return|impl|loop|while|break|skip|for|in|extends)(?!\\w)"
+          "match": "(?<!\\w)(?:await)(?!\\w)|(?<!(?:\\.|::)\\s*|\\w)(?:async|defer|priv|pub|where|with|if|else|match|return|impl|loop|while|break|skip|for|in)(?!\\w)"
         },
         {
           "name": "storage.type.sny",
-          "match": "(?<!(?:\\.|::)\\s*|\\w)(?:bitset|struct|enum|trait|typedef|var|const|let|fun|class|macro)(?!\\w)"
+          "match": "(?<!(?:\\.|::)\\s*|\\w)(?:test|bitset|struct|enum|trait|typedef|var|const|let|fun|class|macro)(?!\\w)"
         },
         {
           "name": "support.function.builtin.sny",
@@ -299,19 +299,15 @@
         },
         {
           "name": "support.class.builtin.sny",
-          "match": "(?:(?<!(?<!\\.)\\.\\s*|\\w)(?:Self|Super|bool|int|uint|float|String|Dict|Vec|Range))(?!\\w)"
-        },
-        {
-          "name": "variable.language.sny",
-          "match": "(?<!(?:\\.|::)\\s*|\\w)(?:self|_)(?!\\w)"
+          "match": "(?:(?<!(?<!\\.)\\.\\s*|\\w)(?:Option|Result|Self|Super|Bool|U?Int(?:8|16|32|64|128)|Float(?:32|64|128)|String|Map|Dict|List|Range))(?!\\w)"
         },
         {
           "name": "constant.language.sny",
-          "match": "(?<!(?<!\\.)\\.\\s*|::|\\w)(?:true|false|TRUE|FALSE)(?!\\w)"
+          "match": "(?<!(?<!\\.)\\.\\s*|::|\\w)(?:self|true|false|TRUE|FALSE|_)(?!\\w)"
         },
         {
           "name": "entity.name.function.sny",
-          "match": "(?<!\\w)\\w+!?(?=\\s*(?:\\?\\.\\s*)?\\()",
+          "match": "(?<!\\w)\\w+!?(?=\\s*\\()",
           "comment": "abc()"
         }
       ]
