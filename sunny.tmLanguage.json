@@ -291,7 +291,7 @@
         },
         {
           "name": "storage.type.sny",
-          "match": "(?<!(?:\\.|::)\\s*|\\w)(?:test|bitset|struct|enum|trait|typedef|var|const|let|fun|class|macro)(?!\\w)"
+          "match": "(?<!(?:\\.|::)\\s*|\\w)(?:constructor|method|testit|bitset|struct|enum|trait|typedef|var|const|let|fun|class|macro)(?!\\w)"
         },
         {
           "name": "support.function.builtin.sny",
@@ -303,7 +303,7 @@
         },
         {
           "name": "constant.language.sny",
-          "match": "(?<!(?<!\\.)\\.\\s*|::|\\w)(?:self|true|false|TRUE|FALSE|_)(?!\\w)"
+          "match": "(?<!(?<!\\.)\\.\\s*|::|\\w)(?:self|true|false|_)(?!\\w)"
         },
         {
           "name": "entity.name.function.sny",
