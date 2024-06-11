@@ -1,8 +1,9 @@
 {
 	"name": "sunny",
-	"displayName": "Sunny syntax",
+	"displayName": "Sunny Syntax Highlighting",
 	"description": "Syntax highlighting for the Sunny programming language",
-	"version": "1.0.0",
+	"version": "1.1.0",
+	"icon": "images/sunny.png",
 	"publisher": "valcubeto",
 	"author": {
 		"name": "Val Cubeto",
@@ -12,11 +13,21 @@
 		"vscode": "^1.22.0"
 	},
 	"categories": [
-		"Programming Languages"
+		"Programming Languages",
+		"Snippets",
+		"Visualization",
+		"Language Packs"
 	],
 	"keywords": [
-		"sunny syntax",
-		"sunny highlight"
+		"sunny",
+		"syntax",
+		"highlight",
+		"highlighting",
+		"language",
+		"grammar",
+		"snippets",
+		"code",
+		"vscode"
 	],
 	"main": "./extension.js",
 	"contributes": {
@@ -48,8 +59,8 @@
 		]
 	},
 	"license": "MIT",
-	"bugs": "https://github.com/ValCubeto/vsc-sunny/issues",
-	"repository": "https://github.com/ValCubeto/vsc-sunny",
+	"bugs": "https://github.com/valcubeto/vsc-sunny/issues",
+	"repository": "https://github.com/valcubeto/vsc-sunny",
 	"__metadata": {
 		"publisherDisplayName": "Val Cubeto"
 	}

@@ -3,7 +3,7 @@
 		"prefix": "fun main",
 		"description": "The entrypoint of your program",
 		"body": [
-			"fun main() {",
+			"fun main() {$1:}{",
 			"\t$0",
 			"}"
 		]
@@ -12,17 +12,18 @@
 		"prefix": "class",
 		"description": "Class declaration",
 		"body": [
-			"class ${1:MyClass} {",
-			"\tstruct {",
-			"\t\t$0",
+			"class ${1:Point} {",
+			"\t${2:struct} {",
+			"\t\t${3:// ...}",
 			"\t}",
+			"\tstatic fun ${4:new}($5) -> ${6:Self} {$0}",
 			"}"
 		]
 	},
 	"for in": {
 		"prefix": "forin",
 		"body": [
-			"for ${1:i} in ${2:Range::new(0, 10)} {",
+			"for ${1:i} in ${2:0...10} {",
 			"\t$0",
 			"}"
 		]

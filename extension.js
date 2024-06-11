@@ -1,15 +1,17 @@
 const vscode = require('vscode')
 
-try {
-	const items = require('./completion-items.json')
 
-	/** 
-	 * @typedef {{  }} CompletionItem
-	 * @typedef {typeof vscode.CompletionItem} VSCCompletionItem
-	 */
+function loadCompletionItems() {
+	let items;
+	try {
+		items = require('./completion-items.json_');
+	} catch (error) {
+		vscode.window.showErrorMessage("Failed to load the completion items file", ["what", "the"]);
+		return;
+	}
 
-	/** @type {CompletionItem} */
-	const completionItems = []
+	/** @type {vscode.CompletionList} */
+	const completionItems = [];
 
 	/**
 	 * If the value is an array returns it joined by a new line
@@ -17,11 +19,7 @@ try {
 	 * @returns {string} The string or the joined array
 	 */
 	function joinIfArray(value) {
-		if (Array.isArray(value)) {
-			return value.join('\n')
-		} else {
-			return `${value}`
-		}
+		return Array.isArray(value) ? value.join('\n') : `${value}`
 	}
 
 	const KindMap = {
@@ -30,10 +28,11 @@ try {
 		'functions': 'Function'
 	}
 
+	/** @typedef {{ name: string, description: string, documentation: string | string[] }} CompletionItem */
 	/**
 	 * @param {CompletionItem} item
 	 * @param {string} kind
-	 * @returns {VSCCompletionItem}
+	 * @returns {vscode.CompletionItem}
 	 */
 	function createCompletionItem(item, kind) {
 		const documentation = []
@@ -45,7 +44,7 @@ try {
 		if (item.documentation) {
 			documentation.push(
 				'**Documentation**',
-				'```sunny',
+				'```sny',
 				joinIfArray(item.documentation),
 				'```'
 			)
@@ -69,40 +68,53 @@ try {
 		return completionItem
 	}
 
-	for (const kind in items) {
-		items[kind].forEach(item => {
-			const completionItem = createCompletionItem(item, kind)
-			completionItems.push(completionItem)
-		})
-	}
+		for (const kind in items) {
+			items[kind].forEach(item => {
+				const completionItem = createCompletionItem(item, kind)
+				completionItems.push(completionItem)
+			})
+		}
 
-	function activate({ subscriptions }) {
-		const completionItemProvider = vscode.languages.registerCompletionItemProvider('sunny', {
-			provideCompletionItems(_document, _position, _token, _context) {
-				return completionItems
-			}
-		})
-		const hoverProvider = vscode.languages.registerHoverProvider('sunny', {
-			provideHover(document, _position, _token, _next) {
-				// if (document.isUntitled) return
-				return [
-					{
-						name: 'void',
-						documentation: 'type void'
-					}
-				]
-			}
-		})
+		function activate({ subscriptions }) {
+			const completionItemProvider = vscode.languages.registerCompletionItemProvider('sunny', {
+				/**
+				 * @param {vscode.TextDocument} document
+				 * @param {vscode.TextDocument} document 
+				 * @param {vscode.Position} position 
+				 * @param {vscode.CancellationToken} token
+				 * @param {vscode.CompletionContext} context 
+				 * @returns {vscode.CompletionList}
+				 */
+				provideCompletionItems(document, position, token, context) {
+					if (document.languageId !== LANG_ID) return;
+					// TODO: provide more items based on the current context
+					return completionItems
+				}
+			});
+			const hoverProvider = vscode.languages.registerHoverProvider('sunny', {
+				/**
+				 * 
+				 * @param {vscode.TextDocument} document 
+				 * @param {vscode.Position} position
+				 * @param {vscode.CancellationToken} token
+				 * @returns {vscode.ProviderResult<vscode.Hover>}
+				 */
+				provideHover(document, position, _token) {
+					if (document.isUntitled) return;
+					vscode.window.showInformationMessage(`Hovering over ${document.fileName}`);
+					return new vscode.Hover("This is a test", new vscode.Range(position, position.translate(1)));
+				}
+			});
 
-		subscriptions.push(
-			completionItemProvider,
-			hoverProvider
-		)
-	}
+			subscriptions.push(
+				completionItemProvider,
+				hoverProvider
+			);
+		}
 
-	module.exports = { activate }
+		module.exports = { activate };
 
-	// export type ProviderResult<T> = T | undefined | null | Thenable<T | undefined | null>;
-} catch (error) {
-	vscode.window.showErrorMessage(error.toString())
+		// export type ProviderResult<T> = T | undefined | null | Thenable<T | undefined | null>;
 }
+
+loadCompletionItems();
