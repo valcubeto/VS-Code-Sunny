@@ -3,10 +3,10 @@
 	"displayName": "Sunny syntax",
 	"description": "Syntax highlighting for the Sunny programming language",
 	"version": "1.0.0",
-	"publisher": "valcubeta",
+	"publisher": "valcubeto",
 	"author": {
-		"name": "Val Cubeta",
-		"url": "https://twitter.com/valcubetaa"
+		"name": "Val Cubeto",
+		"url": "https://github.com/valcubeto"
 	},
 	"engines": {
 		"vscode": "^1.22.0"
@@ -48,9 +48,9 @@
 		]
 	},
 	"license": "MIT",
-	"bugs": "https://github.com/ValCubeta/vsc-sunny/issues",
-	"repository": "https://github.com/ValCubeta/vsc-sunny",
+	"bugs": "https://github.com/ValCubeto/vsc-sunny/issues",
+	"repository": "https://github.com/ValCubeto/vsc-sunny",
 	"__metadata": {
-		"publisherDisplayName": "Val Cubeta"
+		"publisherDisplayName": "Val Cubeto"
 	}
 }

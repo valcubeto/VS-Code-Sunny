@@ -287,11 +287,11 @@
         },
         {
           "name": "keyword.sny",
-          "match": "(?<!\\w)(?:await)(?!\\w)|(?<!(?:\\.|::)\\s*|\\w)(?:async|defer|priv|pub|where|with|if|else|match|return|impl|loop|while|break|skip|for|in)(?!\\w)"
+          "match": "(?<!\\w)(?:await)(?!\\w)|(?<!(?:\\.|::)\\s*|\\w)(?:static|async|defer|priv|pub|where|with|if|else|match|return|impl|loop|while|break|skip|for|in)(?!\\w)"
         },
         {
           "name": "storage.type.sny",
-          "match": "(?<!(?:\\.|::)\\s*|\\w)(?:constructor|method|testit|bitset|struct|enum|trait|typedef|var|const|let|fun|class|macro)(?!\\w)"
+          "match": "(?<!(?:\\.|::)\\s*|\\w)(?:test|bitset|struct|enum|trait|typedef|var|const|let|fun|class|macro)(?!\\w)"
         },
         {
           "name": "support.function.builtin.sny",
