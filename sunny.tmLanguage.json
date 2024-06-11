@@ -129,7 +129,7 @@
       "patterns": [
         {
           "name": "string.raw.sny",
-          "begin": "(?=\\W)([rR])(\\$*\")",
+          "begin": "(?<!\\w)([rR])(\\$*\")",
           "beginCaptures": {
             "1": {
               "name": "string.raw.sny"
@@ -176,7 +176,7 @@
         },
         {
           "name": "string.c.sny",
-          "begin": "(?=\\W)([cC])(\\$*\")",
+          "begin": "(?<!\\w)([cC])(\\$*\")",
           "beginCaptures": {
             "1": {
               "name": "string.c.sny"
@@ -284,27 +284,27 @@
       "patterns": [
         {
           "name": "keyword.other.import.sny",
-          "match": "(?=\\W)(?:use|from|as)(?=\\W)"
+          "match": "(?<!\\w)(?:use|from|as)(?!\\w)"
         },
         {
           "name": "keyword.sny",
-          "match": "(?=\\W)(?:await|unsafe|static|try|async|defer|priv|pub|where|with|if|else|match|extends|return|yield|impl|loop|while|break|continue|for|in)(?=\\W)"
+          "match": "(?<!\\w)(?:await|unsafe|static|try|async|defer|priv|pub|where|with|if|else|match|extends|return|yield|impl|loop|while|break|continue|for|in)(?!\\w)"
         },
         {
           "name": "storage.type.sny",
-          "match": "(?=\\W)(?:test|bitset|struct|enum|trait|typedef|var|const|let|fun|class|macro)(?=\\W)"
+          "match": "(?<!\\w)(?:test|bitset|struct|enum|trait|typedef|var|const|let|fun|class|macro)(?!\\w)"
         },
         {
           "name": "support.function.builtin.sny",
-          "match": "(?=\\W)(?:e?println|exit|panic)(?=\\W)"
+          "match": "(?<!\\w)(?:e?println|exit|panic)(?!\\w)"
         },
         {
           "name": "support.class.builtin.sny",
-          "match": "(?=\\W)(?:std|Option|Result|Self|Super|Bool|U?Int(?:8|16|32|64|128)|Float(?:32|64|128)|String|Map|Dict|List|Range))(?=\\W)"
+          "match": "(?<!\\w)(?:std|Option|Result|Self|Super|Bool|U?Int(?:8|16|32|64|128)|Float(?:32|64|128)|String|Map|Dict|List|Range)(?!\\w)"
         },
         {
           "name": "constant.language.sny",
-          "match": "(?=\\W)(?:self|super|True|False|_|Ok|Err|Some|None)(?=\\W)"
+          "match": "(?<!\\w)(?:self|super|True|False|_|Ok|Err|Some|None)(?!\\w)"
         }
       ]
     },

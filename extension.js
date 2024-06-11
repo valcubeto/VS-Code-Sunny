@@ -4,7 +4,7 @@ const vscode = require('vscode')
 function loadCompletionItems() {
 	let items;
 	try {
-		items = require('./completion-items.json_');
+		items = require('./completion-items.json');
 	} catch (error) {
 		vscode.window.showErrorMessage("Failed to load the completion items file", ["what", "the"]);
 		return;
@@ -101,7 +101,9 @@ function loadCompletionItems() {
 				 */
 				provideHover(document, position, _token) {
 					if (document.isUntitled) return;
-					vscode.window.showInformationMessage(`Hovering over ${document.fileName}`);
+					let line = position.line + 1;
+					let column = position.character + 1;
+					vscode.window.showInformationMessage(`Hovering over ${document.fileName}:${line}:${column}`);
 					return new vscode.Hover("This is a test", new vscode.Range(position, position.translate(1)));
 				}
 			});
@@ -117,4 +119,32 @@ function loadCompletionItems() {
 		// export type ProviderResult<T> = T | undefined | null | Thenable<T | undefined | null>;
 }
 
+function validateHighlighting() {
+	let hl;
+	try {
+		hl = require('./sunny.tmLanguage.json');
+	} catch (e) {
+		vscode.window.showErrorMessage("Failed to load the highlighting file: " + e);
+	}
+	for (const repo in hl.repository) {
+		const {patterns} = hl.repository[repo];
+		if (patterns == null) {
+			continue;
+		}
+		for (const {match, begin, end} of patterns) {
+			let patt = match ?? begin ?? end;
+			if (patt === undefined) {
+				continue;
+			}
+			try {
+				new RegExp(patt);
+			} catch (error) {
+				vscode.window.showErrorMessage(`Invalid regex at repository.${repo}: ${patt}`);
+			}
+		}
+	}
+}
+
 loadCompletionItems();
+validateHighlighting();
+
