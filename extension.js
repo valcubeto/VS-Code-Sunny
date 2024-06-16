@@ -104,7 +104,7 @@ function loadCompletionItems() {
 					let line = position.line + 1;
 					let column = position.character + 1;
 					vscode.window.showInformationMessage(`Hovering over ${document.fileName}:${line}:${column}`);
-					return new vscode.Hover("This is a test", new vscode.Range(position, position.translate(1)));
+					return new vscode.Hover("This is a test", new vscode.Range(position, position.translate(0, 1)));
 				}
 			});
 
@@ -127,7 +127,7 @@ function validateHighlighting() {
 		vscode.window.showErrorMessage("Failed to load the highlighting file: " + e);
 	}
 	for (const repo in hl.repository) {
-		const {patterns} = hl.repository[repo];
+		const {patterns} = hl.repository[repo] ?? {};
 		if (patterns == null) {
 			continue;
 		}
@@ -143,6 +143,7 @@ function validateHighlighting() {
 			}
 		}
 	}
+	vscode.window.showInformationMessage("Highlighting validation complete");
 }
 
 loadCompletionItems();
