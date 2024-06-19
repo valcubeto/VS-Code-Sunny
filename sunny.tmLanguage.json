@@ -83,6 +83,15 @@
         }
       ]
     },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.sny",
+          "match": "(?<![^.]\\.\\s*|\\w)(?:[0-9_]+(?:\\.[0-9_]+)?(?:[eE][-+]?[0-9_]+(?:\\.[0-9_]+)?)?|0b[01_]+|0x[0-9a-fA-F_]+)(?!\\w)",
+          "comment": "1_2.5_0e+3_4.56 | 0b1000_0001 | 0x50_50"
+        }
+      ]
+    },
     "stringEscapes": {
       "patterns": [
         {
@@ -101,32 +110,27 @@
         {
           "comment": "Any other escape sequence",
           "name": "constant.character.escape.sny",
-          "match": "\\\\[^0]"
-        },
-        {
-          "contentName": "variable.sny",
-          "begin": "\\{",
-          "beginCaptures": {
-            "0": {
-              "name": "punctuation.definition.template-expression.begin.sny"
-            }
-          },
-          "patterns": [
-            {
-              "include": "#sunny"
-            }
-          ],
-          "end": "\\}",
-          "endCaptures": {
-            "0": {
-              "name": "punctuation.definition.template-expression.end.sny"
-            }
-          }
+          "match": "\\\\."
         }
       ]
     },
     "strings": {
       "patterns": [
+        {
+          "name": "constant.character.sny string.sny",
+          "begin": "(?:(?<!\\w)[bB])?'",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.sny"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#stringEscapes"
+            }
+          ],
+          "end": "'"
+        },
         {
           "name": "string.raw.sny",
           "begin": "(?<!\\w)([rR])(\\$*)(\")",
@@ -172,6 +176,26 @@
             {
               "name": "constant.other.character-class.sny constant.character.escape.sny",
               "match": "\\\\0"
+            },
+            {
+              "contentName": "variable.sny",
+              "begin": "\\{",
+              "beginCaptures": {
+                "0": {
+                  "name": "punctuation.definition.template-expression.begin.sny"
+                }
+              },
+              "patterns": [
+                {
+                  "include": "#sunny"
+                }
+              ],
+              "end": "\\}",
+              "endCaptures": {
+                "0": {
+                  "name": "punctuation.definition.template-expression.end.sny"
+                }
+              }
             }
           ],
           "end": "(\"\\2)|(.)?$",
@@ -200,11 +224,11 @@
           },
           "patterns": [
             {
-              "include": "#stringEscapes"
+              "name": "invalid.sunny",
+              "match": "\\{1,3,5}0"
             },
             {
-              "name": "invalid.sunny",
-              "match": "\\0"
+              "include": "#stringEscapes"
             }
           ],
           "end": "(\"\\2)|(.)$|$",
@@ -340,9 +364,7 @@
           "include": "#brackets"
         },
         {
-          "name": "constant.numeric.sny",
-          "match": "(?<![^.]\\.\\s*|\\w)(?:[0-9_]+(?:\\.[0-9_]+)?(?:[eE][-+]?[0-9_]+)?|0b[01_]+|0x[0-9a-fA-F_]+)(?!\\w)",
-          "comment": "1_2.5_0e+3_4 | 0b1000_0001 | 0x50_50"
+          "include": "#numbers"
         },
         {
           "include": "#operators"
