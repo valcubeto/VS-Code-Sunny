@@ -6,7 +6,7 @@ function loadCompletionItems() {
 	try {
 		items = require('./completion-items.json');
 	} catch (error) {
-		vscode.window.showErrorMessage("Failed to load the completion items file", ["what", "the"]);
+		vscode.window.showErrorMessage("Failed to load the completion items file");
 		return;
 	}
 
@@ -52,7 +52,7 @@ function loadCompletionItems() {
 
 		if (item.example) {
 			documentation.push(
-				'```sunny',
+				'```sny',
 				joinIfArray(item.example),
 				'```'
 			)
@@ -103,8 +103,8 @@ function loadCompletionItems() {
 					if (document.isUntitled) return;
 					let line = position.line + 1;
 					let column = position.character + 1;
-					vscode.window.showInformationMessage(`Hovering over ${document.fileName}:${line}:${column}`);
-					return new vscode.Hover("This is a test", new vscode.Range(position, position.translate(0, 1)));
+					let range = new vscode.Range(position, position.translate(0, 1));
+					return new vscode.Hover(`${document.fileName}:${line}:${column}`, range);
 				}
 			});
 

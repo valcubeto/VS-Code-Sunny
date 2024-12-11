@@ -3,29 +3,39 @@
 		"prefix": "fun main",
 		"description": "The entrypoint of your program",
 		"body": [
-			"fun main() {$1:}{",
-			"\t$0",
+			"fun main() {",
+			"\t${0:println(\"Hello, world!\")}",
 			"}"
 		]
 	},
 	"class": {
 		"prefix": "class",
-		"description": "Class declaration",
+		"description": "A class declaration, with its internal structure and its initializer",
 		"body": [
 			"class ${1:Point} {",
-			"\t${2:struct} {",
-			"\t\t${3:// ...}",
+			"\t${2|struct,enum,bitset|} {$3}",
+			"\tfun ${4:new}($5) -> ${6:Self} {",
+			"\t\t${7:return ${1:Point} {$0\\}}",
 			"\t}",
-			"\tstatic fun ${4:new}($5) -> ${6:Self} {$0}",
 			"}"
 		]
 	},
 	"for in": {
 		"prefix": "forin",
+		"description": "Iterate over a range of values",
 		"body": [
-			"for ${1:i} in ${2:0...10} {",
-			"\t$0",
+			"for ${1:i} in ${4:${2:0}...${3:10}} {",
+			"\t${0:debug!(i)}",
 			"}"
+		]
+	},
+	"classic for loop": {
+		"prefix": "forloop!",
+		"description": "A macro that simulates a classic for loop",
+		"body": [
+			"forloop!(${1:i} = ${2:0}; ${1:i} <= ${3:10}; ${1:i} += ${4:1}; {",
+			"\t${0:debug!(${1:i})}",
+			"})"
 		]
 	}
 }
