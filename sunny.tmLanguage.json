@@ -332,11 +332,11 @@
         },
         {
           "name": "keyword.sny",
-          "match": "(?<!\\w)(?:as|is|await|unsafe|argstruct|async|defer|priv|pub|where|if|else|match|extends|return|impl|loop|while|break|continue|for|in|case)(?!\\w)"
+          "match": "(?<!\\w)(?:as|is|await|unsafe|argstruct|async|defer|hidden|shared|where|if|else|match|extends|return|impl|loop|while|break|continue|for|in|case)(?!\\w)"
         },
         {
           "name": "storage.type.sny",
-          "match": "(?<!\\w)(?:bitset|struct|enum|idea|typedef|var|const|let|fun|class|macro)(?!\\w)"
+          "match": "(?<!\\w)(?:bitset|struct|enum|idea|typedef|var|const|state|let|fun|class|macro)(?!\\w)"
         },
         {
           "name": "support.function.builtin.sny",
