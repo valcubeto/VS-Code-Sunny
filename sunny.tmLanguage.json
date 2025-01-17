@@ -315,12 +315,12 @@
         {
           "name": "keyword.operator.assignment.sny",
           "match": "(?:[-+/%^:]|[*|&]{1,2}|[<>]{2})?=",
-          "comment": "+= -= /= *= %= **= ||= &&= = &= |= ^= := >>= <<="
+          "comment": "= += -= /= *= %= **= ||= &&= &= |= ^= := >>= <<="
         },
         {
           "name": "keyword.operator.sny",
-          "match": "[-+?*/|&^%!<>@$]",
-          "comment": "- + * ** / | & ^ % ! < > << >> ?"
+          "match": "[-+?*/|&^%!]|[<>]{1,2}",
+          "comment": "- + * / | & ^ % < > << >> ! ?"
         }
       ]
     },
@@ -332,23 +332,23 @@
         },
         {
           "name": "keyword.sny",
-          "match": "(?<!\\w)(?:as|is|await|unsafe|argstruct|async|defer|hidden|shared|where|if|else|match|extends|return|impl|loop|while|break|continue|for|in|case)(?!\\w)"
+          "match": "(?<!\\w)(?:takes|as|is|await|unsafe|argstruct|async|defer|hidden|shared|where|if|else|match|extends|return|impl|loop|while|break|continue|for|in|case)(?!\\w)"
         },
         {
           "name": "storage.type.sny",
-          "match": "(?<!\\w)(?:bitset|struct|enum|idea|typedef|var|const|state|let|fun|class|macro)(?!\\w)"
+          "match": "(?<!\\w)(?:mod|bitset|struct|enum|idea|typedef|const|state|let|var|fun|class|macro)(?!\\w)"
         },
         {
           "name": "support.function.builtin.sny",
-          "match": "(?<!\\w)(?:e?println|exit|panic)(?!\\w)"
+          "match": "(?<!\\w)(?:e?println|panic)(?!\\w)"
         },
         {
           "name": "support.class.builtin.sny",
-          "match": "(?<!\\w)(?:std|Option|Result|Ordering|Self|Super|Bool|U?Int(?:8|16|32|64)|Float(?:32|64)|String|Map|Dict|List|Range)(?!\\w)"
+          "match": "(?<!\\w)(?:std|Option|Result|Ordering|Self|Super|Bool|U?Int(?:8|16|32|64)|Float(?:32|64)|String|Map|Dict|List|Set|Range)(?!\\w)"
         },
         {
           "name": "constant.language.sny",
-          "match": "(?<!\\w)(?:self|super|True|False|_|Ok|Err|Some|None|Less|Equal|Greater)(?!\\w)"
+          "match": "(?<!\\w)(?:_|self|Super|True|False|Ok|Err|Some|None|Less|Equal|Greater)(?!\\w)"
         }
       ]
     },
