@@ -1,5 +1,6 @@
 const vscode = require('vscode')
 
+const LANG_ID = 'sunny';
 
 function loadCompletionItems() {
 	let items;
@@ -79,10 +80,10 @@ function loadCompletionItems() {
 			const completionItemProvider = vscode.languages.registerCompletionItemProvider('sunny', {
 				/**
 				 * @param {vscode.TextDocument} document
-				 * @param {vscode.TextDocument} document 
-				 * @param {vscode.Position} position 
+				 * @param {vscode.TextDocument} document
+				 * @param {vscode.Position} position
 				 * @param {vscode.CancellationToken} token
-				 * @param {vscode.CompletionContext} context 
+				 * @param {vscode.CompletionContext} context
 				 * @returns {vscode.CompletionList}
 				 */
 				provideCompletionItems(document, position, token, context) {
@@ -93,8 +94,8 @@ function loadCompletionItems() {
 			});
 			const hoverProvider = vscode.languages.registerHoverProvider('sunny', {
 				/**
-				 * 
-				 * @param {vscode.TextDocument} document 
+				 *
+				 * @param {vscode.TextDocument} document
 				 * @param {vscode.Position} position
 				 * @param {vscode.CancellationToken} token
 				 * @returns {vscode.ProviderResult<vscode.Hover>}
@@ -125,6 +126,7 @@ function validateHighlighting() {
 		hl = require('./sunny.tmLanguage.json');
 	} catch (e) {
 		vscode.window.showErrorMessage("Failed to load the highlighting file: " + e);
+		return;
 	}
 	for (const repo in hl.repository) {
 		const {patterns} = hl.repository[repo] ?? {};

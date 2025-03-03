@@ -13,9 +13,7 @@
         {
           "begin": "\\(",
           "beginCaptures": {
-            "0": {
-              "name": "meta.brace.round.sny punctuation.brackets.round.sny"
-            }
+            "0": { "name": "meta.brace.round.sny punctuation.brackets.round.sny" }
           },
           "patterns": [{ "include": "#sunny" }],
           "end": "\\)",
@@ -65,8 +63,8 @@
       "patterns": [
         {
           "name": "constant.numeric.sny",
-          "match": "(?<![^.]\\.\\s*|\\w)(?:[0-9_]+(?:\\.[0-9_]+)?(?:[eE][-+]?[0-9_]+(?:\\.[0-9_]+)?)?|0b[01_]+|0x[0-9a-fA-F_]+)\\b",
-          "comment": "1_2.5_0e+3_4.56 | 0b1000_0001 | 0x50_50"
+          "match": "(?:[-+]|\\b)[0-9](?:_?[0-9])*(?:\\.[0-9](?:_?[--9])*)?(?:[eE][-+]?[0-9](?:_?[0-9])*(?:\\.[0-9](?:_?[--9])*)?)?\\b|\\b0b[01](?:_?[01])*\\b|\\b0x[0-9a-fA-F](?:_?[0-9a-fA-F])*\\b",
+          "comment": "Integers, floats, exponentials, binaries, hexadecimals, and underscores"
         }
       ]
     },
@@ -93,14 +91,32 @@
     "strings": {
       "patterns": [
         {
-          "name": "string.raw.sny",
-          "begin": "\\b([rR])(\\$*)(\")",
+          "name": "constant.character.sny string.quoted.single.sny",
+          "begin": "[bB]?(')",
           "beginCaptures": {
-            "1": { "name": "string.raw.sny" },
-            "2": { "name": "punctuation.definition.string.start.sny" },
-            "3": { "name": "punctuation.definition.string.start.sny" }
+            "1": { "name": "punctuation.definition.string.begin.sny" }
           },
-          "end": "(\"\\2)|(.)?$",
+          "patterns": [
+            { "include": "#stringEscapes" },
+            {
+              "name": "constant.other.character-class.sny constant.character.escape.sny",
+              "match": "\\\\0"
+            }
+          ],
+          "end": "(')|(.)?$",
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.string.end.sny" },
+            "2": { "name": "invalid.sny" }
+          }
+        },
+        {
+          "name": "string.raw.sny",
+          "begin": "\\b[rR](\\$*)(\")",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.string.start.sny" },
+            "2": { "name": "punctuation.definition.string.start.sny" }
+          },
+          "end": "(\"\\1)|(.)?$",
           "endCaptures": {
             "1": { "name": "punctuation.definition.string.end.sny" },
             "2": { "name": "invalid.sny" }
@@ -108,11 +124,10 @@
         },
         {
           "name": "string.format.sny",
-          "begin": "\\b([fF])(\\$*)(\")",
+          "begin": "\\b[fF](\\$*)(\")",
           "beginCaptures": {
-            "1": { "name": "string.format.sny" },
-            "2": { "name": "punctuation.definition.string.start.sny" },
-            "3": { "name": "punctuation.definition.string.start.sny" }
+            "1": { "name": "punctuation.definition.string.start.sny" },
+            "2": { "name": "punctuation.definition.string.start.sny" }
           },
           "patterns": [
             { "include": "#stringEscapes" },
@@ -133,7 +148,7 @@
               }
             }
           ],
-          "end": "(\"\\2)|(.)?$",
+          "end": "(\"\\1)|(.)?$",
           "endCaptures": {
             "1": { "name": "punctuation.definition.string.end.sny" },
             "2": { "name": "invalid.sny" }
@@ -162,10 +177,10 @@
         },
         {
           "name": "string.sny",
-          "begin": "(\\$*)(\")",
+          "begin": "[bB]?(\\$*)(\")",
           "beginCaptures": {
-            "0": { "name": "punctuation.definition.string.start.sny" },
-            "1": { "name": "punctuation.definition.string.start.sny" }
+            "1": { "name": "punctuation.definition.string.start.sny" },
+            "2": { "name": "punctuation.definition.string.start.sny" }
           },
           "patterns": [
             { "include": "#stringEscapes" },
@@ -215,18 +230,18 @@
         },
         {
           "name": "keyword.operator.sny",
-          "match": "[<>]=|[=!]==",
-          "comment": ">= <= == != === !=="
+          "match": "[=!<>]=",
+          "comment": ">= <= == !="
         },
         {
           "name": "keyword.operator.assignment.sny",
-          "match": "(?:[-+/%^:]|[*|&]{1,2}|[<>]{2})?=",
-          "comment": "= += -= /= *= %= **= ||= &&= &= |= ^= := >>= <<="
+          "match": "(?:[-+/*%^]|[|&]{1,2}|[<>]{2})?=",
+          "comment": "= += -= /= *= %= ^= |= ||= &= &&= <<= >>="
         },
         {
           "name": "keyword.operator.sny",
-          "match": "[-+?*/|&^%!]|[<>]{1,2}",
-          "comment": "- + * / | & ^ % < > << >> ! ?"
+          "match": "[~?*/^%!]|\\|>|[-+|&<>]{1,2}",
+          "comment": "~ ? * / ^ % ! |> - -- + ++ | || & && < << > >>"
         }
       ]
     },
@@ -238,7 +253,7 @@
         },
         {
           "name": "keyword.sny",
-          "match": "\\b(?:takes|as|is|await|unsafe|arglist|async|defer|hidden|shared|where|if|else|match|return|impl|loop|while|break|continue|for|in|case)\\b"
+          "match": "\\b(?:gen|takes|as|is|await|unsafe|arglist|async|defer|hidden|shared|where|if|else|match|return|impl|loop|while|break|continue|for|in|case)\\b"
         },
         {
           "name": "storage.type.sny",
@@ -246,15 +261,15 @@
         },
         {
           "name": "support.function.builtin.sny",
-          "match": "\\b(?:e?println|panic)\\b"
+          "match": "\\b(?:e?println)\\b"
         },
         {
           "name": "support.class.builtin.sny",
-          "match": "\\b(?:Option|Result|Ordering|Self|Super|Bool|u?int(?:8|16|32|64)|float(?:32|64)|String|Map|Dict|List|Set|Range)\\b"
+          "match": "\\b(?:Option|Result|Ordering|Self|Bool|u?int(?:8|16|32|64)|[ui]size|float(?:32|64)|String|Map|Dict|List|Set|Range)\\b"
         },
         {
           "name": "constant.language.sny",
-          "match": "\\b(?:std|_|self|Super|True|False|Ok|Err|Some|None|Less|Equal|Greater)\\b"
+          "match": "\\b(?:std|_|self|True|False|Ok|Err|Some|None|Less|Equal|Greater)\\b"
         }
       ]
     },

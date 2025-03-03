@@ -27,16 +27,12 @@
 			"description": "In the for loop, specify the value you want to iterate"
 		},
 		{
-			"name": "with",
-			"description": "Make a value global inside a code block. You can access its fields using the dot syntax (e. g. `with self { .x = 5 }`)"
-		},
-		{
 			"name": "class",
-			"description": "Define a class, an interface for interacting with a set of values, its fields"
+			"description": "Define a class"
 		},
 		{
 			"name": "impl",
-			"description": "Implement a trait for a class"
+			"description": "Implement an interface for a class"
 		},
 		{
 			"name": "fun",
@@ -47,11 +43,11 @@
 			"description": "Stop the execution of a function, usually returning a value"
 		},
 		{
-			"name": "priv",
+			"name": "hidden",
 			"description": "Specify that the following value is private. Default for class fields"
 		},
 		{
-			"name": "pub",
+			"name": "shared",
 			"description": "Specify that the following value is public"
 		},
 		{
@@ -59,18 +55,14 @@
 			"description": "Specify that a type must implement a trait"
 		},
 		{
-			"name": "false"
+			"name": "False"
 		},
 		{
-			"name": "true"
+			"name": "True"
 		},
 		{
 			"name": "use",
 			"description": "Import classes, traits, functions, constants or types from other files"
-		},
-		{
-			"name": "from",
-			"description": "When importing something, specify the path where that value is"
 		},
 		{
 			"name": "as",
@@ -79,46 +71,80 @@
 	],
 	"types": [
 		{
-			"name": "bool",
-			"description": "Represents a state, `true` or `false`"
+			"name": "Bool",
+			"description": "`True` or `False`"
 		},
 		{
-			"name": "int",
-			"description": "The unsigned integer number type. Just an alias for `std::number::i32`",
-			"documentation": [
-				"#[allow(non_camel_case_types)]",
-				"typedef int = i32"
-			]
+			"name": "int8",
+			"description": "8-bit integer"
 		},
 		{
-			"name": "uint",
-			"description": "The integer number type. Just an alias for `std::number::u32`",
-			"documentation": [
-				"#[allow(non_camel_case_types)]",
-				"typedef uint = u32"
-			]
+			"name": "int16",
+			"description": "16-bit integer"
 		},
 		{
-			"name": "float",
-			"description": "The floating point number type. Just an alias for `std::number::f32`",
-			"documentation": [
-				"#[allow(non_camel_case_types)]",
-				"typedef float = f32"
-			]
+			"name": "int32",
+			"description": "32-bit integer"
+		},
+		{
+			"name": "int64",
+			"description": "64-bit integer"
+		},
+		{
+			"name": "uint8",
+			"description": "unsigned 8-bit integer"
+		},
+		{
+			"name": "uint16",
+			"description": "unsigned 16-bit integer"
+		},
+		{
+			"name": "uint32",
+			"description": "unsigned 32-bit integer"
+		},
+		{
+			"name": "uint64",
+			"description": "unsigned 64-bit integer"
+		},
+		{
+			"name": "isize",
+			"description": "signed integer with the size of a machine word"
+		},
+		{
+			"name": "usize",
+			"description": "unsigned integer with the size of a machine word"
+		},
+		{
+			"name": "float32",
+			"description": "32-bit floating point number"
+		},
+		{
+			"name": "float64",
+			"description": "64-bit floating point number"
+		},
+		{
+			"name": "Char",
+			"description": "`uint8` but UTF-8 encoded"
 		},
 		{
 			"name": "String",
-			"description": "`Vec<u8>` but UTF-8 encoded"
+			"description": "`Array<uint8>` but UTF-8 encoded"
 		},
 		{
 			"name": "Dict",
-			"documentation": [
-				"typedef Dict<T> = HashMap<String, T>"
-			]
+			"description": "A map sorted by keys"
 		},
 		{
-			"name": "Vec",
-			"description": "A sorted by insertion list of elements"
+			"name": "Map",
+			"description": "A map randomly sorted"
+		},
+		{
+			"name": "Array",
+			"description": "A sorted-by-insertion list of elements"
+		},
+		{
+			"name": "Set",
+			"description": "A sorted-by-insertion set of elements, without duplicates"
 		}
 	],
 	"functions": [
@@ -126,10 +152,7 @@
 			"name": "println",
 			"description": "Prints the passed value to the standard output with a new line at the end",
 			"documentation": [
-				"fun println<T>(value: T)",
-				"where",
-				"\tT: Display",
-				"{",
+				"fun println(value: Display) {",
 				"\tprint(f\"{value}{EOL}\")",
 				"}"
 			]
