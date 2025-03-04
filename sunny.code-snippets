@@ -14,8 +14,8 @@
 		"body": [
 			"class ${1:Point} {",
 			"\t${2|struct,enum,bitset|} {$3}",
-			"\tfun ${4:new}($5) -> ${6:Self} {",
-			"\t\t${7:return ${1:Point} {$0\\}}",
+			"\tfun ${4:new}($5): ${6:Self} {",
+			"\t\t${7:${1:Point} {$0\\}}",
 			"\t}",
 			"}"
 		]
@@ -24,18 +24,52 @@
 		"prefix": "forin",
 		"description": "Iterate over a range of values",
 		"body": [
-			"for ${1:i} in ${4:${2:0}...${3:10}} {",
+			"for ${1:i} in ${4:${2:0}.to(${3:10})} {",
 			"\t${0:debug!(i)}",
 			"}"
 		]
 	},
 	"classic for loop": {
-		"prefix": "forloop!",
-		"description": "A macro that simulates a classic for loop",
+		"prefix": "for!",
+		"description": "A macro that emulates a classic for loop",
 		"body": [
-			"forloop!(${1:i} = ${2:0}; ${1:i} <= ${3:10}; ${1:i} += ${4:1}; {",
+			"for!(${1:i} = ${2:0}; ${1:i} <= ${3:10}; ${1:i} += ${4:1}; {",
 			"\t${0:debug!(${1:i})}",
 			"})"
+		]
+	},
+	"macro": {
+		"prefix": "macro",
+		"description": "A macro declaration",
+		"body": [
+			"macro ${1:my_macro}!($2) {",
+			"\t${0:println!(\"Hello, world!\")}",
+			"}"
+		]
+	},
+	"macro2": {
+		"prefix": "macro2",
+		"description": "A macro declaration with different branches",
+		"body": [
+			"macro ${1:my_macro}! {",
+			"\tcase ($2) {",
+			"\t\t${0:println(\"Hello, world!\")}",
+			"\t}",
+			"}"
+		]
+	},
+	"match": {
+		"prefix": "match",
+		"description": "A match expression",
+		"body": [
+			"match ${1:value} {",
+			"\t${2:Some}(${3:x}): {",
+			"\t\t${4:println(f\"Got some value: {x\\}\")}",
+			"\t}",
+			"\t${5:None}: {",
+			"\t\t${0:println(\"Got no value\")}",
+			"\t}",
+			"}"
 		]
 	}
 }
