@@ -273,26 +273,47 @@
         }
       ]
     },
+    "params": {
+      "patterns": [
+        { "include": "#sunny" },
+        {
+          "name": "variable.parameter.sny",
+          "match": "(?<![:=]\\s*)\\b\\w+\\b"
+        }
+      ]
+    },
     "functions": {
       "comment": "todo!",
       "patterns": [
         {
-          "name": "entity.name.function.sny",
-          "match": "\\b\\w+!?(?=\\s*\\()",
-          "comment": "abc()"
+          "name": "source.sny",
+          "begin": "(fun)\\s+(\\w+)\\s*(\\()",
+          "beginCaptures": {
+            "1": { "name": "storage.type.sny" },
+            "2": { "name": "entity.name.function.sny" },
+            "3": { "name": "punctuation.definition.parameters.begin.sny punctuation.brackets.round.sny" }
+          },
+          "patterns": [
+            { "include": "#params" },
+            { "include": "#sunny" }
+          ],
+          "end": "(\\))",
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.parameters.end.sny punctuation.brackets.round.sny" }
+          }
         }
       ]
     },
     "sunny": {
       "patterns": [
         { "include": "#comments" },
+        { "include": "#functions" },
         { "include": "#strings" },
         { "include": "#brackets" },
         { "include": "#numbers" },
         { "include": "#operators" },
         { "include": "#meta" },
-        { "include": "#keywords" },
-        { "include": "#functions" }
+        { "include": "#keywords" }
       ]
     }
   }
