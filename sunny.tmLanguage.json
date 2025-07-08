@@ -253,11 +253,11 @@
         },
         {
           "name": "keyword.sny",
-          "match": "\\b(?:gen|takes|as|is|await|unsafe|arglist|async|defer|hidden|shared|where|if|else|match|return|impl|loop|while|break|continue|for|in|case)\\b"
+          "match": "\\b(?:gen|as|is|await|unsafe|async|defer|hidden|shared|where|if|else|match|return|impl|loop|while|break|continue|for|in)\\b"
         },
         {
           "name": "storage.type.sny",
-          "match": "\\b(?:mod|bitset|struct|enum|interface|type|const|state|let|var|fun|class|macro)\\b"
+          "match": "\\b(?:mod|bitflags|struct|enum|interface|type|const|state|let|var|fun|class|macro)\\b"
         },
         {
           "name": "support.function.builtin.sny",
@@ -265,11 +265,11 @@
         },
         {
           "name": "support.class.builtin.sny",
-          "match": "\\b(?:Option|Result|Ordering|Self|Bool|u?int(?:8|16|32|64)|[ui]size|float(?:32|64)|String|Map|Dict|List|Set|Range)\\b"
+          "match": "\\b(?:Option|Result|Ordering|Self|Bool|U?Int(?:8|16|32|64)|[UI]size|Float(?:32|64)|String|Map|Dict|List|Set|Range)\\b"
         },
         {
           "name": "constant.language.sny",
-          "match": "\\b(?:std|_|self|True|False|Ok|Err|Some|None|Less|Equal|Greater)\\b"
+          "match": "\\b(?:std|_|self|True|False|Less|Equal|Greater)\\b"
         }
       ]
     },
